@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>語縁 GOEN — デザインバージョン一覧</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#03150D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050505'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23D9B66D' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23D9B66D'/%3E%3Ccircle cx='49' cy='15' r='3' fill='%23D9B66D'/%3E%3Cline x1='36' y1='28' x2='47' y2='17' stroke='%23D9B66D' stroke-width='1.5'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700;900&amp;family=Shippori+Mincho:wght@400;600&amp;family=Cormorant+Garamond:wght@600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#03150D; --bg2:#0E3826; --ink:#F4F1E9; --sub:#9FB3A6;
+    --green:#00C66A; --gold:#D9B66D; --line:rgba(255,255,255,.1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(120% 90% at 50% 0%, #0E3826 0%, #03150D 62%) fixed, #03150D;
+    color:var(--ink); font-family:"Noto Sans JP",sans-serif;
+    min-height:100vh; line-height:1.7; -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; align-items:center;
+    padding:clamp(48px,9vw,120px) 24px 80px;
+  }
+  .wrap{width:100%; max-width:880px}
+  .brand{display:flex; align-items:center; gap:14px; margin-bottom:8px}
+  .brand .plate{
+    width:46px;height:46px;border-radius:10px;
+    background:#050505;border:1px solid rgba(217,182,109,.5);
+    display:grid;place-items:center;overflow:hidden;
+  }
+  .brand .plate img{width:100%;height:100%;object-fit:cover}
+  .brand .jp{font-family:"Zen Old Mincho",serif;font-weight:900;font-size:26px;letter-spacing:.08em}
+  .brand .en{font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.32em;color:var(--gold);margin-left:6px}
+  .eyebrow{font-family:"Cormorant Garamond",serif;letter-spacing:.34em;color:var(--gold);font-size:13px;text-transform:uppercase;margin:38px 0 12px}
+  h1{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:clamp(28px,5vw,44px);letter-spacing:.04em;line-height:1.25}
+  .lead{color:var(--sub);margin-top:14px;max-width:54ch;font-size:15px}
+  .grid{margin-top:44px;display:grid;gap:16px}
+  .card{
+    position:relative;display:block;text-decoration:none;color:inherit;
+    border:1px solid var(--line);border-radius:16px;
+    background:rgba(255,255,255,.025);
+    padding:24px 26px;transition:.35s cubic-bezier(.2,.7,.2,1);
+    overflow:hidden;
+  }
+  .card:hover{transform:translateY(-3px);border-color:rgba(217,182,109,.45);background:rgba(255,255,255,.05)}
+  .card::after{content:"→";position:absolute;right:24px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:20px;opacity:.6;transition:.35s}
+  .card:hover::after{opacity:1;right:20px}
+  .card .tag{display:inline-block;font-family:"Cormorant Garamond",serif;letter-spacing:.28em;font-size:11px;color:var(--green);text-transform:uppercase;margin-bottom:8px}
+  .card h2{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:20px;letter-spacing:.03em}
+  .card h2 .en{font-family:"Cormorant Garamond",serif;color:var(--gold);font-size:15px;letter-spacing:.18em;margin-left:10px;font-weight:600}
+  .card p{color:var(--sub);font-size:13.5px;margin-top:6px;max-width:60ch;padding-right:40px}
+  .card.primary{border-color:rgba(0,198,106,.4);background:linear-gradient(120deg,rgba(0,198,106,.08),rgba(255,255,255,.02))}
+  .card.primary .badge{position:absolute;top:18px;right:54px;font-size:10px;letter-spacing:.18em;color:#03150D;background:var(--green);padding:3px 9px;border-radius:999px;font-weight:700}
+  footer{margin-top:56px;color:var(--sub);font-size:12px;letter-spacing:.05em;text-align:center}
+  footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="語縁 GOEN">
+      <span class="plate"><img src="goen-logo.png" alt="語縁 GOEN ロゴ"></span>
+      <span><span class="jp">語縁</span><span class="en">GOEN</span></span>
+    </a>
+
+    <p class="eyebrow">Design Versions</p>
+    <h1>語縁 GOEN — デザイン版一覧</h1>
+    <p class="lead">同一ブランドのランディングページについて制作したデザイン案の一覧です。確定版は「語縁 ENISHI」、その他は検討用バリエーションです。</p>
+
+    <div class="grid">
+      <a class="card primary" href="/">
+        <span class="badge">確定版</span>
+        <span class="tag">Final · Multi-page</span>
+        <h2>語縁 ENISHI<span class="en">ENISHI</span></h2>
+        <p>本サイト。Hero軌道マップ＋全12セクションの本編に加え、制作品質・仕組み・サービス・相談の流れ・会社概要・問い合わせ・プライバシーの下層ページを備えた完成版。</p>
+      </a>
+
+      <a class="card" href="/shinen.html">
+        <span class="tag">Variant · Dark</span>
+        <h2>深縁 SHINEN<span class="en">SHINEN</span></h2>
+        <p>「深いご縁」をテーマにした重厚なダークバリエーション。</p>
+      </a>
+
+      <a class="card" href="/goen-homepage-v3.html">
+        <span class="tag">Iteration v3</span>
+        <h2>語縁 GOEN Homepage v3<span class="en">v3</span></h2>
+        <p>ホームページ案の第3イテレーション。</p>
+      </a>
+
+      <a class="card" href="/goen-homepage-v2.html">
+        <span class="tag">Iteration v2</span>
+        <h2>語縁 GOEN Homepage v2<span class="en">v2</span></h2>
+        <p>ホームページ案の第2イテレーション。</p>
+      </a>
+
+      <a class="card" href="/goen-homepage.html">
+        <span class="tag">Iteration v1 · React</span>
+        <h2>語縁 GOEN Homepage<span class="en">v1</span></h2>
+        <p>最初期のホームページ案（React/Babelをブラウザ上で実行）。</p>
+      </a>
+    </div>
+
+    <footer>© 2026 語縁 GOEN. ・ <a href="/">確定版サイトを見る →</a></footer>
+  </div>
+</body>
+</html>
