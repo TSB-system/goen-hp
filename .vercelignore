@@ -1,0 +1,8 @@
+# Exclude large source archive & extracted originals from deployment
+ラグジュアリーUIリデザイン (1).zip
+*.zip
+extracted/
+
+# VCS / deps
+.git/
+node_modules/
