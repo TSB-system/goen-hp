@@ -1,0 +1,14 @@
+# Large source archive & extracted originals (not part of the deployed site)
+ラグジュアリーUIリデザイン (1).zip
+*.zip
+extracted/
+
+# Vercel
+.vercel
+
+# Node
+node_modules/
+
+# OS / editor
+Thumbs.db
+.DS_Store

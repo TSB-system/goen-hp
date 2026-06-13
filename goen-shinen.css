@@ -1,0 +1,182 @@
+/* ============================================================
+   語縁 GOEN — 深縁 / SHINEN theme layer
+   「緑を塗るのではなく、緑を漂わせる。」
+   Deep-forest black-green base, jade light, brass-gold accent,
+   cream type. Loaded AFTER goen.css / goen-v2.css / goen-v3.css.
+   ============================================================ */
+
+:root {
+  /* base */
+  --bg: #050807;
+  --surface: #0F2E24;          /* deep green surface */
+  --surface-2: #12241C;
+  --text: #F4F0E6;             /* 生成り白 */
+  --text-2: #A9B8AE;           /* sage */
+  --muted: #7E8C82;
+  --accent: #C6A15B;           /* 真鍮ゴールド */
+  --soft-gold: #E3CF9C;
+  --line: rgba(198, 161, 91, 0.16);
+  --hairline: rgba(47, 143, 107, 0.30);  /* jade hairline */
+
+  /* canvas particle theme (read by goen-hero/scenes/nodes JS) */
+  --particle: #F4F0E6;         /* ambient: 生成り白 */
+  --particle-2: #2F8F6B;       /* 翡翠 jade */
+  --glyph: #F4F0E6;            /* 「語縁」forms in cream */
+
+  /* ivory → pale sage */
+  --ivory: #EEF3EC;
+  --ivory-2: #F3F6F1;
+  --ink: #14241D;
+  --ink-2: #44514A;
+  --ink-3: #5E6A62;
+  --brass-d: #8A6E32;
+}
+
+/* ---------- base depth: black-green, not pure black ---------- */
+body {
+  background:
+    radial-gradient(140% 80% at 78% 8%, #0C1F18 0%, rgba(12, 31, 24, 0) 46%),
+    linear-gradient(180deg, #07110D 0%, #050807 42%, #060D0A 100%);
+  background-attachment: fixed;
+}
+::selection { background: color-mix(in oklab, var(--particle-2) 40%, transparent); color: var(--text); }
+
+/* ---------- hero: depth gradient behind the particles ---------- */
+.hero {
+  background:
+    radial-gradient(120% 92% at 72% 26%, #103328 0%, #0A1A14 44%, #060D0A 78%, #050807 100%);
+}
+.hero::after {
+  background: radial-gradient(120% 90% at 50% 42%, transparent 54%, rgba(4, 8, 7, 0.62) 100%);
+}
+.hero-cue .line { background: rgba(244, 240, 230, 0.16); }
+
+/* ---------- intro overlay ---------- */
+.intro { background: radial-gradient(120% 100% at 50% 40%, #0B1A14 0%, #050807 70%); }
+.intro-mark { color: var(--text); }
+.intro-en { color: var(--accent); }
+
+/* ============================================================
+   CTA — deep-green field, brass hairline, cream text, jade glow
+   ============================================================ */
+.btn-primary {
+  background: linear-gradient(135deg, #15392C 0%, #0F2E24 58%, #102E25 100%);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+.btn-primary::after { border-color: rgba(198, 161, 91, 0.4); }
+.btn-primary:hover, .btn-primary:focus-visible {
+  background: linear-gradient(135deg, #1A4536 0%, #123A2C 58%, #123A2D 100%);
+  color: var(--text);
+  box-shadow: inset 0 0 34px rgba(47, 143, 107, 0.38), 0 10px 34px rgba(47, 143, 107, 0.2);
+}
+.btn-ghost:hover { color: var(--soft-gold); border-color: var(--accent); }
+
+/* mobile fixed CTA */
+.mobile-cta { background: rgba(6, 13, 10, 0.9); border-top-color: rgba(198, 161, 91, 0.34); }
+.mc-btn {
+  background: linear-gradient(135deg, #173E2F 0%, #0F2E24 100%);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+/* ---------- nav sheet (mobile menu) ---------- */
+.nav-sheet { background: rgba(5, 8, 7, 0.96); }
+
+/* ============================================================
+   縁の糸 — deep green line with a brass after-glow
+   ============================================================ */
+.thread-line { stroke: color-mix(in oklab, var(--particle-2) 46%, transparent); stroke-width: 1.1; }
+.thread-glow { stroke: color-mix(in oklab, var(--particle-2) 14%, transparent); }
+.thread-head { fill: var(--accent); }
+.thread-head-glow { fill: color-mix(in oklab, var(--accent) 24%, transparent); }
+.thread-label span { color: var(--soft-gold); }
+.thread-label i { background: var(--accent); box-shadow: 0 0 14px rgba(47, 143, 107, 0.6); }
+.thread-label.dk span { color: var(--brass-d); }
+
+/* ============================================================
+   cards — deep-green translucent, jade hairline, jade hover glow
+   ============================================================ */
+.price-point,
+.svc-detail,
+.q-case,
+.contact-panel {
+  border-color: var(--hairline);
+}
+.contact-panel { background: rgba(11, 26, 20, 0.72); border: 1px solid var(--hairline); }
+.cf-field input, .cf-field textarea { border-bottom-color: rgba(198, 161, 91, 0.32); }
+.cf-field input:focus, .cf-field textarea:focus { border-bottom-color: var(--accent); }
+
+.svc-tab.on, .faq-item[open] summary { color: var(--soft-gold); }
+.faq-item[open] { background: linear-gradient(90deg, rgba(47, 143, 107, 0.06), transparent 60%); }
+
+/* ============================================================
+   ivory → pale sage spreads (料金 / プロセス / FAQ / 安心)
+   ============================================================ */
+.scene--invert { background: var(--ivory); }
+.scene--invert.inv-top {
+  background: linear-gradient(180deg, #050807 0px, var(--ivory) 200px, var(--ivory) 100%);
+}
+.scene--invert.inv-bottom {
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--ivory) calc(100% - 200px), #050807 100%);
+}
+.scene--invert[data-ghost]::before { color: rgba(20, 36, 29, 0.05); }
+.scene--invert .scene-head .label { color: #5E6A62; }
+.scene--invert .scene-head .rule { background: rgba(20, 36, 29, 0.26); }
+.scene--invert .phil-vert { color: rgba(20, 36, 29, 0.5); }
+.scene--invert .system-intro,
+.scene--invert .phil-line { color: var(--ink); }
+.scene--invert .q-lead,
+.scene--invert .plans-lead,
+.scene--invert .phil-after { color: var(--ink-2); }
+.scene--invert .phil-line .ac {
+  background-image: linear-gradient(105deg, var(--brass-d) 0%, var(--brass-d) 38%, #C9A24C 50%, var(--brass-d) 62%, var(--brass-d) 100%);
+}
+
+/* profile card */
+.profile-card { background: var(--ivory-2); border-color: rgba(20, 36, 29, 0.1); box-shadow: 0 24px 70px rgba(8, 20, 15, 0.1); }
+.profile-side { border-right-color: rgba(20, 36, 29, 0.12); }
+.profile-mark { color: var(--brass-d); background: radial-gradient(circle at 35% 30%, #EAF1E6, #DCE7DC); border-color: var(--accent); }
+.profile-name { color: var(--ink); }
+.profile-role { color: var(--ink-3); }
+.profile-body p, .profile-points li { color: var(--ink-2); }
+.profile-points li::before { background: var(--brass-d); }
+.profile-stance { border-left-color: #2F8F6B; color: var(--ink) !important; }
+
+/* plans */
+.plan { background: var(--ivory-2); }
+.plan-list { background: rgba(20, 36, 29, 0.12); border-color: rgba(20, 36, 29, 0.12); }
+.plan-num { color: var(--brass-d); }
+.plan h3 { color: var(--ink); }
+.plan-set { color: var(--ink-2); border-top-color: rgba(20, 36, 29, 0.1); }
+.plan-for { color: var(--ink-3); }
+.plans-note { color: var(--ink-2); }
+
+/* rail adapts on the pale spreads */
+body.on-light .rail a { background: rgba(20, 36, 29, 0.24); }
+body.on-light .rail a::before { background: rgba(20, 36, 29, 0.16); }
+body.on-light .rail a.on { background: var(--accent); }
+body.on-light .rail-label { color: #4A5A50; }
+body.on-light .cursor-ring { border-color: rgba(20, 36, 29, 0.45); }
+
+/* ============================================================
+   finale — converging ring glows jade
+   ============================================================ */
+.finale-glow {
+  background: radial-gradient(circle, rgba(47, 143, 107, 0.16) 0%, rgba(47, 143, 107, 0.05) 38%, transparent 70%);
+}
+
+/* ---------- target band ---------- */
+.target-lead b { color: var(--soft-gold); }
+.target-chips li { border-color: rgba(244, 240, 230, 0.16); }
+
+/* ---------- insight note ---------- */
+.insight-note { border-left-color: #2F8F6B; color: var(--soft-gold); }
+
+/* ============================================================
+   mobile — lighten the show: fewer particles, softer glow
+   ============================================================ */
+@media (max-width: 760px) {
+  .thread-glow { display: none; }
+  .finale-glow { opacity: 0.7; }
+}
