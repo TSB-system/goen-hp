@@ -16,16 +16,16 @@
 ### 公開ページ（HTML）
 | パス | 内容 |
 |---|---|
-| `index.html` | **トップページ（`/`）。現在は「語縁 GOEN TOP」自己完結版**（後述§5）。 |
-| `goen-top.html` | `index.html` と同一内容（GOEN TOP 自己完結版の固定URL）。 |
-| `語縁 ENISHI.html` | ENISHI デザインの **modular 版**（外部CSS/JSを参照する複数ファイル構成のトップ）。※ファイル名に空白と日本語あり。シェルでは必ずクォートする。 |
+| `index.html` | **トップページ（`/`）。GOEN Living Orbit v4を実装した modular 版**。 |
+| `goen-top.html` | `index.html` と同一内容（GOEN TOPの固定URL）。 |
+| `語縁 ENISHI.html` | トップの編集元。`index.html` / `goen-top.html` と同一内容。※ファイル名に空白と日本語あり。シェルでは必ずクォートする。 |
 | `quality.html` `system.html` `service.html` `flow.html` `about.html` `contact.html` `privacy.html` | ENISHI modular 版の下層ページ。 |
 | `shinen.html` | 別案「深縁 SHINEN」。 |
 | `goen-homepage.html` / `-v2.html` / `-v3.html` | 別案「GOEN Homepage」v1（React/Babel CDN）/ v2 / v3。 |
 | `versions.html` | 全バージョンへのハブ（一覧）ページ。`/versions.html`。 |
 
 ### 共有アセット
-- CSS（7）: `goen.css` `goen-v2.css` `goen-v3.css` `goen-shinen.css` `goen-enishi.css` `goen-enishi-v2.css` `goen-hp.css`
+- CSS（8）: `goen.css` `goen-v2.css` `goen-v3.css` `goen-shinen.css` `goen-enishi.css` `goen-enishi-v2.css` `goen-hp.css` `goen-living-orbit.css`
 - JS（8）: `goen-scenes.js` `goen-nodes.js` `goen-scroll.js` `goen-lux.js` `goen-hero.js` `goen-thread.js` `goen-v2.js` `goen-v3.js`
 - JSX（GOEN Homepage v1 のみが使用・Babelでブラウザ変換）: `goen-tweaks.jsx` `tweaks-panel.jsx`
 - 画像: `goen-logo.png`
@@ -68,25 +68,25 @@ vercel deploy --prod --yes --scope tyako915s-projects
 
 ## 5. 現在のトップページの性質（注意）
 
-`index.html` / `goen-top.html` は **バンドラー型の単一HTML**（Anthropic design の "Standalone" 形式）。ENISHIサイト一式を1ファイルに内包し、**ブラウザのJavaScriptが起動時に展開してレンダリング**する（`__bundler_loading` の "Unpacking..." 表示が一瞬出る）。
+`index.html` / `goen-top.html` / `語縁 ENISHI.html` は同一内容の **modular 版**。GOEN Living Orbit v4のファーストビューは `goen-living-orbit.css` に実装している。
 
-- 外部ローカル参照は持たない（`data:` とフォントCDNのみ）。**この1ファイルだけで完結**する。
-- **JS必須**。JS無効時は `<noscript>` のメッセージのみ。
-- ページ内リンクは展開後にアプリ内で処理されるため、サーバ側の追加ファイルは不要。
-- **編集はしにくい**（内容が梱包・最小化されている）。テキストや構造を細かく直したい場合は、§7の通り modular 版（`語縁 ENISHI.html` ＋下層ページ＋`goen-*.css/js`）を編集する方が容易。
+- HTML / CSS / SVG中心で、Canvas粒子演出は使わない。
+- PCはコピーと3層円環の2カラム、スマホはブランドプレートと6カードの2列グリッド。
+- `prefers-reduced-motion` 対応済み。アニメーションなしでも全情報を表示する。
+- トップを編集するときは `語縁 ENISHI.html` を編集元とし、確認後に `index.html` と `goen-top.html` へ同期する。
 
 ## 6. よくある変更タスクの手順
 
-### A. トップを modular 版に戻したい（サーバ配信型・編集しやすい）
+### A. トップ3ファイルを同期したい
 ```
 cp "語縁 ENISHI.html" index.html
-# 必要なら versions.html の主要カード文言も戻す
+cp "語縁 ENISHI.html" goen-top.html
 ```
 その後 commit → push（または `vercel deploy --prod ...`）。
 
 ### B. 文言・デザインを直したい
-- modular 版を編集する: `語縁 ENISHI.html`（トップ本体）／ 各下層 `*.html`／ 共有 `goen-*.css`・`goen-*.js`。
-- standalone（`index.html`）を直接編集するのは非推奨（梱包済みのため）。直したい場合は新しい standalone を書き出して差し替える運用にする。
+- `語縁 ENISHI.html`（トップ本体）／ 各下層 `*.html`／ 共有 `goen-*.css`・`goen-*.js` を編集する。
+- ファーストビュー固有の変更は `goen-living-orbit.css` を優先し、既存テーマCSSへの影響を避ける。
 
 ### C. 別バージョンを新規公開したい
 1. `extracted/` から対象HTMLと、その参照アセットをコピー（参照確認: 各HTMLの `href/src`）。

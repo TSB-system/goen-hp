@@ -9,10 +9,11 @@
 
 ビルド不要の静的サイト（プレーン HTML/CSS/JS）。
 
-- `index.html` / `goen-top.html` … トップ（GOEN TOP 自己完結版）
-- `語縁 ENISHI.html` ＋ `quality/system/service/flow/about/contact/privacy.html` … ENISHI modular 版（編集しやすい複数ファイル構成）
+- `index.html` / `goen-top.html` / `語縁 ENISHI.html` … GOEN Living Orbit v4トップ（同一内容のmodular版）
+- `quality/system/service/flow/about/contact/privacy.html` … ENISHI下層ページ
 - `shinen.html`, `goen-homepage*.html` … 別デザイン案
 - `versions.html` … 全バージョンへのハブ
+- `goen-living-orbit.css` … TOPファーストビュー専用スタイル
 - `goen-*.css` / `goen-*.js` / `*.jsx` / `goen-logo.png` … 共有アセット
 
 ## ローカルプレビュー
