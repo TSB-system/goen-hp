@@ -110,4 +110,51 @@ for p in / /versions.html /shinen.html /goen-homepage.html /goen-top.html; do
 ## 8. 元データの出所
 
 - 配布zip: `ラグジュアリーUIリデザイン (1).zip`（ローカルのみ）。展開物が `extracted/`。
-- 各バージョンには modular 版（外部参照・編集容易）と standalone 版（自己完結・梱包）が存在する。公開中サイトはこの2形式を使い分けている。
+- 各バージョンには modular 版（外部参照・編集容易）と standalone 版（自己完結・梱包）が存在する。
+- 現在の公開トップは modular 版。standalone 原本は比較・再取り込み用途として `extracted/` に残す。
+
+## 9. 直近の実装引き継ぎ（2026-06-14）
+
+### 9.1 実装済み
+
+要件定義書 `goen_top_living_orbit_requirements_v4_100_updated.md` に基づき、TOPファーストビューを **GOEN Living Orbit v4** へ刷新した。
+
+- 左側: 対象顧客、メインコピー、成果説明、補助コピー、2つのCTA、安心材料。
+- 右側: 中央ブランドプレート、3層リング、6サービスカード、相談カード強調、光の導線、成果導線コピー。
+- カード表記: `HP制作` `LP制作` `MEO対策` `公式LINE` `SNS運用代行` `ご相談`。
+- 下層導線: `quality.html` `system.html` `service.html` `contact.html` へリンク。
+- PC: 左右2カラム。スマホ: 中央プレート＋6カードの2列グリッド。
+- アクセシビリティ: `aria-label`、`focus-visible`、`prefers-reduced-motion` 対応。
+- パフォーマンス: Canvasを使わず、HTML/CSS中心。常時演出は `transform` / `opacity` が中心。
+- 黒背景、ネオン、粒子、星座風の線、回転し続けるカードは使用していない。
+
+### 9.2 編集箇所
+
+- TOP構造: `語縁 ENISHI.html` の `section#hero`。
+- TOP専用デザイン・レスポンシブ・演出: `goen-living-orbit.css`。
+- 公開用コピー: `index.html` と `goen-top.html`。3ファイルは同一SHA256であることを確認済み。
+- 既存のQUALITY以降のセクションと共有JSは原則変更していない。
+
+### 9.3 検証済み
+
+- Chrome headlessで 1440x1000、500x1000、390x844、390x1600 を画像確認。
+- reduced-motion強制時に、アニメーションなしでも全情報が表示されることを確認。
+- ローカル参照23件がすべて存在することを確認。
+- `/` `/goen-top.html` `/goen-living-orbit.css` と主要下層ページがHTTP 200。
+- `git diff --check` にエラーなし。WindowsのLF→CRLF警告のみ。
+
+### 9.4 GitHub / Vercel
+
+- 最新実装コミット: `b05b334 feat: GOEN Living Orbit版トップを実装`
+- GitHub: `tyako915/goen-enishi-hp`（Private）、`main` へpush済み。
+- Vercel production deployment: `dpl_8CW4kZpFDeGLbG6hDyYBvnhuNnrM`
+- 本番URL: https://goen-enishi-hp.vercel.app/
+- 2026-06-14時点で本番HTMLに `goen-living-orbit.css`、新コピー、6カードが反映済み。
+
+### 9.5 次の担当者への注意
+
+- TOP変更は `語縁 ENISHI.html` を編集し、`index.html` / `goen-top.html` へ必ず同期する。
+- `goen-living-orbit.css` は全テーマCSSの最後に読み込む。順序を変えると旧ヒーロースタイルに上書きされる。
+- 760px以下では円環を非表示にしてカードグリッドへ切り替えている。PC用円環をそのまま縮小しない。
+- `.vercelignore` の `*.zip` と `extracted/` を削除しない。
+- デプロイ後は正式ドメインで新コピーとCSS参照まで確認する。HTTP 200だけではキャッシュ差し替えを確認できない。
