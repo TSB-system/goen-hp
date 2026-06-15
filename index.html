@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="goen-living-orbit.css">
 <link rel="stylesheet" href="goen-segmented-orbit.css">
 <link rel="stylesheet" href="goen-case-study.css">
+<link rel="stylesheet" href="goen-revise.css">
 </head>
 <body>
 
@@ -90,17 +91,17 @@
 
   <!-- LEFT COPY -->
   <div class="lead">
-    <span class="eyebrow">Living Segmented Orbit</span>
-    <h1 class="title">ご縁が、成果へと<br>動き出す導線設計。</h1>
-    <p class="sub"><b>HP制作・LP制作・MEO対策・公式LINE・SNS運用代行</b>を点で終わらせず、<b>ご相談</b>までつながるWeb導線を設計します。</p>
+    <span class="eyebrow">Living Segmented Orbit — 導線設計</span>
+    <h1 class="title">地域店舗・個人事業主のための<br><span class="ac">成果につながる</span><br>Web導線設計。</h1>
+    <p class="sub"><b>HP制作・LP制作・MEO対策・公式LINE・SNS運用</b>まで、見つけられ、信頼され、相談される流れを一本の線で整えます。</p>
     <div class="ctas">
-      <a class="btn btn-primary" href="contact.html">無料相談する<svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-      <a class="btn btn-ghost" href="quality.html">制作サンプルを見る</a>
+      <a class="btn btn-primary" href="contact.html">30分無料で相談する<svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a class="btn btn-ghost" href="quality.html">制作サンプルを見る<svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
     </div>
     <div class="trust">
-      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c.6-3 2.9-4.6 5.5-4.6S14 16 14.5 19"></path><circle cx="17" cy="9" r="2.4"></circle><path d="M16 14.4c2.2.2 3.8 1.7 4.2 4.1"></path></svg></span><span><b>初めてでも安心</b>丁寧にサポート</span></div>
-      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M4 19h16M5 16l4-4 3 3 6-7"></path><path d="M18 7h2.5V9.5"></path></svg></span><span><b>成果にこだわる</b>設計と改善</span></div>
-      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-6.5-4.2-8.4-8.3C2.2 8.9 3.9 6 6.8 6c1.9 0 3.2 1.1 4 2.3C11.6 7.1 12.9 6 14.8 6c2.9 0 4.6 2.9 3.2 5.7C16.5 15.8 12 20 12 20z"></path></svg></span><span><b>強引な営業は</b>一切しません</span></div>
+      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 9-10"></path></svg></span><span><b>初めてでも安心</b>分かる言葉で説明</span></div>
+      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 9-10"></path></svg></span><span><b>必要な施策だけ</b>不要な提案しない</span></div>
+      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 9-10"></path></svg></span><span><b>強引な営業なし</b>相談だけでもOK</span></div>
     </div>
 
     <!-- MOBILE vertical step UI (案B) -->
@@ -114,130 +115,46 @@
     </div>
   </div>
 
-  <!-- ORBIT -->
+  <!-- ORBIT (simplified single-ring) -->
   <div class="orbit-wrap">
     <div class="orbit">
       <svg class="canvas" viewBox="0 0 600 600" role="img" aria-label="語縁のサービス導線オービット">
         <defs>
-          <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#D8BE84" stop-opacity="0"></stop>
-            <stop offset="50%" stop-color="#D8BE84" stop-opacity=".95"></stop>
-            <stop offset="100%" stop-color="#BFA063" stop-opacity=".6"></stop>
-          </linearGradient>
-          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="2.4"></feGaussianBlur>
-          </filter>
+          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4"></feGaussianBlur></filter>
         </defs>
-
-        <!-- flower-of-life petal lattice (seed of life) -->
-        <g>
-          <circle class="petal" cx="300" cy="300" r="150"></circle>
-          <circle class="petal" cx="300" cy="150" r="150"></circle>
-          <circle class="petal" cx="429.9" cy="225" r="150"></circle>
-          <circle class="petal" cx="429.9" cy="375" r="150"></circle>
-          <circle class="petal" cx="300" cy="450" r="150"></circle>
-          <circle class="petal" cx="170.1" cy="375" r="150"></circle>
-          <circle class="petal" cx="170.1" cy="225" r="150"></circle>
+        <!-- connector spokes (center -> node) -->
+        <g class="ospokes">
+          <line x1="300" y1="300" x2="300" y2="100"></line>
+          <line x1="300" y1="300" x2="473.2" y2="200"></line>
+          <line x1="300" y1="300" x2="473.2" y2="400"></line>
+          <line x1="300" y1="300" x2="300" y2="500"></line>
+          <line x1="300" y1="300" x2="126.8" y2="400"></line>
+          <line x1="300" y1="300" x2="126.8" y2="200"></line>
         </g>
-
-        <!-- rings -->
-        <circle class="ring-in" cx="300" cy="300" r="140"></circle>
-        <circle class="ring-mid" cx="300" cy="300" r="180"></circle>
-        <circle class="env" cx="300" cy="300" r="222"></circle>
-
-        <!-- segment dividers on envelope -->
-        <g>
-          <line class="divider" x1="300" y1="206" x2="300" y2="238" transform="rotate(-60 300 300)"></line>
-          <line class="divider" x1="300" y1="206" x2="300" y2="238" transform="rotate(0 300 300)"></line>
-          <line class="divider" x1="300" y1="206" x2="300" y2="238" transform="rotate(60 300 300)"></line>
-          <line class="divider" x1="300" y1="206" x2="300" y2="238" transform="rotate(120 300 300)"></line>
-          <line class="divider" x1="300" y1="206" x2="300" y2="238" transform="rotate(180 300 300)"></line>
-          <line class="divider" x1="300" y1="206" x2="300" y2="238" transform="rotate(240 300 300)"></line>
-        </g>
-
-        <!-- fairy-light dotted threads along envelope + a mid arc -->
-        <circle class="thread" cx="300" cy="300" r="222" filter="url(#soft)"></circle>
-        <circle class="thread g" cx="300" cy="300" r="180"></circle>
-        <circle class="thread gold-in" cx="300" cy="300" r="140" filter="url(#soft)"></circle>
-
-        <!-- scattered fairy dots -->
-        <g filter="url(#soft)">
-          <circle class="fairy tw" cx="392" cy="118" r="2.4"></circle>
-          <circle class="fairy" cx="150" cy="150" r="1.8"></circle>
-          <circle class="fairy tw" cx="470" cy="300" r="2.2"></circle>
-          <circle class="fairy" cx="135" cy="320" r="2"></circle>
-          <circle class="fairy tw" cx="225" cy="470" r="2.2"></circle>
-          <circle class="fairy" cx="405" cy="455" r="1.8"></circle>
-          <circle class="fairy tw" cx="500" cy="210" r="1.8"></circle>
-          <circle class="fairy" cx="95" cy="250" r="1.6"></circle>
-        </g>
-
-        <!-- flowing comet -->
-        <circle class="flow" cx="300" cy="300" r="222"></circle>
-
-        <!-- bloom nodes at service points (r=200) -->
-        <g class="bloom top"><circle class="halo" cx="300" cy="100" r="9" filter="url(#soft)"></circle><circle class="dot" cx="300" cy="100" r="4.5"></circle></g>
+        <!-- single ring -->
+        <circle class="env" cx="300" cy="300" r="200"></circle>
+        <!-- gold node dots -->
         <g class="bloom b01"><circle class="halo" cx="300" cy="100" r="8" filter="url(#soft)"></circle><circle class="dot" cx="300" cy="100" r="4"></circle></g>
         <g class="bloom b02"><circle class="halo" cx="473.2" cy="200" r="8" filter="url(#soft)"></circle><circle class="dot" cx="473.2" cy="200" r="4"></circle></g>
         <g class="bloom b03"><circle class="halo" cx="473.2" cy="400" r="8" filter="url(#soft)"></circle><circle class="dot" cx="473.2" cy="400" r="4"></circle></g>
-        <g class="bloom b04"><circle class="halo" cx="126.8" cy="200" r="8" filter="url(#soft)"></circle><circle class="dot" cx="126.8" cy="200" r="4"></circle></g>
+        <g class="bloom b04"><circle class="halo" cx="300" cy="500" r="9" filter="url(#soft)"></circle><circle class="dot" cx="300" cy="500" r="4.5"></circle></g>
         <g class="bloom b05"><circle class="halo" cx="126.8" cy="400" r="8" filter="url(#soft)"></circle><circle class="dot" cx="126.8" cy="400" r="4"></circle></g>
-        <!-- arrival bloom at 相談 gate (bottom) -->
-        <g class="bloom gate"><circle class="halo" cx="300" cy="500" r="13" filter="url(#soft)"></circle><circle class="dot" cx="300" cy="500" r="5.5"></circle></g>
+        <g class="bloom b06"><circle class="halo" cx="126.8" cy="200" r="8" filter="url(#soft)"></circle><circle class="dot" cx="126.8" cy="200" r="4"></circle></g>
       </svg>
-
-      <!-- spokes -->
-      <span class="spoke spoke01"></span>
-      <span class="spoke spoke02"></span>
-      <span class="spoke spoke03"></span>
-      <span class="spoke spoke04"></span>
-      <span class="spoke spoke05"></span>
-      <span class="spoke spoke06"></span>
 
       <!-- central brand plate -->
       <div class="plate">
-        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="24" cy="16" r="8.4"></circle>
-          <circle cx="32" cy="24" r="8.4"></circle>
-          <circle cx="24" cy="32" r="8.4"></circle>
-          <circle cx="16" cy="24" r="8.4"></circle>
-        </svg>
         <div class="jp"><span>語</span><span>縁</span></div>
         <div class="en">GOEN</div>
-        <div class="rule"></div>
-        <div class="role">Web Direction Design</div>
       </div>
 
-      <!-- service labels -->
-      <a class="seg seg01" href="quality.html" aria-label="01 HP制作 — 信頼の土台をつくる">
-        <span class="seg-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="1.6"></rect><path d="M9.5 20h5M12 16.5V20"></path></svg></span>
-        <span class="seg-num">01</span><span class="seg-name">HP制作</span><span class="seg-role">信頼の土台をつくる</span>
-      </a>
-      <a class="seg seg02" href="service.html" aria-label="02 LP制作 — 行動を促す受け皿">
-        <span class="seg-ico"><svg viewBox="0 0 24 24"><rect x="6.5" y="3" width="11" height="18" rx="2"></rect><path d="M10.5 18h3"></path></svg></span>
-        <span class="seg-num">02</span><span class="seg-name">LP制作</span><span class="seg-role">行動を促す受け皿</span>
-      </a>
-      <a class="seg seg03" href="service.html" aria-label="03 MEO対策 — 地域で見つかる">
-        <span class="seg-ico"><svg viewBox="0 0 24 24"><path d="M12 21c4.5-4.6 6.8-7.9 6.8-10.8A6.8 6.8 0 0 0 5.2 10.2C5.2 13.1 7.5 16.4 12 21z"></path><circle cx="12" cy="10" r="2.4"></circle></svg></span>
-        <span class="seg-num">03</span><span class="seg-name">MEO対策</span><span class="seg-role">地域で見つかる</span>
-      </a>
-      <a class="seg seg04" href="service.html" aria-label="04 公式LINE — 関係を深める">
-        <span class="seg-ico"><svg viewBox="0 0 24 24"><path d="M20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-4 3.5V7A1.5 1.5 0 0 1 6.5 5.5z"></path></svg></span>
-        <span class="seg-num">04</span><span class="seg-name">公式LINE</span><span class="seg-role">関係を深める</span>
-      </a>
-      <a class="seg seg05" href="service.html" aria-label="05 SNS運用代行 — 認知を広げる">
-        <span class="seg-ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"></circle><circle cx="17" cy="6.5" r="2.4"></circle><circle cx="17" cy="17.5" r="2.4"></circle><path d="M8.1 10.9l6.8-3.3M8.1 13.1l6.8 3.3"></path></svg></span>
-        <span class="seg-num">05</span><span class="seg-name">SNS運用代行</span><span class="seg-role">認知を広げる</span>
-      </a>
-
-      <!-- 相談 GATE -->
-      <a class="gate" href="contact.html" aria-label="06 ご相談 — ご縁を成果へ。最終ステップ">
-        <span class="seg-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"></circle><path d="M3.5 19c.5-3 2.8-4.7 5.5-4.7S14 16 14.5 19"></path><circle cx="17.5" cy="10" r="2.3"></circle><path d="M16.4 14.5c2 .3 3.4 1.7 3.8 3.8"></path></svg></span>
-        <span class="g-num">06</span>
-        <span class="g-name">ご相談</span>
-        <span class="g-role">ご縁を成果へ</span>
-        <span class="g-final">FINAL STEP</span>
-      </a>
+      <!-- service node labels -->
+      <a class="seg seg01" href="quality.html" aria-label="HP制作"><span class="seg-name">HP制作</span></a>
+      <a class="seg seg02" href="service.html" aria-label="LP制作"><span class="seg-name">LP制作</span></a>
+      <a class="seg seg03" href="service.html" aria-label="MEO対策"><span class="seg-name">MEO対策</span></a>
+      <a class="seg seg04" href="service.html" aria-label="公式LINE"><span class="seg-name">公式LINE</span></a>
+      <a class="seg seg05" href="service.html" aria-label="SNS運用"><span class="seg-name">SNS運用</span></a>
+      <a class="seg seg06" href="contact.html" aria-label="ご相談"><span class="seg-name">ご相談</span></a>
     </div>
   </div>
 
@@ -420,10 +337,15 @@
       <span class="rule"></span>
       <span class="label">The Problem — 課題</span>
     </div>
-    <p class="problem-lead rv">なぜ、作っただけでは成果が出ないのか。<br>ホームページが悪いわけでも、SNSが悪いわけでも、MEOが悪いわけでもありません。</p>
-    <h2 class="problem-line" data-scatter><span class="ln">足りないのは、努力ではなく、</span></h2>
-    <h2 class="problem-line" data-scatter><span class="ln"><span class="ac">選ばれる導線</span>です。</span></h2>
-    <p class="problem-after rv">頑張っている事業が、ちゃんと見つかり、信頼され、相談されるように。<br>語縁は、LP・HP制作からWeb集客導線までを設計します。</p>
+    <p class="problem-lead rv">なぜ、作っただけでは成果が出ないのか。<br>ホームページ・SNS・Googleマップ・LINEがバラバラだと、お客様は途中で離脱します。</p>
+    <h2 class="problem-line" data-scatter><span class="ln">頑張っているのに、選ばれない。</span></h2>
+    <h2 class="problem-line" data-scatter><span class="ln">足りないのは努力ではなく、<span class="ac">導線</span>です。</span></h2>
+    <ul class="prob-cards rv">
+      <li class="prob-card"><span class="prob-i">!</span><h3>見つからない</h3><p>検索や地図で、見込み客に出会えていない。</p></li>
+      <li class="prob-card"><span class="prob-i">!</span><h3>信頼されない</h3><p>強み・人柄・料金根拠が、十分に伝わらない。</p></li>
+      <li class="prob-card"><span class="prob-i">!</span><h3>相談されない</h3><p>予約・問い合わせまでの導線が、薄く途切れる。</p></li>
+    </ul>
+    <p class="problem-after rv">語縁は、見つけられ、信頼され、相談されるまでの流れを一本の線で設計します。</p>
   </section>
 
   <!-- ==================== 03 — SYSTEM ==================== -->
@@ -434,59 +356,17 @@
       <span class="label">The System — 集客導線</span>
     </div>
     <h2 class="system-intro rv rv--mask"><span class="ln">集客は、点ではなく線で考える。</span></h2>
-    <div class="flow-wrap">
-      <div class="flow-pulse"></div>
-      <div class="flow-pulse p2"></div>
-      <ol class="flow">
-        <li class="flow-step">
-          <span class="flow-node"></span>
-          <div class="flow-body">
-            <span class="flow-en">MEO</span>
-            <h3 class="flow-name">見つけてもらう</h3>
-            <p class="flow-desc">地域で探している見込み客と、検索と地図の上で出会う。</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"></span>
-          <div class="flow-body">
-            <span class="flow-en">HP / LP</span>
-            <h3 class="flow-name">信頼してもらう</h3>
-            <p class="flow-desc">事業の価値を正しく伝え、「ここなら任せられる」をつくる。</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"></span>
-          <div class="flow-body">
-            <span class="flow-en">LINE</span>
-            <h3 class="flow-name">関係を育てる</h3>
-            <p class="flow-desc">一度の出会いを、続く関係に変える。再訪と指名につなげる。</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"></span>
-          <div class="flow-body">
-            <span class="flow-en">SNS</span>
-            <h3 class="flow-name">認知を広げる</h3>
-            <p class="flow-desc">日々の発信を資産に変え、選ばれる理由を届け続ける。</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"></span>
-          <div class="flow-body">
-            <span class="flow-en">INQUIRY</span>
-            <h3 class="flow-name">問い合わせが生まれる</h3>
-            <p class="flow-desc">「相談してみよう」と思える瞬間を、導線として設計する。</p>
-          </div>
-        </li>
-        <li class="flow-step is-result">
-          <span class="flow-node"></span>
-          <div class="flow-body">
-            <span class="flow-en">RESULT</span>
-            <h3 class="flow-name">成約として実る</h3>
-            <p class="flow-desc">偶然ではなく、構造がもたらす結果。</p>
-          </div>
-        </li>
-      </ol>
+    <div class="sys-rail rv">
+      <div class="sys-step r"><span class="sys-node"></span><h3 class="sys-name">見つけてもらう</h3><p class="sys-desc">MEO・検索・SNSで、探している人と出会う。</p></div>
+      <div class="sys-step l"><span class="sys-node"></span><h3 class="sys-name">興味を持ってもらう</h3><p class="sys-desc">LP・HPで強みと選ばれる理由を伝える。</p></div>
+      <div class="sys-step r"><span class="sys-node"></span><h3 class="sys-name">信頼してもらう</h3><p class="sys-desc">料金・事例・人柄で相談前の不安を減らす。</p></div>
+      <div class="sys-step l"><span class="sys-node"></span><h3 class="sys-name">相談につなげる</h3><p class="sys-desc">フォーム・LINE・電話まで迷わず進める。</p></div>
+      <div class="sys-step r"><span class="sys-node"></span><h3 class="sys-name">関係を育てる</h3><p class="sys-desc">LINEやSNSで再接点をつくり、再訪へつなげる。</p></div>
+      <div class="sys-step l"><span class="sys-node"></span><h3 class="sys-name">成約と改善へ</h3><p class="sys-desc">成果を検証し、次の一手へ磨き続ける。</p></div>
+    </div>
+    <div class="sys-close rv">
+      <p class="sys-close-lead">必要なのは、施策を増やすことではなく、<br>お客様が迷わず進める流れをつくること。</p>
+      <p class="sys-close-sub">偶然ではなく、設計された導線が成果を生みます。</p>
     </div>
     <div class="more-row rv"><a class="btn-more" href="system.html">集客の仕組みを詳しく見る<span class="arr">→</span></a></div>
   </section>
@@ -498,8 +378,16 @@
       <span class="rule"></span>
       <span class="label">Clear Price — 透明性</span>
     </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">不透明なWeb制作を、終わらせる。</span></h2>
-    <p class="price-lead rv">必要以上の提案はしません。分からないまま高額な契約を迫ることもしません。語縁は、目的に合わせて必要な施策だけを選べるWebパートナーです。</p>
+    <h2 class="system-intro rv rv--mask"><span class="ln">料金の不安を、最初に解消する。</span></h2>
+    <p class="price-lead rv">必要な施策と内訳を明確にしたうえで提案します。不要なオプションや継続契約を前提にしません。</p>
+    <div class="price-table rv">
+      <div class="pt-cell"><span class="pt-name">LP制作</span><span class="pt-price">15万円〜</span><span class="pt-note">広告・SNSからの受け皿</span></div>
+      <div class="pt-cell"><span class="pt-name">HP制作</span><span class="pt-price">30万円〜</span><span class="pt-note">会社・店舗の信頼設計</span></div>
+      <div class="pt-cell"><span class="pt-name">MEO初期設計</span><span class="pt-price">5万円〜</span><span class="pt-note">地域検索の土台づくり</span></div>
+      <div class="pt-cell"><span class="pt-name">LINE導線</span><span class="pt-price">8万円〜</span><span class="pt-note">予約・再来店の導線</span></div>
+      <div class="pt-cell"><span class="pt-name">運用伴走</span><span class="pt-price">月5万円〜</span><span class="pt-note">改善・継続・分析支援</span></div>
+    </div>
+    <p class="price-note rv">上記は目安です。内容・ページ数・素材状況に応じて、無料相談後に正式見積もりをご提示します。</p>
     <ul class="price-points">
       <li class="price-point rv"><span class="pp-mark"></span><h3>必要なものだけ選べる</h3><p>LPだけ、MEOだけ。目的に合わせて、施策を単品から組み合わせられます。</p></li>
       <li class="price-point rv" style="--d:0.08s"><span class="pp-mark"></span><h3>単発のご依頼も歓迎</h3><p>継続契約が前提ではありません。一度きりの制作でも、全力で設計します。</p></li>
@@ -517,25 +405,14 @@
       <span class="rule"></span>
       <span class="label">Services — 導線のパーツ</span>
     </div>
-    <div class="svc-grid">
-      <div class="svc-canvas-wrap rv">
-        <canvas id="svcCanvas"></canvas>
-      </div>
-      <div class="svc-detail rv" id="svcDetail" style="--d:0.2s">
-        <div class="svc-detail-inner">
-          <span class="svc-detail-en">01 — WEBSITE</span>
-          <h3 class="svc-detail-name">HP制作</h3>
-          <p class="svc-detail-desc">会社の信頼をつくる、営業拠点を設計する。誰に・何を・どう伝えるかという構造から組み立てます。</p>
-          <dl class="svc-meta"></dl>
-        </div>
-        <div class="svc-tabs">
-          <button class="svc-tab on" type="button">HP制作</button>
-          <button class="svc-tab" type="button">LP制作</button>
-          <button class="svc-tab" type="button">MEO対策</button>
-          <button class="svc-tab" type="button">公式LINE運用</button>
-          <button class="svc-tab" type="button">SNS運用代行</button>
-        </div>
-      </div>
+    <h2 class="system-intro rv rv--mask"><span class="ln">必要なところから、必要な分だけ。</span></h2>
+    <p class="svc-lead rv">HP・LP・MEO・LINE・SNSを、事業の状況に合わせて組み合わせます。</p>
+    <div class="svc-cards">
+      <a class="svc-card rv" href="service.html"><span class="svc-n">01</span><h3 class="svc-name">HP制作</h3><p class="svc-desc">会社・店舗の信頼をつくる。誰に、何を、どう伝えるかを設計して固める。</p></a>
+      <a class="svc-card rv" href="service.html" style="--d:.06s"><span class="svc-n">02</span><h3 class="svc-name">LP制作</h3><p class="svc-desc">広告・SNSから来た人を、迷わせず予約・問い合わせへつなげる。</p></a>
+      <a class="svc-card rv" href="service.html" style="--d:.12s"><span class="svc-n">03</span><h3 class="svc-name">MEO対策</h3><p class="svc-desc">Googleマップで探す人に見つけてもらう土台を整える。</p></a>
+      <a class="svc-card rv" href="service.html" style="--d:.18s"><span class="svc-n">04</span><h3 class="svc-name">公式LINE導線</h3><p class="svc-desc">予約・再来店・紹介につながる関係づくりを設計する。</p></a>
+      <a class="svc-card rv" href="service.html" style="--d:.24s"><span class="svc-n">05</span><h3 class="svc-name">SNS運用代行</h3><p class="svc-desc">日々の発信で認知を広げ、選ばれる理由を届け続ける。</p></a>
     </div>
     <div class="more-row rv"><a class="btn-more" href="service.html">サービスの詳細を見る<span class="arr">→</span></a></div>
   </section>
@@ -549,13 +426,15 @@
     </div>
     <div class="insight-grid">
       <div>
-        <h2 class="why-intro rv rv--mask"><span class="ln">見られる側を知っているから、<br>見られる設計ができる。</span></h2>
-        <p class="insight-body rv">語縁の代表は、現役インフルエンサーとして活動しています。人が何に反応し、何を信頼し、なぜ行動するのか。発信する側として身につけたその感覚を、LP・HP制作やSNS運用に活かします。</p>
-        <p class="insight-note rv" style="--d:0.15s">数字だけでは見えない、人の感情を設計する。</p>
+        <h2 class="why-intro rv rv--mask"><span class="ln">見られる側を知っているから、<br>反応される設計ができる。</span></h2>
+        <p class="insight-body rv">語縁の代表は、現役インフルエンサーとして発信を続けています。人が何に反応し、何を信頼し、なぜ行動するのか。その感覚を、LP・HP制作やSNS運用に活かします。</p>
+        <p class="insight-note rv" style="--d:0.15s">数字だけでは見えない、人の感情から導線を設計する。</p>
       </div>
-      <div class="insight-canvas-wrap rv" style="--d:0.1s">
-        <canvas id="whyCanvas"></canvas>
-      </div>
+      <ul class="insight-cards rv" style="--d:0.1s">
+        <li class="ins-card"><h3>視線の流れ</h3><p>どこで止まり、どこで離脱するかを設計に活かす。</p></li>
+        <li class="ins-card"><h3>言葉の温度</h3><p>売り込みすぎず、相談したくなる距離で言葉を選ぶ。</p></li>
+        <li class="ins-card"><h3>行動のハードル</h3><p>予約・問い合わせの心理的な壁を、一つずつ下げる。</p></li>
+      </ul>
     </div>
   </section>
 

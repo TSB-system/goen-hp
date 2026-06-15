@@ -1,0 +1,154 @@
+/* ============================================================
+   語縁 GOEN — Revised sections (SERVICES card grid / SYSTEM timeline)
+   ダークテーマのscene内で動く調整スタイル。既存テーマCSSの後に読み込む。
+   ============================================================ */
+
+/* ===================== 07 SERVICES — card grid ===================== */
+#services .svc-lead{
+  max-width:62ch; margin:14px 0 clamp(26px,3vw,42px);
+  color:rgba(232,240,233,.62); font-size:clamp(13px,1vw,15px); line-height:1.95; letter-spacing:.02em;
+}
+#services .svc-cards{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(14px,1.4vw,20px);
+}
+#services .svc-card{
+  display:block; text-decoration:none; position:relative;
+  border:1px solid rgba(255,255,255,.12); border-radius:14px;
+  background:linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  padding:clamp(18px,1.8vw,26px); min-height:150px;
+  transition:transform .4s cubic-bezier(.16,1,.3,1), border-color .4s, background .4s, box-shadow .4s;
+}
+#services .svc-card .svc-n{
+  font-family:"Cormorant Garamond","Times New Roman",serif; font-weight:600;
+  font-size:13px; letter-spacing:.24em; color:#C8A24A; display:block; margin-bottom:10px;
+}
+#services .svc-card .svc-name{
+  font-family:"Zen Old Mincho",serif; font-weight:700; color:#EEF5EE;
+  font-size:clamp(16px,1.4vw,20px); letter-spacing:.06em; line-height:1.4; margin-bottom:10px;
+}
+#services .svc-card .svc-desc{
+  color:rgba(208,222,210,.66); font-size:clamp(11.5px,.85vw,13px); line-height:1.85; letter-spacing:.01em;
+}
+#services .svc-card::after{
+  content:"→"; position:absolute; right:18px; bottom:16px; color:#00B860; opacity:0;
+  transform:translateX(-4px); transition:opacity .35s, transform .35s;
+}
+#services .svc-card:hover{
+  transform:translateY(-4px); border-color:rgba(0,184,96,.5);
+  background:linear-gradient(160deg, rgba(0,184,96,.10), rgba(255,255,255,.02));
+  box-shadow:0 20px 44px rgba(0,0,0,.28);
+}
+#services .svc-card:hover::after{opacity:1; transform:translateX(0);}
+
+@media (max-width:900px){
+  #services .svc-cards{grid-template-columns:1fr;}
+}
+
+/* ===================== 05 SYSTEM — alternating timeline ===================== */
+#system .sys-rail{
+  position:relative; width:min(880px,100%); margin:clamp(26px,4vw,52px) auto clamp(22px,3vw,34px);
+}
+#system .sys-rail::before{
+  content:""; position:absolute; left:50%; top:6px; bottom:6px; width:2px; transform:translateX(-50%);
+  background:linear-gradient(to bottom, rgba(0,184,96,.5), rgba(0,184,96,.18));
+}
+#system .sys-step{
+  position:relative; width:50%; padding:14px 38px; box-sizing:border-box; min-height:78px;
+}
+#system .sys-step.l{left:0; text-align:right;}
+#system .sys-step.r{left:50%; text-align:left;}
+#system .sys-step .sys-node{
+  position:absolute; top:24px; width:15px; height:15px; border-radius:50%;
+  background:#00B860; box-shadow:0 0 0 5px rgba(0,184,96,.16), 0 0 16px rgba(0,184,96,.5);
+}
+#system .sys-step.l .sys-node{right:-7.5px;}
+#system .sys-step.r .sys-node{left:-7.5px;}
+#system .sys-step .sys-name{
+  font-family:"Zen Old Mincho",serif; font-weight:700; color:#EEF5EE;
+  font-size:clamp(16px,1.5vw,21px); letter-spacing:.05em; line-height:1.4; margin-bottom:6px;
+}
+#system .sys-step .sys-desc{
+  color:rgba(200,216,204,.6); font-size:clamp(11.5px,.85vw,13px); line-height:1.8;
+}
+#system .sys-close{
+  width:min(880px,100%); margin:0 auto;
+  border-top:1px solid rgba(0,184,96,.18); padding-top:clamp(20px,2.6vw,30px);
+}
+#system .sys-close .sys-close-lead{
+  font-family:"Zen Old Mincho",serif; font-weight:700; color:#7FE3AC;
+  font-size:clamp(15px,1.5vw,21px); letter-spacing:.04em; line-height:1.7;
+}
+#system .sys-close .sys-close-sub{
+  margin-top:8px; color:rgba(200,216,204,.6); font-size:clamp(12px,.9vw,13.5px); line-height:1.85;
+}
+
+@media (max-width:760px){
+  #system .sys-rail::before{left:13px;}
+  #system .sys-step{width:100%; left:0 !important; text-align:left !important; padding:12px 0 12px 40px;}
+  #system .sys-step .sys-node{left:6px !important; right:auto !important; top:18px;}
+}
+
+/* ===================== 02 PROBLEM — 3 cards ===================== */
+#problem .prob-cards{
+  list-style:none; margin:clamp(26px,3.5vw,46px) auto 0; padding:0; width:min(960px,100%);
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(14px,1.6vw,22px);
+}
+#problem .prob-card{
+  border:1px solid rgba(255,255,255,.12); border-radius:14px;
+  background:linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  padding:clamp(16px,1.8vw,24px);
+}
+#problem .prob-card .prob-i{
+  display:inline-grid; place-items:center; width:30px; height:30px; border-radius:50%;
+  background:rgba(200,162,74,.16); border:1px solid rgba(200,162,74,.5); color:#D8BE84;
+  font-weight:700; font-size:15px; margin-bottom:12px;
+}
+#problem .prob-card h3{font-family:"Zen Old Mincho",serif; font-weight:700; color:#EEF5EE; font-size:clamp(15px,1.3vw,18px); letter-spacing:.05em; margin-bottom:7px;}
+#problem .prob-card p{color:rgba(208,222,210,.62); font-size:clamp(11.5px,.85vw,13px); line-height:1.8;}
+#problem .problem-after{margin-top:clamp(24px,3vw,38px);}
+@media (max-width:760px){ #problem .prob-cards{grid-template-columns:1fr;} }
+
+/* ===================== 04 PRICE — table ===================== */
+#price .price-table{
+  display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(10px,1vw,16px);
+  width:min(1040px,100%); margin:clamp(20px,2.4vw,34px) auto clamp(14px,1.4vw,20px);
+}
+#price .pt-cell{
+  border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:16px 14px; text-align:center;
+  background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  display:flex; flex-direction:column; gap:6px;
+}
+#price .pt-cell .pt-name{font-size:11.5px; letter-spacing:.06em; color:rgba(208,222,210,.7);}
+#price .pt-cell .pt-price{font-family:"Zen Old Mincho",serif; font-weight:700; color:#7FE3AC; font-size:clamp(17px,1.6vw,23px); letter-spacing:.02em; line-height:1.1;}
+#price .pt-cell .pt-note{font-size:9.5px; letter-spacing:.02em; color:rgba(190,206,194,.5); line-height:1.5;}
+#price .price-note{width:min(1040px,100%); margin:0 auto clamp(26px,3vw,40px); color:rgba(190,206,194,.55); font-size:11.5px; letter-spacing:.02em;}
+/* checkmark on price points */
+#price .price-point .pp-mark{position:relative;}
+#price .price-point .pp-mark::after{content:"✓"; position:absolute; inset:0; display:grid; place-items:center; color:#00B860; font-size:12px; font-weight:700;}
+@media (max-width:900px){ #price .price-table{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ #price .price-table{grid-template-columns:1fr;} }
+
+/* ===================== 06 INSIGHT — 3 cards ===================== */
+#insight .insight-cards{
+  list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:clamp(12px,1.4vw,18px);
+}
+#insight .ins-card{
+  border:1px solid rgba(255,255,255,.12); border-radius:13px;
+  background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  padding:clamp(15px,1.6vw,22px); border-left:3px solid rgba(0,184,96,.6);
+}
+#insight .ins-card h3{font-family:"Zen Old Mincho",serif; font-weight:700; color:#EEF5EE; font-size:clamp(15px,1.3vw,18px); letter-spacing:.05em; margin-bottom:6px;}
+#insight .ins-card p{color:rgba(208,222,210,.62); font-size:clamp(11.5px,.85vw,13px); line-height:1.8;}
+
+/* ===== light-theme corrections (problem & price are scene--invert = light) ===== */
+#problem .prob-card{border-color:rgba(0,77,50,.12); background:linear-gradient(160deg,#FFFFFF,#F5FCF7);}
+#problem .prob-card h3{color:#004D32;}
+#problem .prob-card p{color:#4A5A52;}
+#problem .prob-card .prob-i{background:rgba(200,162,74,.14); border-color:rgba(200,162,74,.55); color:#A07B27;}
+
+#price .pt-cell{border-color:rgba(0,77,50,.12); background:linear-gradient(160deg,#FFFFFF,#F4FBF6);}
+#price .pt-cell .pt-name{color:#4A5A52;}
+#price .pt-cell .pt-price{color:#00A152;}
+#price .pt-cell .pt-note{color:#6A7768;}
+#price .price-note{color:#6A7768;}
