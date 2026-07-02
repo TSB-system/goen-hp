@@ -229,7 +229,11 @@ a { color: inherit; text-decoration: none; }
 }
 .nav__links a:not(.nav__cta):hover::after { transform: scaleX(1); }
 .nav__cta {
-  padding: 9px 22px;
+  display: inline-grid;
+  place-items: center;
+  min-width: 108px;
+  min-height: 42px;
+  padding: 0 24px;
   border: 1px solid rgba(201, 176, 131, 0.55);
   color: var(--ivory);
   background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
@@ -552,7 +556,12 @@ a { color: inherit; text-decoration: none; }
 }
 .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--green); }
 .field textarea { resize: vertical; min-height: 96px; }
-.form .btn { margin-top: 8px; }
+.form .btn {
+  width: 100%;
+  min-height: 58px;
+  margin-top: 8px;
+  padding-inline: 34px;
+}
 
 /* ================================================================
    フッター
