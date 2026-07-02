@@ -1,37 +1,53 @@
-# 語縁 GOEN — ランディングページ
+# GOEN Line Production
 
-地域店舗・個人事業主向け「LP・HP制作 × Web集客導線設計」ブランド **語縁 GOEN** の静的サイト。
+語縁 / GOEN の本番公開用静的サイトです。
 
-- 本番: https://goen-enishi-hp.vercel.app/
-- バージョン一覧: https://goen-enishi-hp.vercel.app/versions.html
+## URLs
 
-## 構成
+- Web/root: https://goen-enishi.vercel.app/
+- Desktop direct: https://goen-enishi.vercel.app/goen-line.html
+- Mobile direct: https://goen-enishi.vercel.app/goen-line-mobile.html
 
-ビルド不要の静的サイト（プレーン HTML/CSS/JS）。
+スマホで `/` を開いた場合は、`vercel.json` の User-Agent redirect で `/goen-line-mobile.html` へ遷移します。
 
-- `index.html` / `goen-top.html` / `語縁 ENISHI.html` … GOEN Living Orbit v4トップ（同一内容のmodular版）
-- `quality/system/service/flow/about/contact/privacy.html` … ENISHI下層ページ
-- `shinen.html`, `goen-homepage*.html` … 別デザイン案
-- `versions.html` … 全バージョンへのハブ
-- `goen-living-orbit.css` … TOPファーストビュー専用スタイル
-- `goen-*.css` / `goen-*.js` / `*.jsx` / `goen-logo.png` … 共有アセット
+## Files Kept For Production
 
-## ローカルプレビュー
+- `index.html`
+- `goen-line.html`
+- `goen-line-mobile.html`
+- `assets/css/goen-line.css`
+- `assets/css/goen-line-mobile.css`
+- `assets/js/goen-line.js`
+- `assets/js/goen-line-mobile.js`
+- `assets/images/goen-logo.png`
+- `assets/images/reference-style/asantech-hero-business-hands.png`
+- `assets/images/case-study/case-lp-hp-design.png`
+- `assets/images/case-study/case-meo-map-search.png`
+- `assets/images/case-study/case-official-line-flow.png`
+- `vercel.json`
 
-```sh
-python -m http.server 8000 --bind 127.0.0.1   # → http://127.0.0.1:8000/
+## Local Preview
+
+```powershell
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-## デプロイ
+Open:
 
-main へ push すると Vercel が自動デプロイ。手動の場合:
-
-```sh
-vercel deploy --prod --yes --scope tyako915s-projects
+```text
+http://127.0.0.1:8000/
 ```
 
-> ⚠ Vercel は `.vercelignore` を参照します。巨大アーカイブ（`*.zip` / `extracted/`）は除外済みのまま維持してください（100MB/ファイル制限）。
+## Deploy
 
-## エージェント向け
+GitHub and Vercel are connected. Push to `main` to deploy.
 
-詳細な作業指示・注意点・タスク手順は **[AGENTS.md](./AGENTS.md)** を参照。
+```powershell
+git push origin HEAD:main
+```
+
+Current deployment remote:
+
+```text
+origin https://github.com/TSB-system/goen-hp.git
+```

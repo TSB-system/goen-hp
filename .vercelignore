@@ -1,13 +1,8 @@
-# Exclude large source archive & extracted originals from deployment
-ラグジュアリーUIリデザイン (1).zip
+.git/
+.vercel/
+node_modules/
 *.zip
 extracted/
-
-# VCS / deps
-.git/
-node_modules/
-
-# work artifacts
 mockups/
 _target/
 _diff/
@@ -15,7 +10,3 @@ _v-*.png
 _mock.html
 _cap.js
 mockshot*.js
-GOEN_WEB*.zip
-
-# mock/reference images are for design review only
-assets/images/モック画像/

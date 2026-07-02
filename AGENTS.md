@@ -1,179 +1,83 @@
-# AGENTS.md — 語縁 GOEN ランディングページ 引き継ぎ書
+# AGENTS.md - GOEN Line Production
 
-> このファイルは Codex / Claude Code などのコーディングエージェント向けの作業指示書です。
-> 人間が読んでも構いません。作業前に必ず通読してください。
+## Project
 
-## 1. プロジェクト概要
+This repository is the production static site for 語縁 / GOEN Line.
 
-- **目的**: 「語縁 GOEN」（地域店舗・個人事業主向け LP・HP制作 × Web集客導線設計）のブランドサイト。
-- **種類**: ビルド不要の**静的サイト**（プレーン HTML/CSS/JS）。フレームワーク・パッケージマネージャ・ビルド工程は一切なし。`npm install` 不要。
-- **本番URL**: https://goen-enishi-hp.vercel.app/
-- **GitHub（Private）**: https://github.com/tyako915/goen-enishi-hp
-- **ホスティング**: Vercel（静的配信、Output Directory = リポジトリ直下 `.`）
+- Production URL: https://goen-enishi.vercel.app/
+- Desktop direct URL: https://goen-enishi.vercel.app/goen-line.html
+- Mobile direct URL: https://goen-enishi.vercel.app/goen-line-mobile.html
+- Deployment remote: `origin https://github.com/TSB-system/goen-hp.git`
+- Deploy target: `origin main`
 
-## 2. ディレクトリ / ファイル構成
+## Site Type
 
-### 公開ページ（HTML）
-| パス | 内容 |
-|---|---|
-| `index.html` | **トップページ（`/`）。GOEN Living Orbit v4を実装した modular 版**。 |
-| `goen-top.html` | `index.html` と同一内容（GOEN TOPの固定URL）。 |
-| `語縁 ENISHI.html` | トップの編集元。`index.html` / `goen-top.html` と同一内容。※ファイル名に空白と日本語あり。シェルでは必ずクォートする。 |
-| `quality.html` `system.html` `service.html` `flow.html` `about.html` `contact.html` `privacy.html` | ENISHI modular 版の下層ページ。 |
-| `shinen.html` | 別案「深縁 SHINEN」。 |
-| `goen-homepage.html` / `-v2.html` / `-v3.html` | 別案「GOEN Homepage」v1（React/Babel CDN）/ v2 / v3。 |
-| `versions.html` | 全バージョンへのハブ（一覧）ページ。`/versions.html`。 |
+Static HTML/CSS/JS only.
 
-### 共有アセット
-- CSS（8）: `goen.css` `goen-v2.css` `goen-v3.css` `goen-shinen.css` `goen-enishi.css` `goen-enishi-v2.css` `goen-hp.css` `goen-living-orbit.css`
-- JS（8）: `goen-scenes.js` `goen-nodes.js` `goen-scroll.js` `goen-lux.js` `goen-hero.js` `goen-thread.js` `goen-v2.js` `goen-v3.js`
-- JSX（GOEN Homepage v1 のみが使用・Babelでブラウザ変換）: `goen-tweaks.jsx` `tweaks-panel.jsx`
-- 画像: `goen-logo.png`
-- 外部CDN: Google Fonts。GOEN Homepage v1 のみ unpkg の React/ReactDOM/Babel。
+- No framework.
+- No package install.
+- No build step.
 
-### Git管理外（ローカルのみ・`.gitignore`で除外）
-- `ラグジュアリーUIリデザイン (1).zip` … 元デザイン一式の配布アーカイブ（約108MB）。**元データの出所**。
-- `extracted/` … 上記zipの展開物（約146MB）。各バージョンの **modular版／standalone版の原本**が全て入っている。新しいバージョンを公開したいときの取り込み元。
-- `.vercel/` … Vercelリンク情報（プロジェクトID等）。`vercel link` で再生成される。
+Preview locally:
 
-## 3. ローカルプレビュー
-
-ビルド不要。直下で静的サーバを立てるだけ：
-
-```
+```powershell
 python -m http.server 8000 --bind 127.0.0.1
-# → http://127.0.0.1:8000/
 ```
 
-`index.html` をブラウザで直接開いても概ね動くが、相対パス解決の都合上サーバ経由を推奨。
+## Production Pages
 
-## 4. デプロイ（重要）
+- `index.html`: root page and desktop page. It also includes a mobile User-Agent redirect fallback script.
+- `goen-line.html`: desktop direct page.
+- `goen-line-mobile.html`: mobile direct page.
 
-GitHub と Vercel は連携済み。**main へ push すると Vercel が自動デプロイ**する。
-CLI から手動で本番反映する場合（scope 指定が必須）：
+`vercel.json` also redirects mobile User-Agents from `/` to `/goen-line-mobile.html`.
 
-```
-vercel deploy --prod --yes --scope tyako915s-projects
-```
+## Production Assets
 
-- Vercel プロジェクト: `tyako915s-projects/goen-enishi-hp`
-  - projectId: `prj_kzCXGj6HPCEyPQctfQ0hGvgzjJtr`
-  - orgId(team): `team_TYI1lMVBxuDhSFiasctXzZZl`
-- 新しい環境で未リンクなら先に: `vercel link --yes --scope tyako915s-projects --project goen-enishi-hp`
+CSS:
 
-### デプロイ時の落とし穴（必読）
-1. **Vercel は `.gitignore` ではなく `.vercelignore` を見る。** 巨大ファイル（zip・`extracted/`）は `.vercelignore` で除外済み。これらをアップロードに含めると **100MB/ファイル制限**でデプロイが失敗する（`extracted/` 内には25MB級のstandaloneがある）。除外設定を消さないこと。
-2. **プロジェクト名に日本語/大文字/空白は不可。** ディレクトリ名「語縁HP」は使えないため `goen-enishi-hp` を明示指定している。
-3. GitHub の **100MB/ファイル制限**にも注意（standalone原本はpushしない方針）。
+- `assets/css/goen-line.css`
+- `assets/css/goen-line-mobile.css`
 
-## 5. 現在のトップページの性質（注意）
+JS:
 
-`index.html` / `goen-top.html` / `語縁 ENISHI.html` は同一内容の **modular 版**。GOEN Living Orbit v4のファーストビューは `goen-living-orbit.css` に実装している。
+- `assets/js/goen-line.js`
+- `assets/js/goen-line-mobile.js`
 
-- HTML / CSS / SVG中心で、Canvas粒子演出は使わない。
-- PCはコピーと3層円環の2カラム、スマホはブランドプレートと6カードの2列グリッド。
-- `prefers-reduced-motion` 対応済み。アニメーションなしでも全情報を表示する。
-- トップを編集するときは `語縁 ENISHI.html` を編集元とし、確認後に `index.html` と `goen-top.html` へ同期する。
+Images:
 
-## 6. よくある変更タスクの手順
+- `assets/images/goen-logo.png`
+- `assets/images/reference-style/asantech-hero-business-hands.png`
+- `assets/images/case-study/case-lp-hp-design.png`
+- `assets/images/case-study/case-meo-map-search.png`
+- `assets/images/case-study/case-official-line-flow.png`
 
-### A. トップ3ファイルを同期したい
-```
-cp "語縁 ENISHI.html" index.html
-cp "語縁 ENISHI.html" goen-top.html
-```
-その後 commit → push（または `vercel deploy --prod ...`）。
+## Editing Rules
 
-### B. 文言・デザインを直したい
-- `語縁 ENISHI.html`（トップ本体）／ 各下層 `*.html`／ 共有 `goen-*.css`・`goen-*.js` を編集する。
-- ファーストビュー固有の変更は `goen-living-orbit.css` を優先し、既存テーマCSSへの影響を避ける。
+- Keep desktop and mobile as separate files unless the user explicitly asks to unify them.
+- Desktop changes usually affect `index.html`, `goen-line.html`, and `assets/css/goen-line.css`.
+- Mobile changes usually affect `goen-line-mobile.html` and `assets/css/goen-line-mobile.css`.
+- If changing CSS, update the query string in the related HTML file to avoid stale cache.
+- Do not restore old mock images, old design variants, or deleted legacy pages unless the user explicitly asks.
 
-### C. 別バージョンを新規公開したい
-1. `extracted/` から対象HTMLと、その参照アセットをコピー（参照確認: 各HTMLの `href/src`）。
-2. 公開用にASCIIの分かりやすいファイル名へ（例 `extracted/深縁 SHINEN.html` → `shinen.html`）。
-3. `versions.html` にカードを追加。
-4. ローカル確認 → commit → push。
+## Deploy
 
-### D. 公開URLの確認
-```
-for p in / /versions.html /shinen.html /goen-homepage.html /goen-top.html; do
-  curl -s -o /dev/null -w "%{http_code} $p\n" "https://goen-enishi-hp.vercel.app$p"; done
+Check status:
+
+```powershell
+git status --short
 ```
 
-## 7. 規約・注意
+Deploy:
 
-- **改行コード**: 既存ファイルは LF。Windows の git 設定で push 時に CRLF 警告が出るが無害。新規ファイルも LF を維持。
-- **日本語ファイル名**: `語縁 ENISHI.html` は空白＋日本語。シェルでは必ずダブルクォート、git では `-c core.quotepath=false` を付けると表示が読みやすい。
-- **コミット粒度**: 機能単位で。日本語コミットメッセージで運用中。
-- **デプロイ前確認**: `git status` と、`.vercelignore` が巨大ファイルを除外したままか確認。
+```powershell
+git push origin HEAD:main
+```
 
-## 8. 元データの出所
+Verify after deployment:
 
-- 配布zip: `ラグジュアリーUIリデザイン (1).zip`（ローカルのみ）。展開物が `extracted/`。
-- 各バージョンには modular 版（外部参照・編集容易）と standalone 版（自己完結・梱包）が存在する。
-- 現在の公開トップは modular 版。standalone 原本は比較・再取り込み用途として `extracted/` に残す。
-
-## 9. 直近の実装引き継ぎ（2026-06-14）
-
-### 9.1 実装済み
-
-要件定義書 `goen_top_living_orbit_requirements_v4_100_updated.md` に基づき、TOPファーストビューを **GOEN Living Orbit v4** へ刷新した。
-
-- 左側: 対象顧客、メインコピー、成果説明、補助コピー、2つのCTA、安心材料。
-- 右側: 中央ブランドプレート、3層リング、6サービスカード、相談カード強調、光の導線、成果導線コピー。
-- カード表記: `HP制作` `LP制作` `MEO対策` `公式LINE` `SNS運用代行` `ご相談`。
-- 下層導線: `quality.html` `system.html` `service.html` `contact.html` へリンク。
-- PC: 左右2カラム。スマホ: 中央プレート＋6カードの2列グリッド。
-- アクセシビリティ: `aria-label`、`focus-visible`、`prefers-reduced-motion` 対応。
-- パフォーマンス: Canvasを使わず、HTML/CSS中心。常時演出は `transform` / `opacity` が中心。
-- 黒背景、ネオン、粒子、星座風の線、回転し続けるカードは使用していない。
-
-### 9.2 編集箇所
-
-- TOP構造: `語縁 ENISHI.html` の `section#hero`。
-- TOP専用デザイン・レスポンシブ・演出: `goen-living-orbit.css`。
-- 公開用コピー: `index.html` と `goen-top.html`。3ファイルは同一SHA256であることを確認済み。
-- 既存のQUALITY以降のセクションと共有JSは原則変更していない。
-
-### 9.3 検証済み
-
-- Chrome headlessで 1440x1000、500x1000、390x844、390x1600 を画像確認。
-- reduced-motion強制時に、アニメーションなしでも全情報が表示されることを確認。
-- ローカル参照23件がすべて存在することを確認。
-- `/` `/goen-top.html` `/goen-living-orbit.css` と主要下層ページがHTTP 200。
-- `git diff --check` にエラーなし。WindowsのLF→CRLF警告のみ。
-
-### 9.4 GitHub / Vercel
-
-- 最新実装コミット: `b05b334 feat: GOEN Living Orbit版トップを実装`
-- GitHub: `tyako915/goen-enishi-hp`（Private）、`main` へpush済み。
-- Vercel production deployment: `dpl_8CW4kZpFDeGLbG6hDyYBvnhuNnrM`
-- 本番URL: https://goen-enishi-hp.vercel.app/
-- 2026-06-14時点で本番HTMLに `goen-living-orbit.css`、新コピー、6カードが反映済み。
-
-### 9.5 次の担当者への注意
-
-- TOP変更は `語縁 ENISHI.html` を編集し、`index.html` / `goen-top.html` へ必ず同期する。
-- `goen-living-orbit.css` は全テーマCSSの最後に読み込む。順序を変えると旧ヒーロースタイルに上書きされる。
-- 760px以下では円環を非表示にしてカードグリッドへ切り替えている。PC用円環をそのまま縮小しない。
-- `.vercelignore` の `*.zip` と `extracted/` を削除しない。
-- デプロイ後は正式ドメインで新コピーとCSS参照まで確認する。HTTP 200だけではキャッシュ差し替えを確認できない。
-
----
-
-## 10. 別リポジトリ `TSB-system/goen-hp` について（2026-07-02 追記）
-
-> 本リポジトリとは別に、**`TSB-system/goen-hp`**（Public、GitHub）という並行リポジトリが存在する。
-> `main` の履歴は `c61ebc6`（本リポジトリと同一コミット）まで完全一致していたが、そこから分岐して独自のコミットが追加されている。**エージェント間で混同しないこと。**
-
-### 10.1 経緯
-
-- `TSB-system/goen-hp` の Vercel連携は当初**未設定**（プロジェクト名 `hp`、本番ドメイン `goen-enishi.vercel.app`、Vercel team `tsb-system's projects` / Hobbyプラン）で、手動アップロードのみの状態だった。
-- PR [#1](https://github.com/TSB-system/goen-hp/pull/1) で「GOEN Line（静かな高級感デザイン）」のウェブ版・モバイル版（`goen-line.html` / `goen-line-mobile.html` とその専用CSS/JS/画像/モック画像）を追加し、`main` へマージ済み（マージコミット `f429472`）。
-- マージ後に `hp` プロジェクトの Settings → Git から `TSB-system/goen-hp` を接続。**接続前にマージ済みだったため、接続直後は自動デプロイが発火しなかった**（Vercelは接続後の新しい push のみを検知する）。このコミット（本追記を含む）が接続後最初の push となり、初回の自動デプロイをトリガーする。
-
-### 10.2 次の担当者への注意
-
-- `TSB-system/goen-hp` への push は、**`main` への直接pushではなく、必ずフィーチャーブランチ→Pull Request→（人間による）マージ**の形を取ること。自動化されたエージェントによる `main` への直接pushおよび自己PRのマージは安全機構でブロックされる。
-- Vercelプロジェクト `hp`（`goen-enishi.vercel.app`）は **Hobbyプラン**のため、チームメンバー追加が制限されている可能性が高い。デプロイ権限が必要な場合は、GitHub連携（push→自動デプロイ）を優先し、Vercel側のメンバー招待には頼らないこと。
-- 本リポジトリ（`tyako915/goen-enishi-hp`）と `TSB-system/goen-hp` は履歴の起点は同じだが、**以後の変更が同期される保証はない**。両リポジトリに同じ変更を反映したい場合は、明示的に両方へコミットすること。
+```powershell
+Invoke-WebRequest -Uri 'https://goen-enishi.vercel.app/' -Headers @{ 'Cache-Control'='no-cache' } -UseBasicParsing
+Invoke-WebRequest -Uri 'https://goen-enishi.vercel.app/goen-line.html' -Headers @{ 'Cache-Control'='no-cache' } -UseBasicParsing
+Invoke-WebRequest -Uri 'https://goen-enishi.vercel.app/goen-line-mobile.html' -Headers @{ 'Cache-Control'='no-cache' } -UseBasicParsing
+```
