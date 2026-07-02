@@ -13,6 +13,9 @@
   --sans: "Noto Sans JP", sans-serif;
   --en: "Cormorant Garamond", "Jost", serif;
   --latin: "Jost", "Noto Sans JP", sans-serif;
+  --mobile-nav-x: clamp(22px, 6vw, 28px);
+  --mobile-logo-center-x: calc(var(--mobile-nav-x) + 21px);
+  --mobile-safe-edge: clamp(12px, 4vw, 18px);
 }
 
 * { box-sizing: border-box; }
@@ -60,7 +63,7 @@ button, input, textarea { font: inherit; }
   align-items: center;
   justify-content: space-between;
   height: 72px;
-  padding: 0 clamp(22px, 6vw, 28px);
+  padding: 0 var(--mobile-nav-x);
   color: #fff;
   transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
@@ -262,7 +265,7 @@ body.is-menu-open .gm-drawer { transform: none; }
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 24px;
+  left: var(--mobile-logo-center-x);
   z-index: 1;
   width: 1px;
   background: rgba(201,176,131,0.2);
@@ -381,7 +384,7 @@ body.is-menu-open .gm-drawer { transform: none; }
 }
 .gm-scroll {
   position: absolute;
-  left: 0;
+  left: var(--mobile-safe-edge);
   bottom: 20px;
   z-index: 1;
   display: flex;
