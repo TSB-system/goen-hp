@@ -3,12 +3,15 @@
 > このファイルは Codex / Claude Code などのコーディングエージェント向けの作業指示書です。
 > 人間が読んでも構いません。作業前に必ず通読してください。
 
+> **⚠️ 最新の状況は末尾の「§10 現在の本番構成（2026-07-02 更新）」を最優先で読むこと。**
+> §1・§4・§5・§9 は歴史的経緯を含み、一部は現状と異なる（トップページのデザインが変更済みなど）。矛盾する場合は §10 を正とする。
+
 ## 1. プロジェクト概要
 
 - **目的**: 「語縁 GOEN」（地域店舗・個人事業主向け LP・HP制作 × Web集客導線設計）のブランドサイト。
 - **種類**: ビルド不要の**静的サイト**（プレーン HTML/CSS/JS）。フレームワーク・パッケージマネージャ・ビルド工程は一切なし。`npm install` 不要。
-- **本番URL**: https://goen-enishi-hp.vercel.app/
-- **GitHub（Private）**: https://github.com/tyako915/goen-enishi-hp
+- **本番URL**: https://goen-enishi.vercel.app/
+- **GitHub（Public）**: https://github.com/TSB-system/goen-hp　※これが唯一の本番リポジトリ（詳細は §10）
 - **ホスティング**: Vercel（静的配信、Output Directory = リポジトリ直下 `.`）
 
 ## 2. ディレクトリ / ファイル構成
@@ -16,19 +19,21 @@
 ### 公開ページ（HTML）
 | パス | 内容 |
 |---|---|
-| `index.html` | **トップページ（`/`）。GOEN Living Orbit v4を実装した modular 版**。 |
-| `goen-top.html` | `index.html` と同一内容（GOEN TOPの固定URL）。 |
-| `語縁 ENISHI.html` | トップの編集元。`index.html` / `goen-top.html` と同一内容。※ファイル名に空白と日本語あり。シェルでは必ずクォートする。 |
+| `index.html` | **トップページ（`/`）。現在は GOEN Line デザインを反映済み**（§10参照）。 |
+| `goen-top.html` | 旧トップの固定URL（GOEN Living Orbit v4、履歴的経緯は §9）。 |
+| `語縁 ENISHI.html` | 旧トップの編集元。※ファイル名に空白と日本語あり。シェルでは必ずクォートする。 |
 | `quality.html` `system.html` `service.html` `flow.html` `about.html` `contact.html` `privacy.html` | ENISHI modular 版の下層ページ。 |
 | `shinen.html` | 別案「深縁 SHINEN」。 |
 | `goen-homepage.html` / `-v2.html` / `-v3.html` | 別案「GOEN Homepage」v1（React/Babel CDN）/ v2 / v3。 |
 | `versions.html` | 全バージョンへのハブ（一覧）ページ。`/versions.html`。 |
+| `goen-line.html` | **現行トップの実体（PC向け）**。「静かな高級感デザイン」。詳細は §10。 |
+| `goen-line-mobile.html` | **現行トップのモバイル版**。`vercel.json` のUA判定でルート `/` から自動的にこちらへリダイレクトされる。 |
 
 ### 共有アセット
-- CSS（8）: `goen.css` `goen-v2.css` `goen-v3.css` `goen-shinen.css` `goen-enishi.css` `goen-enishi-v2.css` `goen-hp.css` `goen-living-orbit.css`
-- JS（8）: `goen-scenes.js` `goen-nodes.js` `goen-scroll.js` `goen-lux.js` `goen-hero.js` `goen-thread.js` `goen-v2.js` `goen-v3.js`
+- CSS: `goen.css` `goen-v2.css` `goen-v3.css` `goen-shinen.css` `goen-enishi.css` `goen-enishi-v2.css` `goen-hp.css` `goen-living-orbit.css`（旧トップ系）／ `goen-line.css` `goen-line-mobile.css`（現行トップ、`assets/css/` 配下）
+- JS: `goen-scenes.js` `goen-nodes.js` `goen-scroll.js` `goen-lux.js` `goen-hero.js` `goen-thread.js` `goen-v2.js` `goen-v3.js`（旧トップ系）／ `goen-line.js` `goen-line-mobile.js`（現行トップ、`assets/js/` 配下）
 - JSX（GOEN Homepage v1 のみが使用・Babelでブラウザ変換）: `goen-tweaks.jsx` `tweaks-panel.jsx`
-- 画像: `goen-logo.png`
+- 画像: `assets/images/goen-logo.png` 他、`assets/images/` 配下に集約済み。
 - 外部CDN: Google Fonts。GOEN Homepage v1 のみ unpkg の React/ReactDOM/Babel。
 
 ### Git管理外（ローカルのみ・`.gitignore`で除外）
@@ -49,55 +54,47 @@ python -m http.server 8000 --bind 127.0.0.1
 
 ## 4. デプロイ（重要）
 
-GitHub と Vercel は連携済み。**main へ push すると Vercel が自動デプロイ**する。
-CLI から手動で本番反映する場合（scope 指定が必須）：
+GitHub と Vercel は連携済み。**main へ push すると Vercel が自動デプロイ**する（Git連携の確立時期に関する注意は §10.2 参照）。
 
-```
-vercel deploy --prod --yes --scope tyako915s-projects
-```
-
-- Vercel プロジェクト: `tyako915s-projects/goen-enishi-hp`
-  - projectId: `prj_kzCXGj6HPCEyPQctfQ0hGvgzjJtr`
-  - orgId(team): `team_TYI1lMVBxuDhSFiasctXzZZl`
-- 新しい環境で未リンクなら先に: `vercel link --yes --scope tyako915s-projects --project goen-enishi-hp`
+- Vercel プロジェクト: `hp`（`tsb-system's projects` team、**Hobbyプラン**）
+- 本番ドメイン: `goen-enishi.vercel.app`
+- Build設定: Framework=Other、Build Command=なし、Output Directory=`.`
 
 ### デプロイ時の落とし穴（必読）
 1. **Vercel は `.gitignore` ではなく `.vercelignore` を見る。** 巨大ファイル（zip・`extracted/`）は `.vercelignore` で除外済み。これらをアップロードに含めると **100MB/ファイル制限**でデプロイが失敗する（`extracted/` 内には25MB級のstandaloneがある）。除外設定を消さないこと。
-2. **プロジェクト名に日本語/大文字/空白は不可。** ディレクトリ名「語縁HP」は使えないため `goen-enishi-hp` を明示指定している。
-3. GitHub の **100MB/ファイル制限**にも注意（standalone原本はpushしない方針）。
+2. GitHub の **100MB/ファイル制限**にも注意（standalone原本はpushしない方針）。
+3. **Hobbyプランのため、Vercel team へのメンバー追加が制限されている可能性が高い。** デプロイ権限が必要な場合は、Vercel側の招待ではなく GitHub 連携（push→自動デプロイ）を優先すること。
 
-## 5. 現在のトップページの性質（注意）
+## 5. 現在のトップページの性質（重要・更新済み）
 
-`index.html` / `goen-top.html` / `語縁 ENISHI.html` は同一内容の **modular 版**。GOEN Living Orbit v4のファーストビューは `goen-living-orbit.css` に実装している。
+**トップページ（`/`）は GOEN Line デザインに置き換わっている。** 旧デザイン（GOEN Living Orbit v4）の説明は §9 に歴史的記録として残すが、**現状には適用されない**。
 
-- HTML / CSS / SVG中心で、Canvas粒子演出は使わない。
-- PCはコピーと3層円環の2カラム、スマホはブランドプレートと6カードの2列グリッド。
-- `prefers-reduced-motion` 対応済み。アニメーションなしでも全情報を表示する。
-- トップを編集するときは `語縁 ENISHI.html` を編集元とし、確認後に `index.html` と `goen-top.html` へ同期する。
+- PC: `index.html`（＝`goen-line.html` と同内容）を直接配信。
+- スマホ: `vercel.json` の `redirects` ルールで、User-Agent が `iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry|IEMobile|Opera Mini` にマッチする場合、`/` へのアクセスを `/goen-line-mobile.html` へ307リダイレクトする。
+- デザインコンセプト：「静かな高級感」「見つかる、信頼される、相談される。その流れを一本の線で整える。」。生成り／墨黒／深緑／控えめなゴールドを基調とし、カード型UI・白い四角ボックスを使わない。詳細は §10.3。
+- 旧トップ（`goen-top.html` / `語縁 ENISHI.html`）は `versions.html` から引き続き参照可能（アーカイブとして残置）。
 
 ## 6. よくある変更タスクの手順
 
-### A. トップ3ファイルを同期したい
-```
-cp "語縁 ENISHI.html" index.html
-cp "語縁 ENISHI.html" goen-top.html
-```
-その後 commit → push（または `vercel deploy --prod ...`）。
+### A. 現行トップ（GOEN Line）を編集したい
+- PC: `goen-line.html` ＋ `assets/css/goen-line.css` ＋ `assets/js/goen-line.js`
+- モバイル: `goen-line-mobile.html` ＋ `assets/css/goen-line-mobile.css` ＋ `assets/js/goen-line-mobile.js`
+- **PC版とモバイル版は別ファイル・別CSS/JSの独立実装**。どちらかを直すとき、もう片方への反映漏れに注意。
+- `index.html` は `goen-line.html` と同内容にしておくこと（ルートで配信されるのは `index.html`）。
 
-### B. 文言・デザインを直したい
-- `語縁 ENISHI.html`（トップ本体）／ 各下層 `*.html`／ 共有 `goen-*.css`・`goen-*.js` を編集する。
-- ファーストビュー固有の変更は `goen-living-orbit.css` を優先し、既存テーマCSSへの影響を避ける。
+### B. 旧デザイン資産を参照したい
+- `語縁 ENISHI.html` / `goen-living-orbit.css` など、§9 に記載の旧トップ実装は削除せず残っている。過去バージョンとの比較や巻き戻しの参考に。
 
 ### C. 別バージョンを新規公開したい
 1. `extracted/` から対象HTMLと、その参照アセットをコピー（参照確認: 各HTMLの `href/src`）。
-2. 公開用にASCIIの分かりやすいファイル名へ（例 `extracted/深縁 SHINEN.html` → `shinen.html`）。
+2. 公開用にASCIIの分かりやすいファイル名へ。
 3. `versions.html` にカードを追加。
-4. ローカル確認 → commit → push。
+4. ローカル確認 → ブランチ作成 → PR → マージ（§10.2 参照、直接pushしない）。
 
 ### D. 公開URLの確認
 ```
-for p in / /versions.html /shinen.html /goen-homepage.html /goen-top.html; do
-  curl -s -o /dev/null -w "%{http_code} $p\n" "https://goen-enishi-hp.vercel.app$p"; done
+for p in / /goen-line.html /goen-line-mobile.html /versions.html /shinen.html; do
+  curl -s -o /dev/null -w "%{http_code} $p\n" "https://goen-enishi.vercel.app$p"; done
 ```
 
 ## 7. 規約・注意
@@ -111,69 +108,60 @@ for p in / /versions.html /shinen.html /goen-homepage.html /goen-top.html; do
 
 - 配布zip: `ラグジュアリーUIリデザイン (1).zip`（ローカルのみ）。展開物が `extracted/`。
 - 各バージョンには modular 版（外部参照・編集容易）と standalone 版（自己完結・梱包）が存在する。
-- 現在の公開トップは modular 版。standalone 原本は比較・再取り込み用途として `extracted/` に残す。
+- GOEN Line 以前の公開トップは modular 版。standalone 原本は比較・再取り込み用途として `extracted/` に残す。
 
-## 9. 直近の実装引き継ぎ（2026-06-14）
+## 9. 【歴史的記録・現状には非適用】旧トップ実装引き継ぎ（2026-06-14）
 
-### 9.1 実装済み
+> ⚠️ 以下は GOEN Living Orbit v4 がトップページだった時代の記録。**2026-07-02 時点でトップは GOEN Line に置き換わっており、本セクションの内容は現状と異なる。** 過去の経緯を知りたい場合のみ参照。
 
-要件定義書 `goen_top_living_orbit_requirements_v4_100_updated.md` に基づき、TOPファーストビューを **GOEN Living Orbit v4** へ刷新した。
+### 9.1 実装済みだった内容（当時）
 
 - 左側: 対象顧客、メインコピー、成果説明、補助コピー、2つのCTA、安心材料。
 - 右側: 中央ブランドプレート、3層リング、6サービスカード、相談カード強調、光の導線、成果導線コピー。
 - カード表記: `HP制作` `LP制作` `MEO対策` `公式LINE` `SNS運用代行` `ご相談`。
-- 下層導線: `quality.html` `system.html` `service.html` `contact.html` へリンク。
 - PC: 左右2カラム。スマホ: 中央プレート＋6カードの2列グリッド。
-- アクセシビリティ: `aria-label`、`focus-visible`、`prefers-reduced-motion` 対応。
-- パフォーマンス: Canvasを使わず、HTML/CSS中心。常時演出は `transform` / `opacity` が中心。
 - 黒背景、ネオン、粒子、星座風の線、回転し続けるカードは使用していない。
 
-### 9.2 編集箇所
+### 9.2 編集箇所（当時）
 
 - TOP構造: `語縁 ENISHI.html` の `section#hero`。
 - TOP専用デザイン・レスポンシブ・演出: `goen-living-orbit.css`。
-- 公開用コピー: `index.html` と `goen-top.html`。3ファイルは同一SHA256であることを確認済み。
-- 既存のQUALITY以降のセクションと共有JSは原則変更していない。
+- 公開用コピー: `index.html` と `goen-top.html`（当時は3ファイル同一内容）。
 
-### 9.3 検証済み
+### 9.3 当時のGitHub / Vercel情報（別リポジトリでの記録）
 
-- Chrome headlessで 1440x1000、500x1000、390x844、390x1600 を画像確認。
-- reduced-motion強制時に、アニメーションなしでも全情報が表示されることを確認。
-- ローカル参照23件がすべて存在することを確認。
-- `/` `/goen-top.html` `/goen-living-orbit.css` と主要下層ページがHTTP 200。
-- `git diff --check` にエラーなし。WindowsのLF→CRLF警告のみ。
+- 当時の実装は `tyako915/goen-enishi-hp`（別リポジトリ、現在は本プロジェクトの運用対象外。§10.4参照）で行われていた。
+- 本リポジトリ（`TSB-system/goen-hp`）の `main` は、そのリポジトリの `c61ebc6`（コミットメッセージ「revised版に合わせ6セクションを刷新」）までを共通の起点として持つ。
 
-### 9.4 GitHub / Vercel
+## 10. 現在の本番構成（2026-07-02 更新）
 
-- 最新実装コミット: `b05b334 feat: GOEN Living Orbit版トップを実装`
-- GitHub: `tyako915/goen-enishi-hp`（Private）、`main` へpush済み。
-- Vercel production deployment: `dpl_8CW4kZpFDeGLbG6hDyYBvnhuNnrM`
-- 本番URL: https://goen-enishi-hp.vercel.app/
-- 2026-06-14時点で本番HTMLに `goen-living-orbit.css`、新コピー、6カードが反映済み。
+> このセクションが現在の状態の正。矛盾する記述があれば、ここを優先する。
 
-### 9.5 次の担当者への注意
+### 10.1 リポジトリ運用方針（重要）
 
-- TOP変更は `語縁 ENISHI.html` を編集し、`index.html` / `goen-top.html` へ必ず同期する。
-- `goen-living-orbit.css` は全テーマCSSの最後に読み込む。順序を変えると旧ヒーロースタイルに上書きされる。
-- 760px以下では円環を非表示にしてカードグリッドへ切り替えている。PC用円環をそのまま縮小しない。
-- `.vercelignore` の `*.zip` と `extracted/` を削除しない。
-- デプロイ後は正式ドメインで新コピーとCSS参照まで確認する。HTTP 200だけではキャッシュ差し替えを確認できない。
+- **`TSB-system/goen-hp` が唯一の本番リポジトリである。** ユーザーの明示的な指示により、以前並行して運用されていた `tyako915/goen-enishi-hp`（Private）は**運用対象外**となった。
+- 今後のエージェントは `tyako915/goen-enishi-hp` への同期・参照を試みる必要はない。GitHub CLI認証も本リポジトリの組織アカウント（`TSB-system`）で行うことを想定する。
+- **`main` への直接pushは安全機構でブロックされる。** 変更は必ず フィーチャーブランチ → Pull Request → （人間によるレビュー・マージ）の流れを取ること。自動化されたエージェントによる自己PRの自己マージも同様にブロックされるため、マージは人間に依頼すること。
 
----
+### 10.2 GOEN Line 化の経緯
 
-## 10. 別リポジトリ `TSB-system/goen-hp` について（2026-07-02 追記）
+1. `feat/goen-line-web-mobile` ブランチで PR [#1](https://github.com/TSB-system/goen-hp/pull/1) を作成し、`goen-line.html`（PC）・`goen-line-mobile.html`（モバイル）と専用CSS/JS/画像/モック画像一式を追加してマージ（マージコミット `f429472`）。
+2. マージ時点では `hp` プロジェクトのVercel Git連携が未設定（手動アップロードのみ）だったため自動デプロイされず、`chore/trigger-vercel-deploy` ブランチのPR [#2](https://github.com/TSB-system/goen-hp/pull/2) をトリガーに初回デプロイを実行。
+3. その後、別の担当者により `index.html` 等がGOEN Lineの内容に置き換えられ（コミット `b5f75f3` 他）、`vercel.json` にUser-Agent判定のモバイルリダイレクトが追加された（コミット `c661781`）。加えて、SCROLL線位置・ロゴ色・CONTACTボタンサイズ等の細部調整が複数コミットで行われている。
+4. 現在、`/` へのアクセスは PC で GOEN Line（PC版）を直接表示、モバイルUAでは `/goen-line-mobile.html` へ307リダイレクトする構成で安定稼働している。
 
-> 本リポジトリとは別に、**`TSB-system/goen-hp`**（Public、GitHub）という並行リポジトリが存在する。
-> `main` の履歴は `c61ebc6`（本リポジトリと同一コミット）まで完全一致していたが、そこから分岐して独自のコミットが追加されている。**エージェント間で混同しないこと。**
+### 10.3 GOEN Line デザインの要点
 
-### 10.1 経緯
+- コンセプト：「静かな高級感」「見つかる、信頼される、相談される。その流れを一本の線で整える。」
+- 配色：生成り（アイボリー）・墨黒・深いグリーン・控えめなゴールド。原色グリーンや黒ベタは使わない。
+- レイアウト方針：カード型UI・白い四角ボックスの連続を禁止。番号・細い罫線・余白・導線モチーフ（線が伸びる演出等）で情報を整理する。
+- タイポグラフィ：英字見出しをビジュアル要素として大きく扱い、日本語見出しは明朝体とゴシック体を使い分ける。
+- 詳細な要件定義は `docs2/goen-line-mobile-redesign-proposal.md` を参照（モバイル版のCVR改善観点を中心にまとめたもの）。
 
-- `TSB-system/goen-hp` の Vercel連携は当初**未設定**（プロジェクト名 `hp`、本番ドメイン `goen-enishi.vercel.app`、Vercel team `tsb-system's projects` / Hobbyプラン）で、手動アップロードのみの状態だった。
-- PR [#1](https://github.com/TSB-system/goen-hp/pull/1) で「GOEN Line（静かな高級感デザイン）」のウェブ版・モバイル版（`goen-line.html` / `goen-line-mobile.html` とその専用CSS/JS/画像/モック画像）を追加し、`main` へマージ済み（マージコミット `f429472`）。
-- マージ後に `hp` プロジェクトの Settings → Git から `TSB-system/goen-hp` を接続。**接続前にマージ済みだったため、接続直後は自動デプロイが発火しなかった**（Vercelは接続後の新しい push のみを検知する）。このコミット（本追記を含む）が接続後最初の push となり、初回の自動デプロイをトリガーする。
+### 10.4 次の担当者への注意
 
-### 10.2 次の担当者への注意
-
-- `TSB-system/goen-hp` への push は、**`main` への直接pushではなく、必ずフィーチャーブランチ→Pull Request→（人間による）マージ**の形を取ること。自動化されたエージェントによる `main` への直接pushおよび自己PRのマージは安全機構でブロックされる。
-- Vercelプロジェクト `hp`（`goen-enishi.vercel.app`）は **Hobbyプラン**のため、チームメンバー追加が制限されている可能性が高い。デプロイ権限が必要な場合は、GitHub連携（push→自動デプロイ）を優先し、Vercel側のメンバー招待には頼らないこと。
-- 本リポジトリ（`tyako915/goen-enishi-hp`）と `TSB-system/goen-hp` は履歴の起点は同じだが、**以後の変更が同期される保証はない**。両リポジトリに同じ変更を反映したい場合は、明示的に両方へコミットすること。
+- PC版とモバイル版は完全に独立したHTML/CSS/JSファイル。一方を修正したら、もう一方にも同様の修正が必要か必ず確認する。
+- `index.html` は `goen-line.html` と内容を同期させる運用になっている（`index.html` がルートで配信される実体）。`goen-line.html` を編集したら `index.html` にも反映すること。
+- `vercel.json` の User-Agent 正規表現を変更する際は、既存の主要モバイルブラウザ（iPhone/Android/Windows Phone等）を漏らさないこと。
+- Vercelプロジェクトは Hobbyプランのため、チームメンバー追加ではなく GitHub 連携（push→自動デプロイ）を通じたデプロイを基本とする。
+- 旧リポジトリ `tyako915/goen-enishi-hp` は参照・同期の対象外（§10.1）。過去の実装経緯を知りたい場合のみ §9 を参照する。
