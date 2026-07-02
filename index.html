@@ -1,727 +1,344 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>語縁 GOEN — ENISHI ｜ ご縁が明るくつながるWeb導線設計</title>
-<meta name="description" content="LP・HP制作を軸に、MEO・LINE・SNSまで。認知、信頼、問い合わせにつながるWeb導線を設計します。必要な施策だけを、誠実に。語縁 GOEN。">
-<meta name="theme-color" content="#00B860">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3FFF8'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%2300B860' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%2300B860'/%3E%3Ccircle cx='49' cy='15' r='3' fill='%23C8A24A'/%3E%3Cpath d='M36 28 47 17' stroke='%23C8A24A' stroke-width='1.5'/%3E%3C/svg%3E">
-<meta property="og:title" content="語縁 GOEN — ご縁は、待つものじゃない。">
-<meta property="og:description" content="LP・HP制作を軸に、MEO・LINE・SNSまで。問い合わせにつながるWeb導線を設計します。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700;900&amp;family=Shippori+Mincho:wght@400;600&amp;family=Cormorant+Garamond:wght@600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="goen.css">
-<link rel="stylesheet" href="goen-v2.css">
-<link rel="stylesheet" href="goen-v3.css">
-<link rel="stylesheet" href="goen-shinen.css">
-<link rel="stylesheet" href="goen-enishi.css">
-<link rel="stylesheet" href="goen-hp.css">
-<link rel="stylesheet" href="goen-enishi-v2.css">
-<link rel="stylesheet" href="goen-living-orbit.css">
-<link rel="stylesheet" href="goen-segmented-orbit.css">
-<link rel="stylesheet" href="goen-case-study.css">
-<link rel="stylesheet" href="goen-revise.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>語縁 GOEN｜見つかる、信頼される、相談される。その流れを一本の線で整える。</title>
+<meta name="description" content="地域店舗・個人事業主のためのWebパートナー、語縁 GOEN。HP・LP制作を軸に、MEO・公式LINE・SNSまで、見つけられ、信頼され、相談されるWeb導線を一本の線で設計します。" />
+<meta property="og:title" content="語縁 GOEN｜成果につながるWeb導線設計" />
+<meta property="og:description" content="見つかる、信頼される、相談される。その流れを一本の線で整える、高品質なWebパートナー。" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#1a1813" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/goen-line.css" />
+<script>
+  (function () {
+    var mobileUa = /iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    var mobileWidth = window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+    if (mobileUa || mobileWidth) {
+      var target = "goen-line-mobile.html" + window.location.search + window.location.hash;
+      window.location.replace(target);
+    }
+  })();
+</script>
 </head>
-<body>
+<body class="gl">
+<div class="grain" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true"><div class="rail__progress" data-rail-progress></div><div class="rail__bead" data-rail-bead></div></div>
 
-<div class="intro" id="intro" aria-hidden="true">
-  <div class="intro-inner">
-    <span class="intro-mark">語縁</span>
-    <span class="intro-rule"></span>
-    <span class="intro-en">語縁 — ENISHI</span>
-  </div>
-</div>
-
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-
-<nav class="rail" id="rail" aria-label="ページ内ナビゲーション">
-  <a href="#top" data-target="hero"><span class="rail-label">TOP</span></a>
-  <a href="#quality" data-target="quality"><span class="rail-label">QUALITY</span></a>
-  <a href="#problem" data-target="problem"><span class="rail-label">PROBLEM</span></a>
-  <a href="#system" data-target="system"><span class="rail-label">SYSTEM</span></a>
-  <a href="#price" data-target="price"><span class="rail-label">CLEAR PRICE</span></a>
-  <a href="#services" data-target="services"><span class="rail-label">SERVICES</span></a>
-  <a href="#insight" data-target="insight"><span class="rail-label">INSIGHT</span></a>
-  <a href="#philosophy" data-target="philosophy"><span class="rail-label">PHILOSOPHY</span></a>
-  <a href="#profile" data-target="profile"><span class="rail-label">PROFILE</span></a>
-  <a href="#plans" data-target="plans"><span class="rail-label">PLANS</span></a>
-  <a href="#flow" data-target="flow"><span class="rail-label">FLOW</span></a>
-  <a href="#contact" data-target="contact"><span class="rail-label">CONTACT</span></a>
-</nav>
-
-<header class="site-nav" id="siteNav">
-  <a class="nav-logo brand" href="index.html" aria-label="語縁 GOEN ホーム">
-    <span class="brand-plate" id="brandPlate"><img class="brand-img" src="goen-logo.png" alt="語縁 GOEN ロゴ"></span>
-    <span class="brand-text">
-      <span class="jp">語縁</span>
-      <span class="en">GOEN</span>
-      <span class="brand-sub">WEB DIRECTION DESIGN</span>
-    </span>
+<!-- ============ HEADER ============ -->
+<header class="nav" data-nav>
+  <a class="brand" href="#top" aria-label="語縁 GOEN トップへ">
+    <img src="assets/images/goen-logo.png" alt="語縁 GOEN ロゴ" />
+    <span class="brand__word"><span class="brand__en">GOEN</span><span class="brand__jp">語縁</span></span>
   </a>
-  <nav class="nav-links">
-    <a href="quality.html">制作品質</a>
-    <a href="system.html">仕組み</a>
-    <a href="service.html">サービス</a>
-    <a href="flow.html">相談の流れ</a>
-    <a href="about.html">会社概要</a>
-    <a class="nav-cta" href="contact.html"><span class="nav-cta-dot"></span>無料相談する</a>
-  </nav>
-  <button class="nav-burger" id="navBurger" type="button" aria-label="メニュー" aria-expanded="false">
+  <button class="nav__toggle" type="button" aria-label="メニューを開閉" aria-expanded="false" data-nav-toggle>
     <span></span><span></span><span></span>
   </button>
+  <nav class="nav__links" aria-label="主要ナビゲーション" data-nav-links>
+    <a href="#quality">QUALITY</a>
+    <a href="#system">SYSTEM</a>
+    <a href="#service">SERVICE</a>
+    <a href="#price">PRICE</a>
+    <a href="#insight">INSIGHT</a>
+    <a class="nav__cta" href="#contact">CONTACT</a>
+  </nav>
 </header>
-
-<div class="nav-sheet" id="navSheet">
-  <a href="quality.html">制作品質<span class="en">QUALITY</span></a>
-  <a href="system.html">集客の仕組み<span class="en">SYSTEM</span></a>
-  <a href="service.html">サービス<span class="en">SERVICE</span></a>
-  <a href="flow.html">相談の流れ<span class="en">FLOW</span></a>
-  <a href="about.html">会社概要<span class="en">ABOUT</span></a>
-  <a class="sheet-cta" href="contact.html">無料でWeb集客を相談する</a>
-  <p class="sheet-note">売り込みなし / 初回相談無料 / 必要な施策だけをご提案</p>
-</div>
 
 <main id="top">
 
-  <!-- ==================== HERO ==================== -->
-  <section class="so-hero" id="hero" data-screen-label="Hero">
-
-  <!-- LEFT COPY -->
-  <div class="lead">
-    <span class="eyebrow">Living Segmented Orbit — 導線設計</span>
-    <h1 class="title">地域店舗・個人事業主のための<br><span class="ac">成果につながる</span><br>Web導線設計。</h1>
-    <p class="sub"><b>HP制作・LP制作・MEO対策・公式LINE・SNS運用</b>まで、見つけられ、信頼され、相談される流れを一本の線で整えます。</p>
-    <div class="ctas">
-      <a class="btn btn-primary" href="contact.html">30分無料で相談する<svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-      <a class="btn btn-ghost" href="quality.html">制作サンプルを見る<svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    </div>
-    <div class="trust">
-      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 9-10"></path></svg></span><span><b>初めてでも安心</b>分かる言葉で説明</span></div>
-      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 9-10"></path></svg></span><span><b>必要な施策だけ</b>不要な提案しない</span></div>
-      <div class="t"><span class="ti"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 9-10"></path></svg></span><span><b>強引な営業なし</b>相談だけでもOK</span></div>
-    </div>
-
-    <!-- MOBILE vertical step UI (案B) -->
-    <div class="steps" role="list" aria-label="サービス導線">
-      <div class="step" role="listitem"><span class="dot"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="1.6"></rect><path d="M9.5 20h5M12 16.5V20"></path></svg></span><span class="meta"><span class="n">01</span><span class="nm">HP制作</span><span class="rl">信頼の土台をつくる</span></span></div>
-      <div class="step" role="listitem"><span class="dot"><svg viewBox="0 0 24 24"><rect x="6.5" y="3" width="11" height="18" rx="2"></rect><path d="M10.5 18h3"></path></svg></span><span class="meta"><span class="n">02</span><span class="nm">LP制作</span><span class="rl">行動を促す受け皿</span></span></div>
-      <div class="step" role="listitem"><span class="dot"><svg viewBox="0 0 24 24"><path d="M12 21c4.5-4.6 6.8-7.9 6.8-10.8A6.8 6.8 0 0 0 5.2 10.2C5.2 13.1 7.5 16.4 12 21z"></path><circle cx="12" cy="10" r="2.4"></circle></svg></span><span class="meta"><span class="n">03</span><span class="nm">MEO対策</span><span class="rl">地域で見つかる</span></span></div>
-      <div class="step" role="listitem"><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-4 3.5V7A1.5 1.5 0 0 1 6.5 5.5z"></path></svg></span><span class="meta"><span class="n">04</span><span class="nm">公式LINE</span><span class="rl">関係を深める</span></span></div>
-      <div class="step" role="listitem"><span class="dot"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"></circle><circle cx="17" cy="6.5" r="2.4"></circle><circle cx="17" cy="17.5" r="2.4"></circle><path d="M8.1 10.9l6.8-3.3M8.1 13.1l6.8 3.3"></path></svg></span><span class="meta"><span class="n">05</span><span class="nm">SNS運用代行</span><span class="rl">認知を広げる</span></span></div>
-      <div class="step final" role="listitem"><span class="dot"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"></circle><path d="M3.5 19c.5-3 2.8-4.7 5.5-4.7S14 16 14.5 19"></path><circle cx="17.5" cy="10" r="2.3"></circle></svg></span><span class="meta"><span class="n">06</span><span class="nm">ご相談</span><span class="rl">ご縁を成果へ<span class="fin"> ・ FINAL STEP</span></span></span></div>
-    </div>
-  </div>
-
-  <!-- ORBIT (simplified single-ring) -->
-  <div class="orbit-wrap">
-    <div class="orbit">
-      <svg class="canvas" viewBox="0 0 600 600" role="img" aria-label="語縁のサービス導線オービット">
-        <defs>
-          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4"></feGaussianBlur></filter>
-        </defs>
-        <!-- connector spokes (center -> node) -->
-        <g class="ospokes">
-          <line x1="300" y1="300" x2="300" y2="100"></line>
-          <line x1="300" y1="300" x2="473.2" y2="200"></line>
-          <line x1="300" y1="300" x2="473.2" y2="400"></line>
-          <line x1="300" y1="300" x2="300" y2="500"></line>
-          <line x1="300" y1="300" x2="126.8" y2="400"></line>
-          <line x1="300" y1="300" x2="126.8" y2="200"></line>
-        </g>
-        <!-- single ring -->
-        <circle class="env" cx="300" cy="300" r="200"></circle>
-        <!-- gold node dots -->
-        <g class="bloom b01"><circle class="halo" cx="300" cy="100" r="8" filter="url(#soft)"></circle><circle class="dot" cx="300" cy="100" r="4"></circle></g>
-        <g class="bloom b02"><circle class="halo" cx="473.2" cy="200" r="8" filter="url(#soft)"></circle><circle class="dot" cx="473.2" cy="200" r="4"></circle></g>
-        <g class="bloom b03"><circle class="halo" cx="473.2" cy="400" r="8" filter="url(#soft)"></circle><circle class="dot" cx="473.2" cy="400" r="4"></circle></g>
-        <g class="bloom b04"><circle class="halo" cx="300" cy="500" r="9" filter="url(#soft)"></circle><circle class="dot" cx="300" cy="500" r="4.5"></circle></g>
-        <g class="bloom b05"><circle class="halo" cx="126.8" cy="400" r="8" filter="url(#soft)"></circle><circle class="dot" cx="126.8" cy="400" r="4"></circle></g>
-        <g class="bloom b06"><circle class="halo" cx="126.8" cy="200" r="8" filter="url(#soft)"></circle><circle class="dot" cx="126.8" cy="200" r="4"></circle></g>
-      </svg>
-
-      <!-- central brand plate -->
-      <div class="plate">
-        <div class="jp"><span>語</span><span>縁</span></div>
-        <div class="en">GOEN</div>
+  <!-- ============ 1. HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true"><img src="assets/images/reference-style/asantech-hero-business-hands.png" alt="" data-parallax /></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__plate" aria-hidden="true"></div>
+    <span class="hero__beam" aria-hidden="true"></span>
+    <span class="hero__beam b2" aria-hidden="true"></span>
+    <div class="shell hero__inner">
+      <p class="hero__eyebrow reveal is-in">地域店舗・個人事業主のための Web 導線設計</p>
+      <h1 id="hero-title" class="reveal is-in" data-d="1">
+        <span class="sub">見つかる、信頼される、相談される。</span>
+        成果につながる<br>Web導線設計。
+      </h1>
+      <p class="hero__copy reveal is-in" data-d="2">売り込みなし / 初回相談無料 / 必要な施策だけをご提案</p>
+      <div class="hero__actions reveal is-in" data-d="3">
+        <a class="btn" href="#contact">無料で相談する</a>
+        <a class="link-quiet" href="#system">導線設計の考え方を見る</a>
       </div>
-
-      <!-- service node labels -->
-      <a class="seg seg01" href="quality.html" aria-label="HP制作"><span class="seg-name">HP制作</span></a>
-      <a class="seg seg02" href="service.html" aria-label="LP制作"><span class="seg-name">LP制作</span></a>
-      <a class="seg seg03" href="service.html" aria-label="MEO対策"><span class="seg-name">MEO対策</span></a>
-      <a class="seg seg04" href="service.html" aria-label="公式LINE"><span class="seg-name">公式LINE</span></a>
-      <a class="seg seg05" href="service.html" aria-label="SNS運用"><span class="seg-name">SNS運用</span></a>
-      <a class="seg seg06" href="contact.html" aria-label="ご相談"><span class="seg-name">ご相談</span></a>
     </div>
-  </div>
-
-  <div class="flow-down" aria-hidden="true"><span>Quality</span><span class="stem"></span></div>
-</section>
-<script>
-  (function () {
-    var el = document.querySelector('.so-hero');
-    if (!el) return;
-    function reveal(){ el.classList.add('shown'); }
-    var t = function(){ setTimeout(reveal, 2700); };
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', t); else t();
-  })();
-</script>
-
-
-  <!-- ==================== TARGET — 誰のためのサービスか ==================== -->
-  <section class="target" id="target" data-screen-label="For Whom">
-    <p class="target-lead rv">語縁は、<b>地域店舗・個人事業主のため</b>のWebパートナーです。</p>
-    <ul class="target-chips rv" style="--d:0.1s">
-      <li>整体院・治療院</li>
-      <li>美容室・サロン</li>
-      <li>飲食店</li>
-      <li>士業</li>
-      <li>教室・スクール</li>
-      <li>小規模サービス業</li>
-    </ul>
-    <p class="target-note rv" style="--d:0.2s">Webに詳しくなくても、安心して相談できます。</p>
+    <div class="shell"><div class="hero__scroll" aria-hidden="true">SCROLL <span></span></div></div>
   </section>
 
-  <!-- ==================== 01 — CASE STUDY (制作サンプル) ==================== -->
-  <section class="case-study-section" id="quality" data-screen-label="01 Case Study">
-    <div class="cs-inner">
-
-      <div class="case-study-header">
-        <div class="cs-head-left">
-          <span class="cs-eyebrow">CASE STUDY</span>
-          <h2 class="cs-h2">制作サンプル</h2>
-          <p class="cs-lead">見た目だけではなく、相談までの導線を設計した制作サンプルです。</p>
+  <!-- ============ 2. QUALITY ============ -->
+  <section class="sec" id="quality" aria-labelledby="quality-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Quality</span>
+        <span class="en">Quality</span>
+        <h2 id="quality-title" class="mincho">見た目だけではなく、<br>相談までの導線を、設計します。</h2>
+      </div>
+      <div class="quality__grid">
+        <p class="quality__statement reveal">語縁は、地域店舗・個人事業主のための<br>Webパートナーです。<br>見つけられ、信頼され、相談される流れを、<br><span class="accent">一本の線で整えます。</span></p>
+        <div class="quality__body reveal" data-d="1">
+          <div class="flow-line" aria-hidden="true"></div>
+          <p>LP・HP制作を軸に、MEO・公式LINE・SNSまで。ばらばらの施策ではなく、見込み客が出会い、納得し、相談へ進むまでの流れとして一続きに設計します。</p>
+          <p>Webに詳しくなくても、安心して相談できます。いきなり契約をお願いすることはなく、現状を伺い、本当に必要な施策だけを、分かる言葉でご提案します。</p>
         </div>
-        <span class="cs-sample">SAMPLE</span>
       </div>
+    </div>
+  </section>
 
-      <div class="case-study-grid">
-
-        <!-- 01 LP・HPデザイン -->
-        <article class="case-card case-card-primary">
-          <div class="cs-media">
-            <div class="cs-monitor">
-              <div class="cs-monitor-frame">
-                <div class="cs-screen">
-                  <div class="cs-lp">
-                    <div class="cs-lp-nav">
-                      <span class="cs-lp-logo">整体院 月の手</span>
-                      <span class="cs-lp-menu"><i>施術について</i><i>料金</i><b>初回予約</b></span>
-                    </div>
-                    <div class="cs-lp-hero">
-                      <div class="cs-lp-copy">
-                        <span class="cs-lp-eyebrow">国家資格者による根本改善</span>
-                        <h4>肩こりを、<br>我慢しない毎日へ。</h4>
-                        <p>原因に向き合う施術で、3ヶ月後の身体を変える。</p>
-                        <span class="cs-lp-cta">初回体験を予約する</span>
-                      </div>
-                      <div class="cs-lp-visual"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <span class="cs-monitor-stand"></span>
-              <span class="cs-monitor-foot"></span>
-            </div>
-          </div>
-          <div class="cs-text">
-            <span class="cs-num">01</span>
-            <h3 class="cs-title">LP・HPデザイン</h3>
-            <p class="cs-desc">広告や検索から来た人が、迷わず予約に進めるファーストビューを設計。</p>
-            <a class="cs-more" href="quality.html"><span class="cs-arrow">→</span>詳しく見る</a>
-          </div>
-        </article>
-
-        <!-- 02 スマホ最適化 -->
-        <article class="case-card">
-          <div class="cs-media">
-            <div class="cs-phone">
-              <div class="cs-phone-screen">
-                <div class="cs-lp-m">
-                  <div class="cs-lp-m-nav"><span>整体院 月の手</span><span class="cs-burger">&#9776;</span></div>
-                  <span class="cs-lp-eyebrow">国家資格者による根本改善</span>
-                  <h4>肩こりを、<br>我慢しない毎日へ。</h4>
-                  <p>原因に向き合う施術で、3ヶ月後の身体を変える。</p>
-                  <span class="cs-lp-cta">LINEで予約する &rarr;</span>
-                  <div class="cs-lp-card">
-                    <svg class="cs-petal" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="16" r="8"/><circle cx="32" cy="24" r="8"/><circle cx="24" cy="32" r="8"/><circle cx="16" cy="24" r="8"/></g></svg>
-                    <b>選ばれる理由</b>
-                    <span>原因にアプローチ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cs-text">
-            <span class="cs-num">02</span>
-            <h3 class="cs-title">スマホ最適化</h3>
-            <p class="cs-desc">閲覧の7割はスマホから。崩れず、押しやすく、読みやすい設計に。</p>
-            <a class="cs-more" href="quality.html"><span class="cs-arrow">→</span>詳しく見る</a>
-          </div>
-        </article>
-
-        <!-- 03 MEO・地図検索 -->
-        <article class="case-card">
-          <div class="cs-media">
-            <div class="cs-map">
-              <span class="cs-map-grid" aria-hidden="true"></span>
-              <span class="cs-map-river" aria-hidden="true"></span>
-              <span class="cs-map-search">近くの整体院 <i>&rarr;</i></span>
-              <span class="cs-map-pin" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 4.5 7 13 7 13s7-8.5 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
-              </span>
-              <div class="cs-map-card">
-                <b>整体院 月の手</b>
-                <span class="cs-stars"><i>&#9733;&#9733;&#9733;&#9733;&#9733;</i> <em>4.8</em> (122)</span>
-                <span>整体院・営業時間 9:00&ndash;20:00</span>
-                <span>徒歩5分・駐車場あり</span>
-              </div>
-            </div>
-          </div>
-          <div class="cs-text">
-            <span class="cs-num">03</span>
-            <h3 class="cs-title">MEO・地図検索</h3>
-            <p class="cs-desc">「近くの整体院」と探す人との、最初の接点をつくる。</p>
-            <a class="cs-more" href="service.html"><span class="cs-arrow">→</span>詳しく見る</a>
-          </div>
-        </article>
-
-        <!-- 04 公式LINE導線 -->
-        <article class="case-card">
-          <div class="cs-media">
-            <div class="cs-line">
-              <div class="cs-line-head">
-                <span class="cs-back">&#8249;</span>
-                <span class="cs-line-ava" aria-hidden="true"></span>
-                <b>整体院 月の手</b>
-                <span class="cs-line-icons">&#9906;</span>
-              </div>
-              <div class="cs-line-body">
-                <div class="cs-msg in"><span class="cs-ava" aria-hidden="true"></span><p>ご予約ありがとうございます！当日は動きやすい服装でお越しください。</p><time>10:30</time></div>
-                <div class="cs-msg out"><time>10:31</time><p>ありがとうございます！駐車場はありますか？</p></div>
-                <div class="cs-msg in"><span class="cs-ava" aria-hidden="true"></span><p>院の裏に2台ございます。「月の手」の看板が目印です。</p><time>10:31</time></div>
-              </div>
-            </div>
-          </div>
-          <div class="cs-text">
-            <span class="cs-num">04</span>
-            <h3 class="cs-title">公式LINE導線</h3>
-            <p class="cs-desc">一度の出会いを、再訪と指名に変える関係づくり。</p>
-            <a class="cs-more" href="service.html"><span class="cs-arrow">→</span>詳しく見る</a>
-          </div>
-        </article>
-
+  <!-- ============ 3. PROBLEM ============ -->
+  <section class="sec" id="problem" aria-labelledby="problem-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Problem</span>
+        <span class="en">Problem</span>
+        <h2 id="problem-title" class="mincho">頑張っているのに、選ばれない。<br>足りないのは努力ではなく、導線です。</h2>
       </div>
-
-      <div class="case-study-cta">
-        <span class="cs-cta-logo" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="15" r="8"/><circle cx="33" cy="24" r="8"/><circle cx="24" cy="33" r="8"/><circle cx="15" cy="24" r="8"/></g></svg>
-        </span>
-        <div class="cs-cta-copy">
-          <p class="cs-cta-lead">4つの施策を点ではなく線でつなぎ、成果につながる導線を設計します。</p>
-          <p class="cs-cta-sub">HP制作から、スマホ最適化・MEO対策・公式LINE導線まで、相談までつながる設計で、集客とリピートを最大化します。</p>
+      <div class="diagnose">
+        <div class="diagnose__row reveal"><span class="dot" aria-hidden="true"></span>
+          <p class="diagnose__no">01<small>FOUND</small></p>
+          <div class="diagnose__txt"><h3>見つからない</h3><p>検索やGoogleマップで、探している見込み客に出会えていない。</p></div>
         </div>
-        <a class="cs-cta-btn" href="contact.html">無料相談する <span>&rarr;</span></a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== 02 — PROBLEM ==================== -->
-  <section class="scene problem scene--invert inv-bottom" id="problem" data-ghost="02" data-screen-label="02 Problem">
-    <div class="scene-head rv">
-      <span class="num">02</span>
-      <span class="rule"></span>
-      <span class="label">The Problem — 課題</span>
-    </div>
-    <p class="problem-lead rv">なぜ、作っただけでは成果が出ないのか。<br>ホームページ・SNS・Googleマップ・LINEがバラバラだと、お客様は途中で離脱します。</p>
-    <h2 class="problem-line" data-scatter><span class="ln">頑張っているのに、選ばれない。</span></h2>
-    <h2 class="problem-line" data-scatter><span class="ln">足りないのは努力ではなく、<span class="ac">導線</span>です。</span></h2>
-    <ul class="prob-cards rv">
-      <li class="prob-card"><span class="prob-i">!</span><h3>見つからない</h3><p>検索や地図で、見込み客に出会えていない。</p></li>
-      <li class="prob-card"><span class="prob-i">!</span><h3>信頼されない</h3><p>強み・人柄・料金根拠が、十分に伝わらない。</p></li>
-      <li class="prob-card"><span class="prob-i">!</span><h3>相談されない</h3><p>予約・問い合わせまでの導線が、薄く途切れる。</p></li>
-    </ul>
-    <p class="problem-after rv">語縁は、見つけられ、信頼され、相談されるまでの流れを一本の線で設計します。</p>
-  </section>
-
-  <!-- ==================== 03 — SYSTEM ==================== -->
-  <section class="scene system" id="system" data-ghost="03" data-screen-label="03 System">
-    <div class="scene-head rv">
-      <span class="num">03</span>
-      <span class="rule"></span>
-      <span class="label">The System — 集客導線</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">集客は、点ではなく線で考える。</span></h2>
-    <div class="sys-rail rv">
-      <div class="sys-step r"><span class="sys-node"></span><h3 class="sys-name">見つけてもらう</h3><p class="sys-desc">MEO・検索・SNSで、探している人と出会う。</p></div>
-      <div class="sys-step l"><span class="sys-node"></span><h3 class="sys-name">興味を持ってもらう</h3><p class="sys-desc">LP・HPで強みと選ばれる理由を伝える。</p></div>
-      <div class="sys-step r"><span class="sys-node"></span><h3 class="sys-name">信頼してもらう</h3><p class="sys-desc">料金・事例・人柄で相談前の不安を減らす。</p></div>
-      <div class="sys-step l"><span class="sys-node"></span><h3 class="sys-name">相談につなげる</h3><p class="sys-desc">フォーム・LINE・電話まで迷わず進める。</p></div>
-      <div class="sys-step r"><span class="sys-node"></span><h3 class="sys-name">関係を育てる</h3><p class="sys-desc">LINEやSNSで再接点をつくり、再訪へつなげる。</p></div>
-      <div class="sys-step l"><span class="sys-node"></span><h3 class="sys-name">成約と改善へ</h3><p class="sys-desc">成果を検証し、次の一手へ磨き続ける。</p></div>
-    </div>
-    <div class="sys-close rv">
-      <p class="sys-close-lead">必要なのは、施策を増やすことではなく、<br>お客様が迷わず進める流れをつくること。</p>
-      <p class="sys-close-sub">偶然ではなく、設計された導線が成果を生みます。</p>
-    </div>
-    <div class="more-row rv"><a class="btn-more" href="system.html">集客の仕組みを詳しく見る<span class="arr">→</span></a></div>
-  </section>
-
-  <!-- ==================== 04 — CLEAR PRICE ==================== -->
-  <section class="scene price scene--invert inv-top inv-bottom" id="price" data-ghost="04" data-screen-label="04 Clear Price">
-    <div class="scene-head rv">
-      <span class="num">04</span>
-      <span class="rule"></span>
-      <span class="label">Clear Price — 透明性</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">料金の不安を、最初に解消する。</span></h2>
-    <p class="price-lead rv">必要な施策と内訳を明確にしたうえで提案します。不要なオプションや継続契約を前提にしません。</p>
-    <div class="price-table rv">
-      <div class="pt-cell"><span class="pt-name">LP制作</span><span class="pt-price">15万円〜</span><span class="pt-note">広告・SNSからの受け皿</span></div>
-      <div class="pt-cell"><span class="pt-name">HP制作</span><span class="pt-price">30万円〜</span><span class="pt-note">会社・店舗の信頼設計</span></div>
-      <div class="pt-cell"><span class="pt-name">MEO初期設計</span><span class="pt-price">5万円〜</span><span class="pt-note">地域検索の土台づくり</span></div>
-      <div class="pt-cell"><span class="pt-name">LINE導線</span><span class="pt-price">8万円〜</span><span class="pt-note">予約・再来店の導線</span></div>
-      <div class="pt-cell"><span class="pt-name">運用伴走</span><span class="pt-price">月5万円〜</span><span class="pt-note">改善・継続・分析支援</span></div>
-    </div>
-    <p class="price-note rv">上記は目安です。内容・ページ数・素材状況に応じて、無料相談後に正式見積もりをご提示します。</p>
-    <ul class="price-points">
-      <li class="price-point rv"><span class="pp-mark"></span><h3>必要なものだけ選べる</h3><p>LPだけ、MEOだけ。目的に合わせて、施策を単品から組み合わせられます。</p></li>
-      <li class="price-point rv" style="--d:0.08s"><span class="pp-mark"></span><h3>単発のご依頼も歓迎</h3><p>継続契約が前提ではありません。一度きりの制作でも、全力で設計します。</p></li>
-      <li class="price-point rv" style="--d:0.16s"><span class="pp-mark"></span><h3>継続運用にも対応</h3><p>必要になったときだけ、運用・改善まで伴走できます。</p></li>
-      <li class="price-point rv" style="--d:0.24s"><span class="pp-mark"></span><h3>見積もりの内訳を明確に</h3><p>何にいくらかかるのか。すべての項目を、根拠とともに開示します。</p></li>
-      <li class="price-point rv" style="--d:0.32s"><span class="pp-mark"></span><h3>専門用語を使わない説明</h3><p>Webに詳しくなくて大丈夫です。分かる言葉で、分かるまで説明します。</p></li>
-      <li class="price-point rv" style="--d:0.4s"><span class="pp-mark"></span><h3>無理な営業はしない</h3><p>不要だと判断した施策は、こちらからお断りすることもあります。</p></li>
-    </ul>
-  </section>
-
-  <!-- ==================== 05 — SERVICES ==================== -->
-  <section class="scene" id="services" data-ghost="05" data-screen-label="05 Services">
-    <div class="scene-head rv">
-      <span class="num">05</span>
-      <span class="rule"></span>
-      <span class="label">Services — 導線のパーツ</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">必要なところから、必要な分だけ。</span></h2>
-    <p class="svc-lead rv">HP・LP・MEO・LINE・SNSを、事業の状況に合わせて組み合わせます。</p>
-    <div class="svc-cards">
-      <a class="svc-card rv" href="service.html"><span class="svc-n">01</span><h3 class="svc-name">HP制作</h3><p class="svc-desc">会社・店舗の信頼をつくる。誰に、何を、どう伝えるかを設計して固める。</p></a>
-      <a class="svc-card rv" href="service.html" style="--d:.06s"><span class="svc-n">02</span><h3 class="svc-name">LP制作</h3><p class="svc-desc">広告・SNSから来た人を、迷わせず予約・問い合わせへつなげる。</p></a>
-      <a class="svc-card rv" href="service.html" style="--d:.12s"><span class="svc-n">03</span><h3 class="svc-name">MEO対策</h3><p class="svc-desc">Googleマップで探す人に見つけてもらう土台を整える。</p></a>
-      <a class="svc-card rv" href="service.html" style="--d:.18s"><span class="svc-n">04</span><h3 class="svc-name">公式LINE導線</h3><p class="svc-desc">予約・再来店・紹介につながる関係づくりを設計する。</p></a>
-      <a class="svc-card rv" href="service.html" style="--d:.24s"><span class="svc-n">05</span><h3 class="svc-name">SNS運用代行</h3><p class="svc-desc">日々の発信で認知を広げ、選ばれる理由を届け続ける。</p></a>
-    </div>
-    <div class="more-row rv"><a class="btn-more" href="service.html">サービスの詳細を見る<span class="arr">→</span></a></div>
-  </section>
-
-  <!-- ==================== 06 — INFLUENCER INSIGHT ==================== -->
-  <section class="scene insight" id="insight" data-ghost="06" data-screen-label="06 Influencer Insight">
-    <div class="scene-head rv">
-      <span class="num">06</span>
-      <span class="rule"></span>
-      <span class="label">Insight — 見られる側の感覚</span>
-    </div>
-    <div class="insight-grid">
-      <div>
-        <h2 class="why-intro rv rv--mask"><span class="ln">見られる側を知っているから、<br>反応される設計ができる。</span></h2>
-        <p class="insight-body rv">語縁の代表は、現役インフルエンサーとして発信を続けています。人が何に反応し、何を信頼し、なぜ行動するのか。その感覚を、LP・HP制作やSNS運用に活かします。</p>
-        <p class="insight-note rv" style="--d:0.15s">数字だけでは見えない、人の感情から導線を設計する。</p>
-      </div>
-      <ul class="insight-cards rv" style="--d:0.1s">
-        <li class="ins-card"><h3>視線の流れ</h3><p>どこで止まり、どこで離脱するかを設計に活かす。</p></li>
-        <li class="ins-card"><h3>言葉の温度</h3><p>売り込みすぎず、相談したくなる距離で言葉を選ぶ。</p></li>
-        <li class="ins-card"><h3>行動のハードル</h3><p>予約・問い合わせの心理的な壁を、一つずつ下げる。</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="ma" aria-hidden="true"></div>
-
-  <!-- ==================== 07 — PHILOSOPHY ==================== -->
-  <section class="scene phil scene--invert inv-top" id="philosophy" data-screen-label="07 Philosophy">
-    <span class="phil-vert">語縁の哲学</span>
-    <div class="scene-head rv" style="justify-content:center">
-      <span class="num">07</span>
-      <span class="rule"></span>
-      <span class="label">Philosophy — 哲学</span>
-    </div>
-    <h2 class="phil-line rv rv--mask"><span class="ln">必要以上は、<span class="ac">売らない。</span></span></h2>
-    <h2 class="phil-line rv rv--mask" style="--d:0.25s"><span class="ln">本当に必要な施策だけを。</span></h2>
-    <p class="phil-after rv">分かりやすく、誠実に、長く伴走する。<br>語縁は、Webに詳しい人のためだけの会社ではありません。<br>Webに詳しくない人が、安心して相談できる会社です。</p>
-  </section>
-
-  <!-- ==================== 08 — PROFILE ==================== -->
-  <section class="scene profile scene--invert" id="profile" data-ghost="08" data-screen-label="08 Profile">
-    <div class="scene-head rv">
-      <span class="num">08</span>
-      <span class="rule"></span>
-      <span class="label">Profile — 代表</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">発信する側の感覚を、設計に。</span></h2>
-    <div class="profile-card rv">
-      <div class="profile-side">
-        <span class="profile-mark" aria-hidden="true">縁</span>
-        <span class="profile-name">語縁 代表</span>
-        <span class="profile-role">Web導線設計 / 現役インフルエンサー</span>
-      </div>
-      <div class="profile-body">
-        <p>語縁の代表は、現役インフルエンサーとして発信を続けています。人が何に目を留め、何を信頼し、どんな瞬間に行動するのか——「見られる側」として身につけた感覚を、LP・HP制作と集客導線の設計に活かしています。</p>
-        <ul class="profile-points">
-          <li>必要以上は売らない。不要な施策は「不要」と伝える</li>
-          <li>専門用語を使わず、分かる言葉で説明する</li>
-          <li>数字だけではなく、人の感情から導線を設計する</li>
-        </ul>
-        <p class="profile-stance">相談の場は、売り込みの場ではありません。まず、あなたの事業に何が必要かを一緒に整理するところから。</p>
+        <div class="diagnose__row reveal" data-d="1"><span class="dot" aria-hidden="true"></span>
+          <p class="diagnose__no">02<small>TRUST</small></p>
+          <div class="diagnose__txt"><h3>信頼されない</h3><p>強み・人柄・料金根拠が伝わらず、相談前の不安を減らせていない。</p></div>
+        </div>
+        <div class="diagnose__row reveal" data-d="2"><span class="dot" aria-hidden="true"></span>
+          <p class="diagnose__no">03<small>CONTACT</small></p>
+          <div class="diagnose__txt"><h3>相談されない</h3><p>予約・問い合わせまでの導線が薄く、途中で離脱されている。</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 09 — PLANS ==================== -->
-  <section class="scene plans scene--invert inv-bottom" id="plans" data-ghost="09" data-screen-label="09 Plans">
-    <div class="scene-head rv">
-      <span class="num">09</span>
-      <span class="rule"></span>
-      <span class="label">Plans — よくある相談パターン</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">よくある、はじまり方。</span></h2>
-    <p class="plans-lead rv">料金は、必要な施策と内訳を明確にしたお見積もりでご提示します。まずは、多いご相談のパターンからイメージしてください。</p>
-    <ul class="plan-list">
-      <li class="plan rv"><span class="plan-num">01</span><h3>まずはLPだけ整えたい</h3><p class="plan-set">LP制作 ＋ 計測設定</p><p class="plan-for">広告やSNSの受け皿が欲しい方に</p></li>
-      <li class="plan rv" style="--d:0.08s"><span class="plan-num">02</span><h3>地域から見つけてもらいたい</h3><p class="plan-set">HP制作 ＋ MEO初期設計</p><p class="plan-for">店舗・地域ビジネスの方に</p></li>
-      <li class="plan rv" style="--d:0.16s"><span class="plan-num">03</span><h3>LINE予約までつなげたい</h3><p class="plan-set">LP / HP ＋ 公式LINE導線設計</p><p class="plan-for">電話以外の予約口が欲しい方に</p></li>
-      <li class="plan rv" style="--d:0.24s"><span class="plan-num">04</span><h3>発信を問い合わせにつなげたい</h3><p class="plan-set">SNS運用設計 ＋ LP制作</p><p class="plan-for">発信しているが成果がない方に</p></li>
-    </ul>
-    <p class="plans-note rv">すべて単発でのご依頼が可能です。組み合わせは、相談の中で一緒に決めましょう。</p>
-  </section>
-
-  <!-- ==================== 08 — FLOW ==================== -->
-  <section class="scene steps scene--invert inv-top" id="flow" data-ghost="10" data-screen-label="10 Flow">
-    <div class="scene-head rv">
-      <span class="num">10</span>
-      <span class="rule"></span>
-      <span class="label">Flow — ご相談の流れ</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">はじめてでも、この流れで。</span></h2>
-    <ol class="step-list">
-      <li class="step is-first rv"><span class="st-node"></span><span class="st-num">01</span><h3>無料相談</h3><p>オンラインで気軽に。契約の話はまだしません。</p></li>
-      <li class="step rv" style="--d:0.08s"><span class="st-node"></span><span class="st-num">02</span><h3>現状ヒアリング</h3><p>事業と集客の現状を、一緒に整理します。</p></li>
-      <li class="step rv" style="--d:0.16s"><span class="st-node"></span><span class="st-num">03</span><h3>必要な施策を診断</h3><p>不要な施策は「不要」とお伝えします。</p></li>
-      <li class="step rv" style="--d:0.24s"><span class="st-node"></span><span class="st-num">04</span><h3>ご提案・お見積もり</h3><p>内訳を明確に。納得できるまで検討ください。</p></li>
-      <li class="step rv" style="--d:0.32s"><span class="st-node"></span><span class="st-num">05</span><h3>制作・構築</h3><p>進捗を共有しながら、丁寧に作り込みます。</p></li>
-      <li class="step rv" style="--d:0.4s"><span class="st-node"></span><span class="st-num">06</span><h3>運用・改善</h3><p>必要に応じて、公開後も隣で伴走します。</p></li>
-    </ol>
-    <p class="steps-note rv">いきなり契約をお願いすることはありません。<br>「まだ何も決まっていない」段階のご相談こそ、歓迎します。</p>
-    <div class="more-row rv"><a class="btn-more" href="flow.html">相談の流れを詳しく見る<span class="arr">→</span></a></div>
-  </section>
-
-  <!-- ==================== 09 — FAQ ==================== -->
-  <section class="scene faq scene--invert inv-bottom" id="faq" data-ghost="11" data-screen-label="11 FAQ">
-    <div class="scene-head rv">
-      <span class="num">11</span>
-      <span class="rule"></span>
-      <span class="label">FAQ — よくある質問</span>
-    </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">相談の前に、よくある質問。</span></h2>
-    <div class="faq-list rv">
-      <details class="faq-item" open>
-        <summary><span class="q">Q.</span>Webに詳しくなくても相談できますか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>はい、むしろそうした方のための会社です。専門用語を使わず、分かる言葉で、分かるまでご説明します。</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q.</span>LPだけ、HPだけの依頼も可能ですか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>可能です。必要なものだけを単品でご依頼いただけます。セット契約を前提とした提案はしません。</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q.</span>MEOやLINEだけの相談もできますか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>できます。すでにHPをお持ちの場合は、今あるものを活かす形で導線を設計します。</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q.</span>予算が決まっていなくても相談できますか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>問題ありません。目的を伺った上で、予算に合わせた選択肢を内訳とともにご提示します。</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q.</span>小規模な事業でも依頼できますか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>もちろんです。語縁は地域店舗・個人事業主の支援を軸にしています。事業の規模ではなく、必要な施策が何かでご提案します。</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q.</span>強引な営業はありませんか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>ありません。不要だと判断した施策はこちらからお断りすることもあるくらいです。相談だけで終わっても大丈夫です。</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q.</span>制作後の運用も相談できますか？</summary>
-        <div class="a"><span class="a-mark">A.</span><p>はい。公開して終わりではなく、運用・改善まで伴走できます。必要になったタイミングからで構いません。</p></div>
-      </details>
+  <!-- ============ 4. SYSTEM ============ -->
+  <section class="sec" id="system" aria-labelledby="system-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">System</span>
+        <span class="en">System</span>
+        <h2 id="system-title">集客は、点ではなく線で考える。</h2>
+      </div>
+      <div class="system__line" data-growline>
+        <div class="system__rail" aria-hidden="true"></div>
+        <div class="system__fill" data-growfill aria-hidden="true"></div>
+        <div class="step reveal"><p class="step__no">01</p><div class="step__txt"><h3>見つけてもらう</h3><p>MEO・検索・SNSで、探している人と出会う。</p></div></div>
+        <div class="step reveal"><p class="step__no">02</p><div class="step__txt"><h3>興味を持ってもらう</h3><p>LP・HPで強みと選ばれる理由を伝える。</p></div></div>
+        <div class="step reveal"><p class="step__no">03</p><div class="step__txt"><h3>信頼してもらう</h3><p>料金・事例・人柄で相談前の不安を減らす。</p></div></div>
+        <div class="step reveal"><p class="step__no">04</p><div class="step__txt"><h3>相談につなげる</h3><p>フォーム・LINE・電話まで迷わず進める。</p></div></div>
+        <div class="step reveal"><p class="step__no">05</p><div class="step__txt"><h3>関係を育てる</h3><p>LINEやSNSで再接点をつくり、再訪へつなげる。</p></div></div>
+        <div class="step reveal"><p class="step__no">06</p><div class="step__txt"><h3>成約と改善へ</h3><p>成果を検証し、次の一手へ磨き続ける。</p></div></div>
+      </div>
     </div>
   </section>
 
-  <div class="ma" aria-hidden="true"></div>
-
-  <!-- ==================== COMPANY brief ==================== -->
-  <section class="scene company scene--invert inv-top inv-bottom" id="company" data-ghost="会社" data-screen-label="Company">
-    <div class="scene-head rv">
-      <span class="num">—</span>
-      <span class="rule"></span>
-      <span class="label">Company — 会社概要</span>
+  <!-- ============ 5. PRICE ============ -->
+  <section class="sec" id="price" aria-labelledby="price-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Price</span>
+        <span class="en">Price</span>
+        <h2 id="price-title" class="mincho">料金の不安を、<br>最初に解消する。</h2>
+      </div>
+      <div class="price__list">
+        <div class="price__row reveal"><div class="price__name">LP制作<small>広告・SNSからの受け皿</small></div><div class="price__fig">15<em>万円〜</em></div></div>
+        <div class="price__row reveal" data-d="1"><div class="price__name">HP制作<small>会社・店舗の信頼設計</small></div><div class="price__fig">30<em>万円〜</em></div></div>
+        <div class="price__row reveal" data-d="2"><div class="price__name">MEO初期設計<small>地域検索の土台づくり</small></div><div class="price__fig">5<em>万円〜</em></div></div>
+        <div class="price__row reveal" data-d="3"><div class="price__name">LINE導線<small>予約・再来店の導線</small></div><div class="price__fig">8<em>万円〜</em></div></div>
+      </div>
+      <p class="note price__note reveal">上記は目安です。内容・ページ数・素材状況に応じて、無料相談後に正式見積もりをご提示します。</p>
     </div>
-    <h2 class="system-intro rv rv--mask"><span class="ln">語縁について。</span></h2>
-    <dl class="company-table rv">
-      <div class="company-row"><dt>屋号</dt><dd>語縁 / GOEN</dd></div>
-      <div class="company-row"><dt>事業内容</dt><dd>HP制作・LP制作・MEO対策・公式LINE導線設計・SNS運用設計・Web集客導線設計</dd></div>
-      <div class="company-row"><dt>対応エリア</dt><dd>全国（オンライン対応）</dd></div>
-      <div class="company-row"><dt>ミッション</dt><dd>必要な人に、必要なご縁が届くWeb導線をつくる。</dd></div>
-    </dl>
-    <div class="more-row rv"><a class="btn-more" href="about.html">会社概要・代表メッセージを見る<span class="arr">→</span></a></div>
   </section>
 
-  <!-- ==================== 10 — FINAL CTA ==================== -->
-  <section class="finale" id="contact" data-screen-label="10 Contact">
-    <canvas id="finaleCanvas"></canvas>
-    <div class="finale-glow"></div>
-    <div class="finale-inner">
-      <span class="finale-en rv">12 — CONTACT</span>
-      <h2 class="finale-title rv rv--mask"><span class="ln">必要な施策を、無料で相談する。</span></h2>
-      <p class="finale-sub rv" style="--d:0.15s">今すぐ依頼する必要はありません。<br>まずは、あなたの事業に何が必要かを一緒に整理します。</p>
-      <div class="contact-panel rv" style="--d:0.3s">
-        <form class="cform" id="contactForm">
-          <div class="cf-row">
-            <label class="cf-field"><span>お名前</span><input type="text" name="name" autocomplete="name" placeholder="山田 太郎" required></label>
-            <label class="cf-field"><span>ご職業・業種</span><input type="text" name="biz" placeholder="例：整体院を経営"></label>
-          </div>
-          <label class="cf-field"><span>相談したいこと（任意）</span><textarea name="msg" rows="4" placeholder="例：予約がなかなか増えない。何から手をつけるべきか相談したい。"></textarea></label>
-          <button class="btn btn-primary cf-submit" type="submit">必要な施策を無料で相談する</button>
+  <!-- ============ 6. SERVICE ============ -->
+  <section class="sec" id="service" aria-labelledby="service-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Service</span>
+        <span class="en">Service</span>
+        <h2 id="service-title">必要なところから、必要な分だけ。</h2>
+      </div>
+      <div class="index-list">
+        <div class="index-row reveal"><span class="index-row__no">01</span><div class="index-row__name">HP制作<span class="en-s">WEBSITE</span></div><p class="index-row__desc">会社・店舗の信頼をつくる。誰に、何を、どう伝えるかを設計して固める。</p></div>
+        <div class="index-row reveal" data-d="1"><span class="index-row__no">02</span><div class="index-row__name">LP制作<span class="en-s">LANDING PAGE</span></div><p class="index-row__desc">広告・SNSから来た人を、迷わせず予約・問い合わせへつなげる。</p></div>
+        <div class="index-row reveal" data-d="2"><span class="index-row__no">03</span><div class="index-row__name">MEO対策<span class="en-s">MAP SEARCH</span></div><p class="index-row__desc">Googleマップで探す人に見つけてもらう土台を整える。</p></div>
+        <div class="index-row reveal" data-d="3"><span class="index-row__no">04</span><div class="index-row__name">公式LINE導線<span class="en-s">LINE</span></div><p class="index-row__desc">予約・再来店・紹介につながる関係づくりを設計する。</p></div>
+        <div class="index-row reveal" data-d="4"><span class="index-row__no">05</span><div class="index-row__name">SNS運用代行<span class="en-s">SOCIAL</span></div><p class="index-row__desc">日々の発信で認知を広げ、選ばれる理由を届け続ける。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. WORKS ============ -->
+  <section class="sec" id="works" aria-labelledby="works-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Works</span>
+        <span class="en">Works</span>
+        <h2 id="works-title" class="mincho">制作サンプル</h2>
+      </div>
+      <div class="works">
+        <div class="works__stage reveal" aria-hidden="true">
+          <figure class="work-shot s1"><img src="assets/images/case-study/case-lp-hp-design.png" alt="LP・HPデザイン制作サンプル" /></figure>
+          <figure class="work-shot s3"><img src="assets/images/case-study/case-meo-map-search.png" alt="MEO・地図検索の制作サンプル" /></figure>
+          <figure class="work-shot s2"><img src="assets/images/case-study/case-official-line-flow.png" alt="公式LINE導線の制作サンプル" /></figure>
+        </div>
+        <div class="works__list">
+          <div class="works__item reveal"><h3>LP・HPデザイン</h3><p>相談までの導線を意識した構成とビジュアルを設計します。</p></div>
+          <div class="works__item reveal" data-d="1"><h3>MEO・地図検索</h3><p>地域で探している人が迷わず来店・相談できる接点を整えます。</p></div>
+          <div class="works__item reveal" data-d="2"><h3>公式LINE導線</h3><p>予約後の再接点や再来店につながる関係づくりを設計します。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. INSIGHT (墨黒) ============ -->
+  <section class="sec insight" id="insight" aria-labelledby="insight-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Insight</span>
+        <span class="en">Insight</span>
+        <h2 id="insight-title" class="mincho">見られる側を知っているから、<br>反応される設計ができる。</h2>
+      </div>
+      <div class="insight__grid">
+        <p class="insight__lead reveal">語縁の代表は、現役インフルエンサーとして発信を続けています。人が何に反応し、何を信頼し、なぜ行動するのか。その感覚を、LP・HP制作やSNS運用に活かします。</p>
+        <div class="insight__body reveal" data-d="1">
+          <div class="flow-line" aria-hidden="true"></div>
+          <p>数字だけでは見えない、人の感情から導線を設計する。売り込みすぎず、相談したくなる距離で言葉を選びます。</p>
+          <p class="insight__sign">GOEN<span>Web Direction Design</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. PLANS ============ -->
+  <section class="sec" id="plans" aria-labelledby="plans-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Plans</span>
+        <span class="en">Plans</span>
+        <h2 id="plans-title">よくある、はじまり方。</h2>
+      </div>
+      <div class="plans">
+        <div class="plan-row reveal"><span class="plan-row__no">01</span><div class="plan-row__main"><h3>まずはLPだけ整えたい</h3><p>LP制作＋計測設定。広告やSNSの受け皿が欲しい方に。</p></div><a class="plan-row__arrow" href="#contact">相談する</a></div>
+        <div class="plan-row reveal" data-d="1"><span class="plan-row__no">02</span><div class="plan-row__main"><h3>地域から見つけてもらいたい</h3><p>HP制作＋MEO初期設計。店舗・地域ビジネスの方に。</p></div><a class="plan-row__arrow" href="#contact">相談する</a></div>
+        <div class="plan-row reveal" data-d="2"><span class="plan-row__no">03</span><div class="plan-row__main"><h3>LINE予約までつなげたい</h3><p>LP / HP＋公式LINE導線設計。電話以外の予約口が欲しい方に。</p></div><a class="plan-row__arrow" href="#contact">相談する</a></div>
+        <div class="plan-row reveal" data-d="3"><span class="plan-row__no">04</span><div class="plan-row__main"><h3>発信を問い合わせにつなげたい</h3><p>SNS運用設計＋LP制作。発信しているが成果がない方に。</p></div><a class="plan-row__arrow" href="#contact">相談する</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. FLOW ============ -->
+  <section class="sec" id="flow" aria-labelledby="flow-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Flow</span>
+        <span class="en">Flow</span>
+        <h2 id="flow-title" class="mincho">はじめてでも、<br>この流れで。</h2>
+      </div>
+      <div class="flow" data-growline>
+        <div class="flow__rail" aria-hidden="true"></div>
+        <div class="flow__fill" data-growfill aria-hidden="true"></div>
+        <div class="flow-step reveal"><p class="flow-step__no">01</p><div class="flow-step__txt"><h3>無料相談</h3><p>オンラインで気軽に。契約の話はまだしません。</p></div></div>
+        <div class="flow-step reveal"><p class="flow-step__no">02</p><div class="flow-step__txt"><h3>現状ヒアリング</h3><p>事業と集客の現状を、一緒に整理します。</p></div></div>
+        <div class="flow-step reveal"><p class="flow-step__no">03</p><div class="flow-step__txt"><h3>必要な施策を診断</h3><p>不要な施策は「不要」とお伝えします。</p></div></div>
+        <div class="flow-step reveal"><p class="flow-step__no">04</p><div class="flow-step__txt"><h3>ご提案・お見積もり</h3><p>内訳を明確に。納得できるまで検討ください。</p></div></div>
+        <div class="flow-step reveal"><p class="flow-step__no">05</p><div class="flow-step__txt"><h3>制作・構築</h3><p>進捗を共有しながら、丁寧に作り込みます。</p></div></div>
+        <div class="flow-step reveal"><p class="flow-step__no">06</p><div class="flow-step__txt"><h3>運用・改善</h3><p>必要に応じて、公開後も隣で伴走します。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. FAQ ============ -->
+  <section class="sec" id="faq" aria-labelledby="faq-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">FAQ</span>
+        <span class="en">FAQ</span>
+        <h2 id="faq-title" class="mincho">相談の前に、<br>よくある質問。</h2>
+      </div>
+      <div class="faq" data-faq>
+        <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">Webに詳しくなくても相談できますか？<span class="faq__mark" aria-hidden="true"></span></button><div class="faq__a"><p>もちろんです。専門用語を使わず、現在の状況から一緒に整理します。何から手をつけるべきかが分かるだけでも、相談の価値があります。</p></div></div>
+        <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">LPだけ、HPだけの依頼も可能ですか？<span class="faq__mark" aria-hidden="true"></span></button><div class="faq__a"><p>可能です。目的に合わせて、単品制作から組み合わせまで対応します。必要のない施策はおすすめしません。</p></div></div>
+        <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">MEOやLINEだけの相談もできますか？<span class="faq__mark" aria-hidden="true"></span></button><div class="faq__a"><p>できます。すでにHPをお持ちの場合は、今あるものを活かす形で導線を設計します。</p></div></div>
+        <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false">強引な営業はありませんか？<span class="faq__mark" aria-hidden="true"></span></button><div class="faq__a"><p>ありません。不要だと判断した施策はこちらからお断りすることもあります。相談だけで終わっても大丈夫です。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12. ABOUT ============ -->
+  <section class="sec" id="about" aria-labelledby="about-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">About</span>
+        <span class="en">About</span>
+        <h2 id="about-title" class="mincho">語縁について。</h2>
+      </div>
+      <div class="about">
+        <p class="about__statement reveal">「語」は言葉、「縁」はご縁。<br>言葉でご縁をつなぎ、<br>必要な人に、必要な出会いが届く。<br><span class="accent">その導線を、Webの上に設計します。</span></p>
+        <dl class="about__meta reveal" data-d="1">
+          <div><dt>屋号</dt><dd>語縁 / GOEN</dd></div>
+          <div><dt>事業内容</dt><dd>HP制作・LP制作・MEO対策・公式LINE導線設計・SNS運用設計・Web集客導線設計</dd></div>
+          <div><dt>対象</dt><dd>地域店舗・個人事業主</dd></div>
+          <div><dt>ミッション</dt><dd>必要な人に、必要なご縁が届くWeb導線をつくる。</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13. CONTACT ============ -->
+  <section class="sec" id="contact" aria-labelledby="contact-title">
+    <div class="shell">
+      <div class="head reveal">
+        <span class="ghost" aria-hidden="true">Contact</span>
+        <span class="en">Contact</span>
+        <h2 id="contact-title" class="mincho">必要な施策を、<br>無料で相談する。</h2>
+      </div>
+      <div class="contact">
+        <div class="contact__intro reveal">
+          <p>まだ依頼する必要はありません。30分だけの相談OK、オンライン対応、強引な営業なし。まず、今の状況を一緒に整理しましょう。</p>
+          <div class="flow-line" aria-hidden="true"></div>
+          <div class="contact__assure"><span>売り込みなし</span><span>初回相談無料</span><span>必要な施策だけ</span></div>
+        </div>
+        <form class="form reveal" data-d="1" action="#" method="post" onsubmit="return false">
+          <div class="field"><label for="f-name">お名前</label><input id="f-name" type="text" name="name" autocomplete="name" /></div>
+          <div class="field"><label for="f-mail">メールアドレス</label><input id="f-mail" type="email" name="email" autocomplete="email" /></div>
+          <div class="field"><label for="f-msg">相談したいこと（任意）</label><textarea id="f-msg" name="message" rows="4" placeholder="例：予約がなかなか増えない。何から手をつけるべきか相談したい。"></textarea></div>
+          <button class="btn" type="submit">必要な施策を無料で相談する</button>
         </form>
-        <div class="cform-done" id="contactDone" hidden>
-          <p class="cd-title">ありがとうございます。</p>
-          <p class="cd-body">ご相談内容を受け取りました。一両日中に、ご連絡いたします。<br>売り込みは行いません。どうぞご安心ください。</p>
-        </div>
       </div>
-      <p class="finale-note rv" style="--d:0.4s">まだ依頼する必要はありません ・ 30分だけの相談OK ・ オンライン対応 ・ 強引な営業なし</p>
     </div>
   </section>
-
 </main>
 
-<div class="mobile-cta" id="mobileCta">
-  <a class="mc-btn" href="#contact">必要な施策を無料で相談する</a>
-</div>
-
-<footer class="site-footer-wrap">
-  <div class="footer-mark" aria-hidden="true">語縁</div>
-  <div class="site-footer">
-  <div class="footer-hp">
-    <div class="footer-brand">
-      <div class="fb-lock">
-        <span class="brand-plate"><img class="brand-img" src="goen-logo.png" alt="語縁 GOEN ロゴ"></span>
-        <span class="fb-name">語縁<span class="fb-en">GOEN ・ WEB DIRECTION DESIGN</span></span>
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <div>
+        <a class="brand" href="#top" aria-label="語縁 GOEN トップへ">
+          <img src="assets/images/goen-logo.png" alt="語縁 GOEN ロゴ" />
+          <span class="brand__word"><span class="brand__en">GOEN</span><span class="brand__jp">語縁</span></span>
+        </a>
+        <p class="foot__tag">見つかる、信頼される、相談される。その流れを、一本の線で整える。</p>
       </div>
-      <p>地域店舗・個人事業主のためのLP・HP制作とWeb集客導線設計。見つけられ、信頼され、相談される流れを、一本の線で設計します。</p>
+      <nav class="foot__nav" aria-label="フッターナビゲーション">
+        <a href="#quality">QUALITY</a>
+        <a href="#service">SERVICE</a>
+        <a href="#flow">FLOW</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
     </div>
-    <div class="footer-col">
-      <h4>SERVICE</h4>
-      <a href="quality.html">制作品質</a>
-      <a href="system.html">集客の仕組み</a>
-      <a href="service.html">サービス</a>
-      <a href="flow.html">相談の流れ</a>
+    <div class="foot__bottom">
+      <small>© 2026 語縁 GOEN — Web Direction Design.</small>
+      <small>必要な人に、必要なご縁が届くWeb導線を。</small>
     </div>
-    <div class="footer-col">
-      <h4>COMPANY</h4>
-      <a href="about.html">会社概要</a>
-      <a href="about.html#message">代表メッセージ</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-    </div>
-    <div class="footer-col">
-      <h4>CONTACT</h4>
-      <a href="contact.html">無料相談</a>
-      <a href="contact.html">LINEで相談</a>
-      <a href="contact.html">メールで問い合わせ</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2026 語縁 GOEN. All rights reserved.</p>
-    <nav class="fb-links">
-      <a href="index.html">TOP</a>
-      <a href="about.html">会社概要</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">お問い合わせ</a>
-    </nav>
-  </div>
   </div>
 </footer>
 
-<template id="__bundler_thumbnail" data-bg-color="#03150D">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="enishiBg" cx="50%" cy="42%" r="70%">
-        <stop offset="0%" stop-color="#0E3826"></stop>
-        <stop offset="72%" stop-color="#03150D"></stop>
-      </radialGradient>
-    </defs>
-    <rect width="1200" height="800" fill="url(#enishiBg)"></rect>
-    <g stroke="#00C66A" stroke-width="2" opacity="0.7">
-      <line x1="600" y1="230" x2="747" y2="315"></line>
-      <line x1="747" y1="315" x2="747" y2="485"></line>
-      <line x1="747" y1="485" x2="600" y2="570"></line>
-      <line x1="600" y1="570" x2="453" y2="485"></line>
-      <line x1="453" y1="485" x2="453" y2="315"></line>
-      <line x1="453" y1="315" x2="600" y2="230"></line>
-    </g>
-    <g fill="#18D67A">
-      <circle cx="600" cy="230" r="9"></circle>
-      <circle cx="747" cy="315" r="9"></circle>
-      <circle cx="747" cy="485" r="9"></circle>
-      <circle cx="600" cy="570" r="9"></circle>
-      <circle cx="453" cy="485" r="9"></circle>
-      <circle cx="453" cy="315" r="9"></circle>
-    </g>
-    <text x="600" y="432" text-anchor="middle" font-family="'Hiragino Mincho ProN', serif" font-size="96" font-weight="700" fill="#FFFFFF" letter-spacing="10">語縁</text>
-  </svg>
-</template>
-
-<script>
-  window.GOEN_CONFIG = { density: window.innerWidth < 760 ? 0.5 : 1, connect: 1 };
-  window.GOEN_SVC_DATA = [
-    { jp: "HP制作", en: "WEBSITE", desc: "会社の信頼をつくる、営業拠点を設計する。誰に・何を・どう伝えるかという構造から組み立てます。",
-      meta: [["こんな方に", "会社・店舗の信頼を整えたい方"], ["成果イメージ", "指名検索からの問い合わせ"], ["納品物の例", "構成設計＋5ページ前後のHP一式"], ["期間の目安", "約4週間〜"]] },
-    { jp: "LP制作", en: "LANDING PAGE", desc: "広告やSNSからの流入を、問い合わせへ変える。一つの目的に絞った導線を磨き上げます。",
-      meta: [["こんな方に", "広告・SNSの受け皿が欲しい方"], ["成果イメージ", "流入からの予約・問い合わせ率改善"], ["納品物の例", "コピー設計込みLP1本＋計測設定"], ["期間の目安", "約2〜4週間"]] },
-    { jp: "MEO対策", en: "LOCAL SEO / MEO", desc: "地域で探している見込み客との接点を増やす。検索と地図の上に、最初の出会いをつくります。",
-      meta: [["こんな方に", "地域から探される業種の店舗"], ["成果イメージ", "地図検索からの来店・電話"], ["納品物の例", "プロフィール最適化＋運用手順書"], ["期間の目安", "初期設計 約2週間〜"]] },
-    { jp: "公式LINE運用", en: "LINE", desc: "一度出会った見込み客と、継続的な関係をつくる。再訪と指名につなげます。",
-      meta: [["こんな方に", "再訪・リピートを増やしたい店舗"], ["成果イメージ", "再訪率と指名予約の向上"], ["納品物の例", "リッチメニュー・応答・予約導線一式"], ["期間の目安", "約2〜3週間"]] },
-    { jp: "SNS運用代行", en: "SOCIAL MEDIA", desc: "認知と信頼を積み上げ、選ばれる理由を届ける。日々の発信を資産に変えます。",
-      meta: [["こんな方に", "発信を成果につなげたい方"], ["成果イメージ", "プロフィール経由の問い合わせ"], ["納品物の例", "運用設計書＋月次運用レポート"], ["期間の目安", "設計 約2週間＋月次"]] }
-  ];
-  window.GOEN_THREAD_LABELS = [
-    { sel: "#quality", text: "信頼", oy: 56 },
-    { sel: "#system", text: "設計", oy: 56 },
-    { sel: "#services", text: "提供", oy: 56 },
-    { sel: "#plans", text: "相談", oy: 56, dk: true },
-    { sel: "#contact", text: "ご縁がつながる", oy: 80 }
-  ];
-  window.GOEN_THREAD_ANCHORS = [
-    { sel: "#hero", x: 0.67, y: 0.62 },
-    { sel: "#quality", x: 0.32, y: 0.5 },
-    { sel: "#problem", x: 0.3, y: 0.52 },
-    { sel: "#system", x: 0.5, y: 0.55 },
-    { sel: "#price", x: 0.7, y: 0.5 },
-    { sel: "#services", x: 0.27, y: 0.62 },
-    { sel: "#insight", x: 0.72, y: 0.5 },
-    { sel: "#philosophy", x: 0.5, y: 0.5 },
-    { sel: "#profile", x: 0.35, y: 0.5 },
-    { sel: "#plans", x: 0.65, y: 0.5 },
-    { sel: "#flow", x: 0.35, y: 0.5 },
-    { sel: "#contact", x: 0.5, y: 0.5 }
-  ];
-</script>
-<script src="goen-scenes.js"></script>
-<script src="goen-nodes.js"></script>
-<script src="goen-scroll.js"></script>
-<script src="goen-lux.js"></script>
-<script src="goen-v2.js"></script>
-<script src="goen-v3.js"></script>
-
+<script src="assets/js/goen-line.js" defer></script>
 </body>
 </html>
