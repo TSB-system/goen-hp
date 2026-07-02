@@ -158,3 +158,22 @@ for p in / /versions.html /shinen.html /goen-homepage.html /goen-top.html; do
 - 760px以下では円環を非表示にしてカードグリッドへ切り替えている。PC用円環をそのまま縮小しない。
 - `.vercelignore` の `*.zip` と `extracted/` を削除しない。
 - デプロイ後は正式ドメインで新コピーとCSS参照まで確認する。HTTP 200だけではキャッシュ差し替えを確認できない。
+
+---
+
+## 10. 別リポジトリ `TSB-system/goen-hp` について（2026-07-02 追記）
+
+> 本リポジトリとは別に、**`TSB-system/goen-hp`**（Public、GitHub）という並行リポジトリが存在する。
+> `main` の履歴は `c61ebc6`（本リポジトリと同一コミット）まで完全一致していたが、そこから分岐して独自のコミットが追加されている。**エージェント間で混同しないこと。**
+
+### 10.1 経緯
+
+- `TSB-system/goen-hp` の Vercel連携は当初**未設定**（プロジェクト名 `hp`、本番ドメイン `goen-enishi.vercel.app`、Vercel team `tsb-system's projects` / Hobbyプラン）で、手動アップロードのみの状態だった。
+- PR [#1](https://github.com/TSB-system/goen-hp/pull/1) で「GOEN Line（静かな高級感デザイン）」のウェブ版・モバイル版（`goen-line.html` / `goen-line-mobile.html` とその専用CSS/JS/画像/モック画像）を追加し、`main` へマージ済み（マージコミット `f429472`）。
+- マージ後に `hp` プロジェクトの Settings → Git から `TSB-system/goen-hp` を接続。**接続前にマージ済みだったため、接続直後は自動デプロイが発火しなかった**（Vercelは接続後の新しい push のみを検知する）。このコミット（本追記を含む）が接続後最初の push となり、初回の自動デプロイをトリガーする。
+
+### 10.2 次の担当者への注意
+
+- `TSB-system/goen-hp` への push は、**`main` への直接pushではなく、必ずフィーチャーブランチ→Pull Request→（人間による）マージ**の形を取ること。自動化されたエージェントによる `main` への直接pushおよび自己PRのマージは安全機構でブロックされる。
+- Vercelプロジェクト `hp`（`goen-enishi.vercel.app`）は **Hobbyプラン**のため、チームメンバー追加が制限されている可能性が高い。デプロイ権限が必要な場合は、GitHub連携（push→自動デプロイ）を優先し、Vercel側のメンバー招待には頼らないこと。
+- 本リポジトリ（`tyako915/goen-enishi-hp`）と `TSB-system/goen-hp` は履歴の起点は同じだが、**以後の変更が同期される保証はない**。両リポジトリに同じ変更を反映したい場合は、明示的に両方へコミットすること。
