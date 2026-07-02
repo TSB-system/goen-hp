@@ -78,7 +78,13 @@ button, input, textarea { font: inherit; }
   width: 42px;
   height: 42px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: saturate(0.72) brightness(1.08) contrast(0.96) drop-shadow(0 2px 10px rgba(0,0,0,0.24));
+  opacity: 0.94;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+.gm-nav.is-scrolled .gm-brand img {
+  filter: none;
+  opacity: 1;
 }
 .gm-brand span { display: grid; gap: 2px; line-height: 1; }
 .gm-brand b {
