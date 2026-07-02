@@ -16,3 +16,6 @@ _mock.html
 _cap.js
 mockshot*.js
 GOEN_WEB*.zip
+
+# mock/reference images are for design review only
+assets/images/モック画像/

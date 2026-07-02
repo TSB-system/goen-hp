@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry|IEMobile|Opera Mini).*"
+        }
+      ],
+      "destination": "/goen-line-mobile.html"
+    },
+    {
+      "source": "/",
+      "destination": "/goen-line.html"
+    }
+  ]
+}
