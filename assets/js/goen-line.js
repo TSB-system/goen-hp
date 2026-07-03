@@ -3,22 +3,35 @@
 (() => {
   "use strict";
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasGsap = !reduce && window.gsap && window.ScrollTrigger;
+  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
 
-  /* ---- ヘッダー（スクロールで墨黒ブラー）＋レール進捗 ---- */
   const nav = document.querySelector("[data-nav]");
   const railProgress = document.querySelector("[data-rail-progress]");
   const railBead = document.querySelector("[data-rail-bead]");
 
+  /* ---- ヘッダー：スクロールでブラー化 ＋ 下スクロールで隠す/上スクロールで出す ---- */
+  let lastY = window.scrollY;
   const onScroll = () => {
     const y = window.scrollY;
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = scrollable > 0 ? Math.min(1, Math.max(0, y / scrollable)) : 0;
-    if (nav) nav.classList.toggle("is-scrolled", y > 40);
+    if (nav) {
+      nav.classList.toggle("is-scrolled", y > 100);
+      if (y < 80) {
+        nav.classList.remove("is-hidden");
+      } else if (y > lastY + 2) {
+        nav.classList.add("is-hidden");
+      } else if (y < lastY - 2) {
+        nav.classList.remove("is-hidden");
+      }
+    }
     if (railProgress) railProgress.style.transform = `scaleY(${ratio})`;
     if (railBead) {
       railBead.style.top = (ratio * 100) + "%";
       railBead.style.opacity = y > 80 ? "1" : "0";
     }
+    lastY = y;
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
@@ -40,17 +53,63 @@
     links.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
   }
 
+  /* ---- アンカーリンクのイージング付きスムーススクロール ---- */
+  const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const scrollToTarget = (target) => {
+    const headerHeight = nav ? nav.offsetHeight : 0;
+    const startY = window.scrollY;
+    const destY = target.getBoundingClientRect().top + startY - headerHeight - 8;
+    if (reduce) { window.scrollTo(0, destY); return; }
+    const distance = destY - startY;
+    const duration = Math.min(900, Math.max(400, Math.abs(distance) * 0.5));
+    const startTime = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - startTime) / duration);
+      window.scrollTo(0, startY + distance * easeInOutCubic(p));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const hash = a.getAttribute("href");
+    if (!hash || hash.length < 2) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToTarget(target);
+      history.pushState(null, "", hash);
+    });
+  });
+
   /* ---- 静かに浮かび上がるリビール ---- */
-  const reveals = [...document.querySelectorAll(".reveal:not(.is-in)")];
-  if (reduce || !("IntersectionObserver" in window)) {
+  const reveals = [...document.querySelectorAll(".reveal:not([data-hero-reveal])")];
+  if (!hasGsap) {
     reveals.forEach(el => el.classList.add("is-in"));
   } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+    reveals.forEach(el => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 85%",
+        once: true,
+        onEnter: () => el.classList.add("is-in")
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(el => io.observe(el));
+    });
+  }
+
+  /* ---- Works画像：進入時にclip-path + scaleが解ける ---- */
+  const workImgs = [...document.querySelectorAll(".work-shot img")];
+  if (!hasGsap) {
+    workImgs.forEach(img => img.classList.add("is-in"));
+  } else {
+    workImgs.forEach(img => {
+      ScrollTrigger.create({
+        trigger: img,
+        start: "top 88%",
+        once: true,
+        onEnter: () => img.classList.add("is-in")
+      });
+    });
   }
 
   /* ---- スクロールに合わせて伸びる導線（SYSTEM / FLOW）---- */
@@ -63,7 +122,6 @@
     const vh = window.innerHeight;
     growGroups.forEach(({ el, fill }) => {
       const r = el.getBoundingClientRect();
-      // 0 = セクション上端が画面中央, 1 = 下端が画面中央
       const start = vh * 0.85;
       const end = vh * 0.35;
       const total = r.height + (start - end);
@@ -81,19 +139,49 @@
     }
   }
 
-  /* ---- ヒーロー微パララックス（pointer環境のみ・軽量）---- */
-  const parallax = document.querySelector("[data-parallax]");
-  if (parallax && !reduce) {
-    let ticking = false;
-    window.addEventListener("scroll", () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (y < window.innerHeight) parallax.style.transform = `scale(1.06) translateY(${y * 0.08}px)`;
-        ticking = false;
+  /* ---- ステップ番号の点灯（System / Flow）---- */
+  if (hasGsap) {
+    document.querySelectorAll(".step__no, .flow-step__no").forEach(el => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 70%",
+        onEnter: () => el.classList.add("is-lit"),
+        onLeaveBack: () => el.classList.remove("is-lit")
       });
-    }, { passive: true });
+    });
+  } else {
+    document.querySelectorAll(".step__no, .flow-step__no").forEach(el => el.classList.add("is-lit"));
+  }
+
+  /* ---- ヒーロー：画像の静かなズームアウト + キャッチコピーの立ち上がり + 浅いパララックス ---- */
+  const heroImg = document.querySelector("[data-parallax]");
+  const heroReveals = [...document.querySelectorAll("[data-hero-reveal]")];
+  const heroSection = document.querySelector(".hero");
+
+  if (!hasGsap) {
+    heroReveals.forEach(el => el.classList.add("is-in"));
+  } else if (heroImg) {
+    gsap.set(heroImg, { opacity: 0, scale: 1.09 });
+    const tl = gsap.timeline();
+    tl.to(heroImg, { opacity: 1, scale: 1.05, duration: 1.6, ease: "power2.out" });
+    heroReveals.forEach(el => {
+      const order = parseFloat(el.dataset.heroReveal) || 0;
+      const delays = [0, 0.15, 0.30, 0.60];
+      tl.call(() => el.classList.add("is-in"), null, 0.4 + (delays[order] || order * 0.15));
+    });
+
+    gsap.to(heroImg, {
+      y: () => heroImg.offsetHeight * 0.05,
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroSection,
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  } else {
+    heroReveals.forEach(el => el.classList.add("is-in"));
   }
 
   /* ---- FAQ アコーディオン（ゆっくり上品に）---- */

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/goen-line-mobile.css?v=20260703-scroll-line" />
+<link rel="stylesheet" href="assets/css/goen-line-mobile.css?v=20260703-polish" />
 </head>
 <body class="gm">
 <div class="gm-grain" aria-hidden="true"></div>
@@ -34,16 +34,16 @@
 <main id="top">
   <section class="gm-hero" aria-labelledby="hero-title">
     <div class="gm-hero__image" aria-hidden="true">
-      <img src="assets/images/reference-style/asantech-hero-business-hands.png" alt="" />
+      <img src="assets/images/reference-style/asantech-hero-business-hands.png" alt="" data-hero-img />
     </div>
     <span class="gm-hero__line gm-hero__line--one" aria-hidden="true"></span>
     <span class="gm-hero__line gm-hero__line--two" aria-hidden="true"></span>
     <div class="gm-container gm-hero__body">
-      <p class="gm-kicker gm-reveal"><span>地域店舗・個人事業主のための</span><span>Web導線設計</span></p>
-      <p class="gm-hero__subline gm-reveal" data-delay="1"><span>見つかる、信頼される、</span><span>相談される。</span></p>
-      <h1 id="hero-title" class="gm-reveal" data-delay="2">成果につながる<br>Web導線設計。</h1>
-      <p class="gm-hero__copy gm-reveal" data-delay="3">売り込みなし / 初回相談無料 / 必要な施策だけご提案</p>
-      <div class="gm-actions gm-reveal" data-delay="4">
+      <p class="gm-kicker gm-reveal" data-hero-reveal="0"><span>地域店舗・個人事業主のための</span><span>Web導線設計</span></p>
+      <p class="gm-hero__subline gm-reveal" data-hero-reveal="1"><span>見つかる、信頼される、</span><span>相談される。</span></p>
+      <h1 id="hero-title" class="gm-reveal" data-hero-reveal="2">成果につながる<br>Web導線設計。</h1>
+      <p class="gm-hero__copy gm-reveal" data-hero-reveal="3">売り込みなし / 初回相談無料 / 必要な施策だけご提案</p>
+      <div class="gm-actions gm-reveal" data-hero-reveal="4">
         <a class="gm-btn" href="#contact">無料で相談する</a>
         <a class="gm-textlink" href="#system">導線設計の考え方を見る</a>
       </div>
@@ -298,6 +298,8 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/goen-line-mobile.js" defer></script>
 </body>
 </html>
