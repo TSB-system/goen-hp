@@ -57,6 +57,17 @@
 
   /* 影：2層まで */
   --shadow-soft: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.25);
+
+  /* 縁の糸（新規実装専用トークン。既存の色変数は変更しない） */
+  --enishi-sumi: var(--ink);
+  --enishi-washi: #f7f4ee;
+  --enishi-gold: #b89b5e;
+  --enishi-gold-line: rgba(184, 155, 94, .28);
+  --enishi-gold-dim: rgba(184, 155, 94, .25);
+  --enishi-gold-lit: rgba(184, 155, 94, .6);
+  --ease-quiet: cubic-bezier(.22, .61, .21, 1);
+  --dur-reveal-thread: 1.1s;
+  --tracking-label: .22em;
 }
 
 * { box-sizing: border-box; }
@@ -473,7 +484,7 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   transition: padding-left var(--dur-fast) var(--ease-out);
 }
 @media (hover: hover) { .index-row:hover { padding-left: 16px; } }
-.index-row__no { font-family: var(--en); font-size: clamp(20px, 1.8vw, 26px); color: var(--gold); letter-spacing: 0.08em; }
+.index-row__no { font-family: var(--en); font-size: clamp(20px, 1.8vw, 26px); color: var(--gold); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
 .index-row__name { font-size: clamp(19px, 1.9vw, 25px); font-weight: 700; letter-spacing: 0.05em; transition: color var(--dur-fast) var(--ease-out); }
 .index-row__name .en-s { display: block; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.28em; color: var(--muted); margin-top: 10px; }
 .index-row__desc { margin: 0; color: var(--muted); font-family: var(--mincho); }
@@ -547,7 +558,7 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   border-bottom: 1px solid var(--line);
 }
 .plans .plan-row:first-child { border-top: 1px solid var(--line); }
-.plan-row__no { font-family: var(--en); font-size: clamp(22px, 2vw, 30px); color: var(--green); }
+.plan-row__no { font-family: var(--en); font-size: clamp(22px, 2vw, 30px); color: var(--green); font-variant-numeric: tabular-nums; }
 .plan-row__main h3 { margin: 0 0 6px; font-size: clamp(17px, 1.7vw, 22px); font-weight: 700; letter-spacing: 0.04em; }
 .plan-row__main p { margin: 0; color: var(--muted); font-family: var(--mincho); }
 .plan-row__arrow { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; color: var(--gold); display: inline-flex; align-items: center; gap: 12px; opacity: 0.85; }
@@ -616,7 +627,7 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   background: transparent; color: var(--text); font-family: var(--mincho); font-size: 16px;
   transition: border-color var(--dur-fast) var(--ease-out);
 }
-.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--green); }
+.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
 .field textarea { resize: vertical; min-height: 96px; }
 .form .btn {
   width: 100%;
@@ -624,6 +635,42 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   margin-top: 8px;
   padding-inline: 34px;
 }
+
+/* CONTACT — 公式LINE誘導エリア */
+.contact-line { display: block; }
+.contact-line .en { display: block; margin-bottom: 24px; }
+.contact-line__lead {
+  font-weight: 600;
+  font-size: clamp(22px, 2.1vw, 29px);
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin: 0 0 22px;
+}
+.contact-line__copy {
+  font-family: var(--mincho);
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  line-height: 2.05;
+  color: var(--muted);
+  margin: 0;
+}
+.contact-line .flow-line { margin: 28px 0 30px; }
+.contact-line__cta {
+  width: 100%;
+  min-height: 58px;
+  padding-inline: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.contact-line__arrow {
+  font-family: var(--sans);
+  font-size: 16px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+@media (hover: hover) { .contact-line__cta:hover .contact-line__arrow { transform: translateX(5px); } }
+.contact-line .contact__assure { margin-top: 26px; }
 
 /* ================================================================
    フッター
@@ -634,6 +681,7 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   color: var(--ivory);
   padding: clamp(60px, 8vw, 96px) 0 44px;
 }
+.foot::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--enishi-gold-line); }
 .foot__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 44px; border-bottom: 1px solid var(--line-on-dark); }
 .foot .brand img { filter: brightness(0) invert(1); }
 .foot__tag { font-family: var(--mincho); font-size: 15px; letter-spacing: 0.08em; color: rgba(244,239,228,0.72); max-width: 30ch; line-height: 2; }

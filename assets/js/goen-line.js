@@ -97,6 +97,21 @@
     });
   }
 
+  /* ---- 罫線（.flow-line）：進入時に左から引かれる ---- */
+  const flowLines = [...document.querySelectorAll(".flow-line")];
+  if (!hasGsap) {
+    flowLines.forEach(el => el.classList.add("is-in"));
+  } else {
+    flowLines.forEach(el => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 90%",
+        once: true,
+        onEnter: () => el.classList.add("is-in")
+      });
+    });
+  }
+
   /* ---- Works画像：進入時にclip-path + scaleが解ける ---- */
   const workImgs = [...document.querySelectorAll(".work-shot img")];
   if (!hasGsap) {
