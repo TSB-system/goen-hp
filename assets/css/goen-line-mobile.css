@@ -294,6 +294,23 @@ main { position: relative; }
 }
 .gm-section--soft { background: linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 100%); }
 .gm-section--works { padding-bottom: 92px; }
+
+/* 墨の滲み：明色セクションに和紙的な質感リズムを添える（3箇所限定・デスクトップと共通の狙い） */
+#quality {
+  background:
+    radial-gradient(320px 320px at 6% -6%, rgba(28,26,22,0.05), transparent 70%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
+}
+#service {
+  background:
+    radial-gradient(320px 320px at 94% 106%, rgba(28,26,22,0.05), transparent 70%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
+}
+#about {
+  background:
+    radial-gradient(320px 320px at 6% -6%, rgba(28,26,22,0.05), transparent 70%),
+    linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 100%);
+}
 .gm-head {
   position: relative;
   margin-bottom: 28px;
@@ -1180,6 +1197,25 @@ main { position: relative; }
   filter: none;
   opacity: 1;
 }
+.gm-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin: 0 0 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(210,190,138,0.28);
+  font-family: var(--latin);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.gm-footer__nav a { color: rgba(255,255,255,0.68); }
+.gm-footer__line {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(199,176,119,0.92);
+}
+.gm-footer__line img { display: block; width: 18px; height: 18px; object-fit: contain; flex: 0 0 auto; }
 
 /* Reveal */
 .gm-reveal {
