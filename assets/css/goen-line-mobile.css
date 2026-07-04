@@ -13,6 +13,7 @@
   --serif: "Shippori Mincho", "Noto Serif JP", serif;
   --sans: "Noto Sans JP", sans-serif;
   --en: "Cormorant Garamond", "Jost", serif;
+  --num: "Spectral", "Jost", serif;
   --latin: "Jost", "Noto Sans JP", sans-serif;
   --mobile-nav-x: clamp(22px, 6vw, 28px);
   --mobile-logo-center-x: calc(var(--mobile-nav-x) + 21px);
@@ -454,7 +455,7 @@ main { position: relative; }
   height: 100%;
   object-fit: cover;
   object-position: 46% center;
-  filter: grayscale(38%) brightness(0.62) contrast(1.04);
+  filter: brightness(0.68) contrast(1.1) saturate(0.6) sepia(0.16);
   transform: scale(1.02);
 }
 .gm-hero__image::after {
@@ -614,7 +615,7 @@ main { position: relative; }
 }
 .gm-value span, .gm-number, .gm-step span, .gm-plan span, .gm-flow span {
   color: var(--green);
-  font-family: var(--en);
+  font-family: var(--num);
   font-size: 27px;
   line-height: 1;
 }
@@ -715,7 +716,7 @@ main { position: relative; }
   left: 16px;
   bottom: 14px;
   color: var(--black);
-  font-family: var(--en);
+  font-family: var(--num);
   font-size: 40px;
   font-weight: 400;
   line-height: 1;
