@@ -128,7 +128,7 @@
       ScrollTrigger.create({
         trigger: el,
         start: "top 75%",
-        onEnter: () => { el.classList.add("is-lit"); countUpFirstTextNode(el, 700); },
+        onEnter: () => { el.classList.add("is-lit"); countUpFirstTextNode(el, 450); },
         onLeaveBack: () => el.classList.remove("is-lit")
       });
     });
@@ -137,7 +137,7 @@
         trigger: el,
         start: "top 88%",
         once: true,
-        onEnter: () => countUpFirstTextNode(el, 900)
+        onEnter: () => countUpFirstTextNode(el, 580)
       });
     });
   } else {
