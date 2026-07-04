@@ -8,6 +8,27 @@
 
   const nav = document.querySelector("[data-nav]");
   const railProgress = document.querySelector("[data-rail-progress]");
+
+  /* ---- 数字のカウントアップ（PRICE / STEP / FLOW の番号を軽やかに）---- */
+  const countUpFirstTextNode = (el, duration = 900) => {
+    const node = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.nodeValue.trim() !== "");
+    if (!node) return;
+    const original = node.nodeValue;
+    const target = parseInt(original, 10);
+    if (Number.isNaN(target)) return;
+    const pad = /^0/.test(original.trim()) ? original.trim().length : 0;
+    const startTime = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - startTime) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      let text = String(Math.round(target * eased));
+      if (pad) text = text.padStart(pad, "0");
+      node.nodeValue = text;
+      if (p < 1) requestAnimationFrame(step);
+      else node.nodeValue = original;
+    };
+    requestAnimationFrame(step);
+  };
   const railBead = document.querySelector("[data-rail-bead]");
 
   /* ---- ヘッダー：スクロールでブラー化 ＋ 下スクロールで隠す/上スクロールで出す ---- */
@@ -160,8 +181,16 @@
       ScrollTrigger.create({
         trigger: el,
         start: "top 70%",
-        onEnter: () => el.classList.add("is-lit"),
+        onEnter: () => { el.classList.add("is-lit"); countUpFirstTextNode(el, 700); },
         onLeaveBack: () => el.classList.remove("is-lit")
+      });
+    });
+    document.querySelectorAll(".price__fig").forEach(el => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 85%",
+        once: true,
+        onEnter: () => countUpFirstTextNode(el, 900)
       });
     });
   } else {
