@@ -9,27 +9,6 @@
   const menuButton = document.querySelector("[data-menu-button]");
   const drawer = document.querySelector("[data-menu-drawer]");
 
-  /* ---- 数字のカウントアップ（PRICE / STEP / FLOW の番号を軽やかに）---- */
-  const countUpFirstTextNode = (el, duration = 900) => {
-    const node = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.nodeValue.trim() !== "");
-    if (!node) return;
-    const original = node.nodeValue;
-    const target = parseInt(original, 10);
-    if (Number.isNaN(target)) return;
-    const pad = /^0/.test(original.trim()) ? original.trim().length : 0;
-    const startTime = performance.now();
-    const step = (now) => {
-      const p = Math.min(1, (now - startTime) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
-      let text = String(Math.round(target * eased));
-      if (pad) text = text.padStart(pad, "0");
-      node.nodeValue = text;
-      if (p < 1) requestAnimationFrame(step);
-      else node.nodeValue = original;
-    };
-    requestAnimationFrame(step);
-  };
-
   /* ---- ヘッダー：スクロールでブラー化 ＋ 下スクロールで隠す/上スクロールで出す ---- */
   let lastY = window.scrollY;
   const updateNav = () => {
@@ -128,16 +107,8 @@
       ScrollTrigger.create({
         trigger: el,
         start: "top 75%",
-        onEnter: () => { el.classList.add("is-lit"); countUpFirstTextNode(el, 450); },
+        onEnter: () => el.classList.add("is-lit"),
         onLeaveBack: () => el.classList.remove("is-lit")
-      });
-    });
-    document.querySelectorAll(".gm-price strong").forEach(el => {
-      ScrollTrigger.create({
-        trigger: el,
-        start: "top 88%",
-        once: true,
-        onEnter: () => countUpFirstTextNode(el, 580)
       });
     });
   } else {
