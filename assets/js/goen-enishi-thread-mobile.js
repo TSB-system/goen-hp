@@ -131,24 +131,4 @@
   }
 
   /* ---- FV内：始点の線 ---- */
-  const fvLine = document.querySelector("[data-fv-line]");
-  const fvKnot = document.querySelector("[data-fv-line-knot]");
-  if (fvLine) {
-    if (reduce) {
-      fvLine.style.strokeDashoffset = "0";
-      if (fvKnot) fvKnot.style.opacity = "1";
-    } else {
-      const len = fvLine.getTotalLength ? fvLine.getTotalLength() : 90;
-      fvLine.style.strokeDasharray = String(len);
-      fvLine.style.strokeDashoffset = String(len);
-      fvLine.style.transition = `stroke-dashoffset 1.6s var(--ease-quiet)`;
-      setTimeout(() => {
-        fvLine.style.strokeDashoffset = "0";
-        if (fvKnot) {
-          fvKnot.style.transition = "opacity 0.4s var(--ease-quiet)";
-          setTimeout(() => { fvKnot.style.opacity = "1"; }, 1300);
-        }
-      }, 600);
-    }
-  }
 })();

@@ -328,14 +328,6 @@ main { position: relative; }
 .enishi-stickybar-space { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
 
 /* FV内：始点の線 */
-.enishi-fv-line { position: absolute; left: var(--mobile-nav-x); bottom: 76px; width: 1px; height: 90px; z-index: 2; pointer-events: none; }
-.enishi-fv-line line { stroke: var(--enishi-gold); stroke-width: 1; }
-.enishi-fv-line circle { fill: var(--enishi-gold); opacity: 0; }
-@media (prefers-reduced-motion: reduce) {
-  .enishi-fv-line line { stroke-dashoffset: 0 !important; }
-  .enishi-fv-line circle { opacity: 1 !important; }
-}
-
 /* Common */
 .gm-section {
   position: relative;
