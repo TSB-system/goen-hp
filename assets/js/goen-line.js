@@ -127,25 +127,6 @@
     });
   }
 
-  /* ---- 境界演出：章替わりスペーサーの文字が opacity 0→1→0 で通り過ぎる ---- */
-  const boundaryChapters = [...document.querySelectorAll("[data-boundary-chapter]")];
-  if (!hasGsap) {
-    boundaryChapters.forEach(el => {
-      const inner = el.querySelector(".boundary-chapter__inner");
-      if (inner) inner.style.opacity = 1;
-    });
-  } else {
-    boundaryChapters.forEach(el => {
-      const inner = el.querySelector(".boundary-chapter__inner");
-      if (!inner) return;
-      gsap.timeline({
-        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true }
-      })
-        .fromTo(inner, { opacity: 0 }, { opacity: 1, ease: "none" })
-        .to(inner, { opacity: 0, ease: "none" });
-    });
-  }
-
   /* ---- Works画像：進入時にclip-path + scaleが解ける ---- */
   const workImgs = [...document.querySelectorAll(".work-shot img")];
   if (!hasGsap) {
