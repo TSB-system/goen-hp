@@ -399,25 +399,24 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   color: var(--ivory);
   background: var(--ink);
 }
-.hero__bg { position: absolute; top: 0; right: 0; bottom: 0; width: 50%; z-index: 0; overflow: hidden; }
-/* 右→左：写真を墨色背景へ完全に溶け込ませるグラデーション */
+.hero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+/* 写真を全面に敷き、文字面だけを墨の膜で整えるグラデーション */
 .hero__bg::before {
   content: "";
   position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(to left,
-      transparent 0%,
-      rgba(26,24,19,0.18) 40%,
-      rgba(26,24,19,0.5) 68%,
-      rgba(26,24,19,0.85) 88%,
-      var(--ink) 100%),
-    radial-gradient(ellipse at 78% 40%, transparent 40%, rgba(26,24,19,0.4) 100%),
+    linear-gradient(90deg,
+      rgba(26,24,19,0.9) 0%,
+      rgba(26,24,19,0.74) 32%,
+      rgba(26,24,19,0.5) 62%,
+      rgba(26,24,19,0.34) 100%),
+    radial-gradient(ellipse at 74% 42%, transparent 42%, rgba(26,24,19,0.26) 100%),
     /* 上端：ナビ可読性のためのスクリム */
     linear-gradient(to bottom, rgba(26,24,19,0.62) 0%, rgba(26,24,19,0.28) 12%, transparent 28%),
     /* 右端：明るい壁を抑える */
-    linear-gradient(to left, rgba(26,24,19,0.4) 0%, rgba(26,24,19,0.12) 12%, transparent 30%),
-    /* 右上コーナー：最も明るい角を沈め、視線の主役を顔に戻す */
-    radial-gradient(circle at 100% 0%, rgba(26,24,19,0.5) 0%, transparent 42%),
+    linear-gradient(to left, rgba(26,24,19,0.28) 0%, rgba(26,24,19,0.1) 14%, transparent 32%),
+    /* 右上コーナー：最も明るい角を沈める */
+    radial-gradient(circle at 100% 0%, rgba(26,24,19,0.42) 0%, transparent 42%),
     /* 下端：次セクションへ滑らかに接地 */
     linear-gradient(to top, rgba(26,24,19,0.65) 0%, rgba(26,24,19,0.28) 10%, transparent 22%);
 }
