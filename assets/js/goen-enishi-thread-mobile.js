@@ -118,31 +118,7 @@
   /* ---- SP下部固定バー ---- */
   const stickybar = document.querySelector("[data-stickybar]");
   if (stickybar) {
-    let shown = false;
-    let exited = false;
-    const updateBar = () => {
-      if (exited) return;
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
-      if (!shown && ratio > 0.25) {
-        shown = true;
-        stickybar.classList.add("is-shown");
-      }
-    };
-    updateBar();
-    window.addEventListener("scroll", updateBar, { passive: true });
-
-    if (io) {
-      new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            exited = true;
-            stickybar.classList.remove("is-shown");
-            stickybar.classList.add("is-exited");
-          }
-        });
-      }, { threshold: 0 }).observe(contact);
-    }
+    stickybar.classList.add("is-shown");
   }
 
   /* ---- FV内：始点の線 ---- */
