@@ -724,8 +724,8 @@ main { position: relative; }
   border-color: rgba(210, 190, 138, 0.68);
 }
 .gm-hero .gm-textlink {
-  justify-content: flex-start;
-  width: auto;
+  justify-content: center;
+  width: min(276px, 100%);
   font-size: 11px;
   letter-spacing: 0.1em;
 }
