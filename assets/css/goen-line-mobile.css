@@ -311,6 +311,88 @@ main { position: relative; }
     radial-gradient(320px 320px at 6% -6%, rgba(28,26,22,0.05), transparent 70%),
     linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 100%);
 }
+
+/* ================================================================
+   境界演出（セクションの継ぎ目にのみ手を入れる。内部は変更しない）
+   ================================================================ */
+
+/* 中区切り：墨溜まりのエッジ（上端 or 下端に薄い墨のグラデーションを重ねる。モバイルは高さを縮小）*/
+#quality {
+  border-top: none;
+  background:
+    linear-gradient(to bottom, rgba(28,26,22,0.1), transparent 90px),
+    radial-gradient(320px 320px at 6% -6%, rgba(28,26,22,0.05), transparent 70%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
+}
+#price {
+  border-top: none;
+  background:
+    linear-gradient(to bottom, rgba(28,26,22,0.1), transparent 90px),
+    linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 100%);
+}
+#service {
+  border-top: none;
+  background:
+    linear-gradient(to bottom, rgba(28,26,22,0.1), transparent 90px),
+    radial-gradient(320px 320px at 94% 106%, rgba(28,26,22,0.05), transparent 70%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
+}
+#faq {
+  border-top: none;
+  background:
+    linear-gradient(to bottom, rgba(28,26,22,0.1), transparent 90px),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
+}
+#contact {
+  border-top: none;
+  background:
+    linear-gradient(to bottom, rgba(28,26,22,0.1), transparent 90px),
+    linear-gradient(to top, rgba(28,26,22,0.14), transparent 120px),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
+}
+
+/* 中区切り：中央から伸びる金線（一度きり。以後動かない）*/
+.boundary-line {
+  display: block;
+  width: clamp(90px, 40%, 200px);
+  height: 1px;
+  margin: 0 auto clamp(28px, 7vw, 40px);
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.boundary-line.is-drawn { transform: scaleX(1); }
+
+/* 大区切り：間（ま）の章替わりスペーサー（2〜3箇所限定・モバイルは高さを縮小）*/
+.boundary-chapter {
+  position: relative;
+  height: clamp(220px, 34vh, 380px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.boundary-chapter__inner { display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0; }
+.boundary-chapter__kanji {
+  writing-mode: vertical-rl;
+  font-family: var(--serif);
+  font-size: clamp(22px, 7vw, 30px);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+.boundary-chapter__num { font-family: var(--en); font-size: 11px; letter-spacing: 0.4em; color: var(--gray); }
+.boundary-chapter--light { background: linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 100%); }
+.boundary-chapter--to-dark { background: linear-gradient(180deg, var(--ivory-dark) 0%, var(--black) 100%); }
+.boundary-chapter--to-light { background: linear-gradient(180deg, var(--black) 0%, var(--ivory) 100%); }
+.boundary-chapter--to-dark .boundary-chapter__num,
+.boundary-chapter--to-light .boundary-chapter__num { color: rgba(244,239,228,0.55); }
+
+/* 大区切り：掠れた筆致エッジ（静的SVG・最大2箇所）*/
+.boundary-frayed { position: absolute; top: -1px; left: 0; width: 100%; height: 20px; z-index: 0; pointer-events: none; }
+#insight, #plans { border-top: none; }
+#insight .boundary-frayed path { fill: var(--black); }
+#plans .boundary-frayed path { fill: var(--ivory); }
 .gm-head {
   position: relative;
   margin-bottom: 28px;
@@ -1261,4 +1343,6 @@ main { position: relative; }
   .gm-hero__image img { transform: none !important; }
   .gm-step span, .gm-flow span { color: var(--gold) !important; }
   .gm-nav.is-hidden { transform: none !important; }
+  .boundary-line { transform: scaleX(1) !important; }
+  .boundary-chapter__inner { opacity: 1 !important; }
 }
