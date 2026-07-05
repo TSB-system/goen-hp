@@ -209,11 +209,6 @@ h1, h2, h3 { font-feature-settings: "palt"; }
     radial-gradient(560px 560px at 4% -8%, rgba(26,24,19,0.045), transparent 70%),
     linear-gradient(180deg, var(--ivory) 0%, var(--ivory-2) 100%);
 }
-#price {
-  background:
-    linear-gradient(to bottom, rgba(26,24,19,0.1), transparent 160px),
-    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-2) 100%);
-}
 #service {
   background:
     linear-gradient(to bottom, rgba(26,24,19,0.1), transparent 160px),
@@ -622,26 +617,6 @@ h1, h2, h3 { font-feature-settings: "palt"; }
 .step::before { content: ""; position: absolute; left: clamp(7px, 2vw, 23px); top: clamp(34px, 3.6vw, 52px); width: 7px; height: 7px; border-radius: 50%; background: var(--ivory); border: 1px solid var(--green); z-index: 1; }
 
 /* ================================================================
-   PRICE — ブランドブックの料金表（罫線・大きな数字）
-   ================================================================ */
-.price__list { border-top: 1px solid var(--ink); }
-.price__row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: 24px;
-  padding: clamp(28px, 3.6vw, 46px) 0;
-  border-bottom: 1px solid var(--line);
-  transition: padding-left var(--dur-fast) var(--ease-out);
-}
-@media (hover: hover) { .price__row:hover { padding-left: 14px; } }
-.price__name { font-size: clamp(20px, 2.2vw, 30px); font-weight: 600; letter-spacing: 0.05em; }
-.price__name small { display: block; margin-top: 8px; font-family: var(--mincho); font-size: 14px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
-.price__fig { font-family: var(--num); font-weight: 400; font-size: clamp(34px, 4.6vw, 64px); line-height: 1; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.price__fig em { font-style: normal; font-family: var(--gothic); font-size: 0.34em; font-weight: 500; color: var(--muted); letter-spacing: 0.1em; margin-left: 6px; }
-.price__note { margin-top: 30px; }
-
-/* ================================================================
    SERVICE — 雑誌の目次（番号・見出し・短文、線でつなぐ）
    ================================================================ */
 .index-list { border-top: 1px solid var(--line); }
@@ -977,7 +952,6 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   body.is-locked .nav__toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   body.is-locked .nav__toggle span:nth-child(2) { opacity: 0; }
   body.is-locked .nav__toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .price__row { grid-template-columns: 1fr; gap: 10px; }
   .plan-row { grid-template-columns: clamp(40px,10vw,60px) 1fr; }
   .plan-row__arrow { display: none; }
   .hero h1 { font-size: clamp(30px, 8vw, 44px); }
@@ -1000,7 +974,6 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   .quality__statement { font-size: clamp(18px, 5.4vw, 22px); line-height: 2; }
   .about__statement, .insight__lead { font-size: clamp(18px, 5.2vw, 22px); line-height: 2; }
   .diagnose__no, .step__no, .flow-step__no { font-size: clamp(30px, 9vw, 44px); }
-  .price__fig { font-size: clamp(38px, 12vw, 56px); }
   .faq__q { font-size: clamp(15px, 4.4vw, 18px); gap: 18px; }
   .contact__intro p { font-size: clamp(15px, 4.2vw, 17px); }
 }

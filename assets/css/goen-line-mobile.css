@@ -353,12 +353,6 @@ main { position: relative; }
     radial-gradient(320px 320px at 6% -6%, rgba(28,26,22,0.05), transparent 70%),
     linear-gradient(180deg, var(--ivory) 0%, var(--ivory-dark) 100%);
 }
-#price {
-  border-top: none;
-  background:
-    linear-gradient(to bottom, rgba(28,26,22,0.1), transparent 90px),
-    linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 100%);
-}
 #service {
   border-top: none;
   background:
@@ -719,7 +713,7 @@ main { position: relative; }
   display: grid;
   gap: 14px;
 }
-.gm-value, .gm-card, .gm-price, .gm-service, .gm-plan, .gm-flow {
+.gm-value, .gm-card, .gm-service, .gm-plan, .gm-flow {
   position: relative;
   border: 1px solid rgba(216,208,194,0.86);
   background: var(--paper);
@@ -806,46 +800,6 @@ main { position: relative; }
 }
 .gm-step p { grid-column: 2; }
 
-/* Price */
-.gm-price-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.gm-price {
-  padding: 18px 16px 16px;
-  min-height: 168px;
-}
-.gm-price h3 {
-  margin: 0 0 8px;
-  font-size: 17px;
-  line-height: 1.45;
-}
-.gm-price p {
-  margin: 0 0 18px;
-  color: var(--gray);
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.65;
-}
-.gm-price strong {
-  position: absolute;
-  left: 16px;
-  bottom: 14px;
-  color: var(--black);
-  font-family: var(--num);
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.gm-price small {
-  margin-left: 4px;
-  color: var(--gray);
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-}
 .gm-cta-panel {
   display: grid;
   gap: 18px;
@@ -1346,7 +1300,6 @@ main { position: relative; }
 
 @media (max-width: 360px) {
   .gm-head h2 { font-size: 28px; }
-  .gm-price-grid { grid-template-columns: 1fr; }
   .gm-works-stage { gap: 10px; }
 }
 
