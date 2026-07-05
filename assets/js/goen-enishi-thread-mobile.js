@@ -118,7 +118,16 @@
   /* ---- SP下部固定バー ---- */
   const stickybar = document.querySelector("[data-stickybar]");
   if (stickybar) {
-    stickybar.classList.add("is-shown");
+    const quality = document.querySelector("#quality");
+    const updateBar = () => {
+      const shouldShow = quality
+        ? quality.getBoundingClientRect().top <= window.innerHeight * 0.82
+        : window.scrollY >= window.innerHeight * 0.75;
+      stickybar.classList.toggle("is-shown", shouldShow);
+    };
+    updateBar();
+    window.addEventListener("scroll", updateBar, { passive: true });
+    window.addEventListener("resize", updateBar, { passive: true });
   }
 
   /* ---- FV内：始点の線 ---- */
