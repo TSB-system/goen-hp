@@ -25,8 +25,7 @@
 }
 .sec > .section-scape ~ .shell,
 .gm-section > .section-scape ~ .gm-container { position: relative; z-index: 1; }
-/* Preserve the dark Insight section and light text: a quiet, tonal wash. */
-#insight > .section-scape { mix-blend-mode: screen; opacity: .11; }
+/* Insight uses the same watercolor treatment on white as the other sections. */
 .gm-section > .section-scape { opacity: .65; }
 .gm-section > .section-scape img {
   width: 170%;
@@ -39,3 +38,27 @@
 .gm-section#insight > .section-scape img { margin-left: -70%; }
 .gm-section#problem > .section-scape img,
 .gm-section#about > .section-scape img { margin-left: 0; }
+
+/* White section surfaces; do not change artwork, buttons, or content panels. */
+main > section { background: #fff !important; }
+#insight::before { background: none; }
+#insight { color: #262820; --line-on-dark: rgba(29,74,55,.2); }
+#insight :is(h2, .insight__lead, .insight__body p, .insight__stats dd,
+  .gm-dark-copy p, .gm-stats dd) { color: #262820; }
+#insight :is(.insight__photo figcaption, .insight__sign span,
+  .insight__stats dd small, .insight__note, .insight__timeline p,
+  .gm-insight__photo figcaption, .gm-stats dd small, .gm-note,
+  .gm-timeline p, .gm-sign span) { color: #5d6258; }
+#insight :is(.head .en, .insight__photo figcaption .en, .insight__stats dt,
+  .insight__timeline time, .insight__timeline li.is-now time, .insight__sign,
+  .gm-head__en, .gm-stats dt, .gm-timeline time, .gm-timeline li.is-now time,
+  .gm-sign) { color: #725c30; }
+#insight :is(.head .ghost, .gm-head__ghost) {
+  -webkit-text-stroke-color: rgba(29,74,55,.13);
+}
+#insight :is(.gm-dark-copy, .gm-stats, .gm-stats div) { border-color: rgba(29,74,55,.2); }
+#insight .gm-timeline::before { background: rgba(29,74,55,.2); }
+#insight :is(.insight__timeline, .gm-timeline) li.is-now::before {
+  background: #1d4a37;
+  box-shadow: 0 0 0 4px rgba(29,74,55,.12);
+}
