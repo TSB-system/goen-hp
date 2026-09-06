@@ -1,0 +1,41 @@
+/* Kyoto watercolor scenery: decorative only; shared by the separate PC/SP pages. */
+.sec:has(> .section-scape),
+.gm-section:has(> .section-scape) { isolation: isolate; }
+.section-scape {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 0;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  opacity: .78;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%);
+}
+.section-scape img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  max-height: 620px;
+  object-fit: cover;
+  object-position: center bottom;
+}
+.sec > .section-scape ~ .shell,
+.gm-section > .section-scape ~ .gm-container { position: relative; z-index: 1; }
+/* Preserve the dark Insight section and light text: a quiet, tonal wash. */
+#insight > .section-scape { mix-blend-mode: screen; opacity: .11; }
+.gm-section > .section-scape { opacity: .65; }
+.gm-section > .section-scape img {
+  width: 170%;
+  max-width: none;
+  margin-left: -35%;
+  max-height: 420px;
+}
+.gm-section#quality > .section-scape img,
+.gm-section#service > .section-scape img,
+.gm-section#insight > .section-scape img { margin-left: -70%; }
+.gm-section#problem > .section-scape img,
+.gm-section#about > .section-scape img { margin-left: 0; }
