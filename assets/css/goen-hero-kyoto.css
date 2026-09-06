@@ -20,6 +20,7 @@
   display: block;
   width: 100%;
   height: auto;
+  filter: brightness(.9) contrast(1.25) saturate(1.1);
 }
 @keyframes heroScapeIn { to { opacity: 1; } }
 

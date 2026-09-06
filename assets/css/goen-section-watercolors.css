@@ -10,7 +10,7 @@
   pointer-events: none;
   user-select: none;
   mix-blend-mode: multiply;
-  opacity: .78;
+  opacity: 1;
   -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
   mask-image: linear-gradient(to bottom, transparent, #000 30%);
 }
@@ -22,11 +22,13 @@
   max-height: 620px;
   object-fit: cover;
   object-position: center bottom;
+  /* Strengthen pale pigment on white while keeping the paper white. */
+  filter: brightness(.88) contrast(1.316) saturate(1.15);
 }
 .sec > .section-scape ~ .shell,
 .gm-section > .section-scape ~ .gm-container { position: relative; z-index: 1; }
 /* Insight uses the same watercolor treatment on white as the other sections. */
-.gm-section > .section-scape { opacity: .65; }
+.gm-section > .section-scape { opacity: 1; }
 .gm-section > .section-scape img {
   width: 170%;
   max-width: none;
