@@ -634,13 +634,13 @@ main { position: relative; }
 .gm-hero__stage {
   position: relative;
   height: clamp(520px, 66svh, 600px);
-  margin: 26px calc(var(--mobile-nav-x) * -1) 6px;
+  margin: 26px calc(var(--mobile-nav-x) * -1) 24px;
   --phone-w: clamp(176px, 48vw, 200px);
   --fv-gap: clamp(126px, 38vw, 170px);
 }
 .gm-hero__stage .fv__item { top: 43%; }
-.gm-hero__stage .fv__ctrl { bottom: 34px; }
-.gm-hero__stage .fv__counter { bottom: 4px; }
+.gm-hero__stage .fv__ctrl { left: 50%; bottom: 18px; }
+.gm-hero__stage .fv__counter { left: 50%; bottom: -12px; }
 .gm-assurance {
   display: flex;
   flex-wrap: wrap;

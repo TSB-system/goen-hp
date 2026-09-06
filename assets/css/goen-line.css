@@ -470,8 +470,17 @@ h1, h2, h3 { font-feature-settings: "palt"; }
 .hero__copywrap { position: relative; z-index: 3; }
 /* 扇の中心をステージ内で少し右へ寄せ、左のコピーとの間合いを確保する */
 .hero__stage .fv__item { left: 56%; }
-.hero__stage .fv__ctrl { bottom: 40px; }
-.hero__stage .fv__counter { bottom: 6px; }
+/* Align controls to the central phone, with a 16px gap below its frame. */
+.hero__stage .fv__ctrl {
+  left: 56%;
+  top: calc(46% + var(--phone-w) * 1.083333 + 5.5px);
+  bottom: auto;
+}
+.hero__stage .fv__counter {
+  left: 56%;
+  top: calc(46% + var(--phone-w) * 1.083333 + 71.5px);
+  bottom: auto;
+}
 
 .hero__scroll {
   position: absolute; left: var(--rail-x); bottom: 36px; z-index: 2;
@@ -490,6 +499,7 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   .hero__copywrap { padding-bottom: 0; }
   .hero__stage { height: clamp(480px, 60vh, 620px); --phone-w: 220px; --fv-gap: 130px; }
   .hero__stage .fv__item { left: 50%; }
+  .hero__stage .fv__ctrl, .hero__stage .fv__counter { left: 50%; }
 }
 
 /* ボタン（深緑・控えめな光沢） */
