@@ -1,60 +1,45 @@
-/* Kyoto watercolor scenery: decorative only; shared by the separate PC/SP pages. */
-.sec:has(> .section-scape),
-.gm-section:has(> .section-scape) { isolation: isolate; }
-.section-scape {
-  position: absolute;
-  inset: 32px 0 auto auto;
-  z-index: 0;
+/* One approved artwork, shared from Quality through Contact. Hero is unchanged. */
+main > .hero, main > .gm-hero { background: #fff !important; }
+.watercolor-content {
+  position: relative;
+  isolation: isolate;
+  background: #fff;
+  /* Clip the viewport-fixed artwork to this content range, excluding Hero/footer. */
+  clip-path: inset(0);
+}
+.continuous-scape {
+  position: fixed;
+  inset: 72px 0 0;
   display: block;
-  width: 44%;
-  height: clamp(240px, 22vw, 360px);
-  overflow: hidden;
+  z-index: 0;
   pointer-events: none;
   user-select: none;
-  mix-blend-mode: multiply;
-  opacity: 1;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 82%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 82%, transparent);
 }
-.section-scape img {
-  position: absolute;
-  bottom: 0;
-  left: var(--scape-left, -30%);
+.continuous-scape img {
   display: block;
-  width: 160%;
-  max-width: none;
-  height: auto;
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
-  object-position: center bottom;
-  /* Strengthen pale pigment on white while keeping the paper white. */
-  filter: brightness(.88) contrast(1.316) saturate(1.15);
-}
-.sec > .section-scape ~ .shell,
-.gm-section > .section-scape ~ .gm-container { position: relative; z-index: 1; }
-/* Bring the motif, rather than its white paper margin, into the entrance view. */
-:is(#quality, #service, #insight, #flow, #faq) { --scape-left: -60%; }
-:is(#problem, #plans, #about) { --scape-left: 0%; }
-#contact { --scape-left: -40%; }
-.sec > .section-scape::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #fff, rgba(255,255,255,.45) 24%, transparent 55%);
-}
-/* On mobile the artwork is an editorial opening, not a background beneath copy. */
-.gm-section:has(> .section-scape) { padding-top: 24px; }
-.gm-section > .section-scape {
-  position: relative;
-  inset: auto;
   width: 100%;
-  height: clamp(190px, 54vw, 240px);
-  margin-bottom: 24px;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  aspect-ratio: 1586 / 992;
 }
-.gm-section > .section-scape ~ .gm-container .boundary-line { display: none; }
-
-/* White section surfaces; do not change artwork, buttons, or content panels. */
-main > section { background: #fff !important; }
+.watercolor-content > section {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+.watercolor-content > section > .shell {
+  position: relative;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.88) 10%, rgba(255,255,255,.88) 90%, transparent);
+}
+@media (max-width: 768px) {
+  .continuous-scape { inset: 72px 0 calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .continuous-scape img { aspect-ratio: 941 / 1672; }
+  .watercolor-content > section > .gm-container {
+    position: relative;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.85) 8%, rgba(255,255,255,.85) 92%, transparent);
+  }
+}
 #insight::before { background: none; }
 #insight { color: #262820; --line-on-dark: rgba(29,74,55,.2); }
 #insight :is(h2, .insight__lead, .insight__body p, .insight__stats dd,
