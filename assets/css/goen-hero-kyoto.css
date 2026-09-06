@@ -1,0 +1,36 @@
+/* =================================================================
+   語縁 GOEN — HERO 背景「京都の水彩風景」（PC・SP 共通）
+   白地の水彩画。picture は .hero / .gm-hero の直下に置くこと
+   （.hero__field のような重ね合わせ文脈の内側だと multiply が効かない）。
+   ================================================================= */
+.hero__scape {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  animation: heroScapeIn var(--dur-hero, 1.6s) var(--ease-out, cubic-bezier(.22,1,.36,1)) .2s forwards;
+}
+.hero__scape img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@keyframes heroScapeIn { to { opacity: 1; } }
+
+/* 画面が横に長いときは絵が縦に薄くなるため、下端で少し引き伸ばす */
+@media (min-aspect-ratio: 2/1) {
+  .hero__scape { width: 118%; left: -9%; }
+}
+
+/* SP：縦長なので絵を拡大して、風景が読める大きさにする */
+.gm-hero .hero__scape { width: 190%; left: -45%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scape { animation: none; opacity: 1; }
+}

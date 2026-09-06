@@ -130,23 +130,28 @@
     document.querySelectorAll(".gm-step > span, .gm-flow > span").forEach(el => el.classList.add("is-lit"));
   }
 
-  /* ---- ヒーロー：画像の静かなズームアウト + キャッチコピーの立ち上がり ---- */
+  /* ---- ヒーロー：ステージ（スマホ）の静かな浮上 + キャッチコピーの立ち上がり ---- */
   const heroImg = document.querySelector("[data-hero-img]");
+  const heroStage = document.querySelector("[data-hero-stage]");
   const heroReveals = [...document.querySelectorAll("[data-hero-reveal]")];
 
   if (!hasGsap) {
     heroReveals.forEach(el => el.classList.add("is-visible"));
-  } else if (heroImg) {
-    gsap.set(heroImg, { opacity: 0, scale: 1.06 });
+  } else {
     const tl = gsap.timeline();
-    tl.to(heroImg, { opacity: 1, scale: 1.02, duration: 1.6, ease: "power2.out" });
-    const delays = [0, 0.15, 0.30, 0.60, 0.75];
+    if (heroImg) {
+      gsap.set(heroImg, { opacity: 0, scale: 1.06 });
+      tl.to(heroImg, { opacity: 1, scale: 1.02, duration: 1.6, ease: "power2.out" }, 0);
+    }
+    if (heroStage) {
+      gsap.set(heroStage, { opacity: 0, y: 28 });
+      tl.to(heroStage, { opacity: 1, y: 0, duration: 1.4, ease: "power2.out" }, 0.3);
+    }
+    const delays = [0, 0.15, 0.30, 0.45, 0.9];
     heroReveals.forEach(el => {
       const order = parseInt(el.dataset.heroReveal, 10) || 0;
-      tl.call(() => el.classList.add("is-visible"), null, 0.4 + (delays[order] ?? order * 0.15));
+      tl.call(() => el.classList.add("is-visible"), null, 0.3 + (delays[order] ?? order * 0.15));
     });
-  } else {
-    heroReveals.forEach(el => el.classList.add("is-visible"));
   }
 
   /* ---- FAQ ---- */

@@ -8,13 +8,24 @@
 <meta property="og:title" content="語縁 GOEN｜成果につながるWeb導線設計" />
 <meta property="og:description" content="見つかる、信頼される、相談される。その流れを一本の線で整える、高品質なWebパートナー。" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="assets/images/reference-style/asantech-hero-business-hands.png" />
+<meta property="og:url" content="https://goen-enishi.vercel.app/goen-line-mobile.html" />
+<meta property="og:image" content="https://goen-enishi.vercel.app/assets/images/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#1a1813" />
+<meta name="twitter:image" content="https://goen-enishi.vercel.app/assets/images/og.jpg" />
+<link rel="canonical" href="https://goen-enishi.vercel.app/" />
+<link rel="icon" href="favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicon.png" sizes="64x64" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta name="theme-color" content="#f4efe5" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Spectral:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/goen-line-mobile.css?v=20260705-remove-fv-line" />
+<link rel="preload" as="image" href="assets/video/fv-01-poster.jpg" fetchpriority="high" />
+<link rel="stylesheet" href="assets/css/goen-line-mobile.css?v=20260906-navpaper" />
+<link rel="stylesheet" href="assets/css/goen-fv.css?v=20260906-navpaper" />
+<link rel="stylesheet" href="assets/css/goen-hero-kyoto.css?v=20260906-navpaper" />
 <noscript><style>.gm-reveal{opacity:1!important;transform:none!important;}.gm-lead::after{transform:scaleX(1)!important;}.boundary-line{transform:scaleX(1)!important;}</style></noscript>
 </head>
 <body class="gm">
@@ -46,20 +57,89 @@
   </div>
 
   <section class="gm-hero" aria-labelledby="hero-title">
-    <div class="gm-hero__image" aria-hidden="true">
-      <img src="assets/images/reference-style/asantech-hero-business-hands.png" alt="" width="1796" height="876" fetchpriority="high" decoding="async" data-hero-img />
-    </div>
-    <span class="gm-hero__line gm-hero__line--one" aria-hidden="true"></span>
-    <span class="gm-hero__line gm-hero__line--two" aria-hidden="true"></span>
+    <span class="gm-hero__ring gm-hero__ring--a" aria-hidden="true"></span>
+    <span class="gm-hero__ring gm-hero__ring--b" aria-hidden="true"></span>
+    <picture class="hero__scape" aria-hidden="true"><source media="(max-width: 900px)" srcset="assets/images/hero-kyoto-900.webp" type="image/webp"><source srcset="assets/images/hero-kyoto.webp" type="image/webp"><img src="assets/images/hero-kyoto.jpg" alt="" width="1823" height="863" decoding="async" fetchpriority="low"></picture>
     <div class="gm-container gm-hero__body">
       <p class="gm-kicker gm-reveal" data-hero-reveal="0"><span>web導線設計</span></p>
       <p class="gm-hero__subline gm-reveal" data-hero-reveal="1"><span>見つかる、信頼される、</span><span>相談される。</span></p>
-      <h1 id="hero-title" class="gm-reveal" data-hero-reveal="2">成果につながる<br>Web導線設計。</h1>
-      <p class="gm-hero__copy gm-reveal" data-hero-reveal="3">売り込みなし / 初回相談無料 / 必要な施策だけご提案</p>
+      <h1 id="hero-title" class="gm-reveal" data-hero-reveal="2">成果につながる<br><span class="hl">Web導線設計。</span></h1>
+      <p class="gm-hero__copy gm-reveal" data-hero-reveal="3">つくるだけでは終わらない。出会いから相談まで、事業の魅力がきちんと届く流れを一本につなぎます。</p>
+      <div class="gm-hero__stage" data-hero-stage>
+        <div class="fv" data-fv-carousel data-fv-visible="3" data-fv-interval="6500" tabindex="0" aria-roledescription="carousel" aria-label="代表が制作したショート動画">
+          <div class="fv__track">
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="metadata" poster="assets/video/fv-01-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 1"><source src="assets/video/fv-01.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>01</b>KYOTO<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-02-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 2"><source src="assets/video/fv-02.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>02</b>GOURMET<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-03-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 3"><source src="assets/video/fv-03.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>03</b>STORY<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-04-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 4"><source src="assets/video/fv-04.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>04</b>BRAND<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-05-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 5"><source src="assets/video/fv-05.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>05</b>REEL<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-06-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 6"><source src="assets/video/fv-06.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>06</b>LOCAL<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-07-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 7"><source src="assets/video/fv-07.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>07</b>VOICE<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+            <figure class="fv__item" data-fv-item>
+              <div class="phone"><div class="phone__screen">
+                <span class="phone__island" aria-hidden="true"></span>
+                <video muted loop playsinline preload="none" poster="assets/video/fv-08-poster.jpg" width="720" height="1280" aria-label="代表が制作したショート動画 8"><source src="assets/video/fv-08.mp4" type="video/mp4"></video>
+                <span class="phone__label" aria-hidden="true"><b>08</b>CONNECT<small>SERVICE MOVIE</small></span>
+              </div></div>
+            </figure>
+          </div>
+          <div class="fv__ctrl">
+            <button type="button" class="fv__arrow" data-fv-prev aria-label="前の動画">←</button>
+            <div class="fv__dots" data-fv-dots></div>
+            <button type="button" class="fv__arrow" data-fv-next aria-label="次の動画">→</button>
+          </div>
+          <p class="fv__counter"><span data-fv-current>01</span> / <span>08</span><em>SERVICE MOVIES</em></p>
+        </div>
+      </div>
       <div class="gm-actions gm-reveal" data-hero-reveal="4">
         <a class="gm-btn" href="#contact">無料で相談する</a>
         <a class="gm-textlink" href="#system">導線設計の考え方を見る</a>
       </div>
+      <ul class="gm-assurance gm-reveal" data-hero-reveal="4">
+        <li>売り込みなし</li><li>初回相談無料</li><li>必要な施策だけ</li>
+      </ul>
     </div>
     <p class="gm-scroll" aria-hidden="true">SCROLL<span></span></p>
   </section>
@@ -182,70 +262,31 @@
         <span class="gm-head__ghost" aria-hidden="true">INSIGHT</span>
         <h2 id="insight-title">見られる側を知っているから、<br>反応される設計ができる。</h2>
       </header>
+      <figure class="gm-insight__photo gm-reveal">
+        <picture>
+          <source srcset="assets/images/photo/representative-portrait.webp" type="image/webp" />
+          <img src="assets/images/photo/representative-portrait.jpg" alt="語縁 代表" width="868" height="1086" loading="lazy" decoding="async" />
+        </picture>
+        <figcaption><span class="gm-head__en">Representative</span>元・おいでやすのカメラマン。企画・撮影・編集・発信をひとりで。</figcaption>
+      </figure>
       <div class="gm-dark-copy gm-reveal">
-        <p>代表自身が発信を続けるなかで、人が何に反応し、何を信頼し、なぜ行動するのかを見てきました。</p>
-        <p>数字だけでは見えない、人の感情から導線を設計します。</p>
+        <p>代表は、京都観光・グルメアカウント【おいでやす】をプロデュース兼カメラマンとして立ち上げ、1年でフォロワー5万人・平均再生7万回のアカウントを設計しました。</p>
+        <p>人が何に反応し、何を信頼し、なぜ行動するのか。数字だけでは見えない、人の感情から導線を設計します。</p>
       </div>
+      <dl class="gm-stats gm-reveal">
+        <div><dt>フォロワー</dt><dd>5<small>万人</small></dd></div>
+        <div><dt>平均再生</dt><dd>7<small>万回</small></dd></div>
+        <div><dt>達成まで</dt><dd>1<small>年</small></dd></div>
+      </dl>
+      <p class="gm-note gm-reveal">【おいでやす】京都観光/グルメ（2024年6月〜2025年10月、解散時点）。プロデュース・撮影・編集を担当。</p>
+      <ol class="gm-timeline gm-reveal">
+        <li><time datetime="2024-06">2024.06</time><p>【おいでやす】京都観光/グルメ を開始。プロデュース兼カメラ・編集を担当</p></li>
+        <li><time datetime="2025-10">2025.10</time><p>同アカウント解散。1年でフォロワー5万人・平均再生7万回のアカウントを設計</p></li>
+        <li><time datetime="2025-10">2025.10</time><p>ホームページ制作の市場調査・学習を本格化</p></li>
+        <li><time datetime="2026-03">2026.03</time><p>SNS運用代行を開業</p></li>
+        <li class="is-now"><time datetime="2026-07">2026.07</time><p>ホームページ制作を開始</p></li>
+      </ol>
       <p class="gm-sign">GOEN<span>Web Direction Design</span></p>
-    </div>
-  </section>
-
-  <section class="gm-section" id="plans" aria-labelledby="plans-title">
-    <div class="gm-container">
-      <header class="gm-head gm-reveal">
-        <span class="gm-head__en">PLANS</span>
-        <span class="gm-head__ghost" aria-hidden="true">PLANS</span>
-        <h2 id="plans-title">あなたに近い、<br>はじまり方は？</h2>
-      </header>
-      <div class="gm-plan-list">
-        <article class="gm-plan gm-reveal"><span>01</span><h3>まずはLPだけ整えたい</h3><p>LP制作と計測設定。広告やSNSの<span class="gm-nowrap">受け皿に。</span></p><a href="#contact">この内容で相談する</a></article>
-        <article class="gm-plan gm-reveal"><span>02</span><h3>地域から見つけてもらいたい</h3><p>HP制作とMEO初期設計。<span class="gm-nowrap">検索導線の強化に。</span></p><a href="#contact">この内容で相談する</a></article>
-        <article class="gm-plan gm-reveal"><span>03</span><h3>LINE予約までつなげたい</h3><p>LP / HPと公式LINE導線設計。<span class="gm-nowrap">LINE予約口に。</span></p><a href="#contact">この内容で相談する</a></article>
-        <article class="gm-plan gm-reveal"><span>04</span><h3>発信を<span class="gm-nowrap">問い合わせに</span><span class="gm-nowrap">つなげたい</span></h3><p>SNS運用設計とLP制作。発信を相談に<span class="gm-nowrap">つなげます。</span></p><a href="#contact">この内容で相談する</a></article>
-      </div>
-      <div class="gm-cta-panel gm-reveal">
-        <p>どれが合うか分からない方も、無料相談で整理できます。</p>
-        <a class="gm-btn" href="#contact">自分に合う始め方を相談する</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="gm-section gm-section--soft" id="flow" aria-labelledby="flow-title">
-    <div class="gm-container">
-      <header class="gm-head gm-reveal">
-        <span class="gm-head__en">FLOW</span>
-        <span class="gm-head__ghost" aria-hidden="true">FLOW</span>
-        <h2 id="flow-title">はじめてでも、<br>この流れで。</h2>
-      </header>
-      <div class="gm-flow-list">
-        <article class="gm-flow gm-reveal"><span>01</span><h3>無料相談</h3><p>オンラインで気軽に。契約の話は<span class="gm-nowrap">まだしません。</span></p></article>
-        <article class="gm-flow gm-reveal"><span>02</span><h3>現状ヒアリング</h3><p>事業と集客の状況を<span class="gm-nowrap">整理します。</span></p></article>
-        <article class="gm-flow gm-reveal"><span>03</span><h3>必要な施策を診断</h3><p>不要な施策は「不要」と<span class="gm-nowrap">お伝えします。</span></p></article>
-        <article class="gm-flow gm-reveal"><span>04</span><h3>ご提案・お見積もり</h3><p>内訳を明確にして<span class="gm-nowrap">整えます。</span></p></article>
-        <article class="gm-flow gm-reveal"><span>05</span><h3>制作・構築</h3><p>進捗を共有しながら<span class="gm-nowrap">作り込みます。</span></p></article>
-        <article class="gm-flow gm-reveal"><span>06</span><h3>運用・改善</h3><p>公開後も必要に応じて<span class="gm-nowrap">伴走します。</span></p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="gm-section" id="faq" aria-labelledby="faq-title">
-    <div class="gm-container">
-      <span class="boundary-line" data-boundary-line aria-hidden="true"></span>
-      <header class="gm-head gm-reveal">
-        <span class="gm-head__en">FAQ</span>
-        <span class="gm-head__ghost" aria-hidden="true">FAQ</span>
-        <h2 id="faq-title">相談の前に、<br>よくある質問。</h2>
-      </header>
-      <div class="gm-faq" data-faq>
-        <article class="gm-faq__item"><button type="button" aria-expanded="false">Webに詳しくなくても相談できますか？<span></span></button><div><p>もちろんです。専門用語を使わず、現在の状況から一緒に整理します。</p></div></article>
-        <article class="gm-faq__item"><button type="button" aria-expanded="false">LPだけ、HPだけの依頼も可能ですか？<span></span></button><div><p>可能です。目的に合わせて、単品制作から組み合わせまで対応します。</p></div></article>
-        <article class="gm-faq__item"><button type="button" aria-expanded="false">MEOやLINEだけの相談もできますか？<span></span></button><div><p>できます。すでにHPをお持ちの場合は、今あるものを活かします。</p></div></article>
-        <article class="gm-faq__item"><button type="button" aria-expanded="false">強引な営業はありませんか？<span></span></button><div><p>ありません。不要だと判断した施策はこちらからお断りすることもあります。</p></div></article>
-      </div>
-      <div class="gm-cta-panel gm-reveal">
-        <p>不安なことも含めて、最初に整理できます。</p>
-        <a class="gm-btn" href="#contact">不安なことも含めて無料で相談する</a>
-      </div>
     </div>
   </section>
 
@@ -257,9 +298,21 @@
         <h2 id="about-title">語縁について。</h2>
       </header>
       <p class="gm-about-copy gm-reveal">ご縁を一生モノに。</p>
+      <figure class="gm-about-figure gm-reveal">
+        <picture>
+          <source srcset="assets/images/photo/representative-cutout-1200.webp" type="image/webp" />
+          <img src="assets/images/photo/representative-cutout-1200.png" alt="語縁 代表（法被姿）" width="1200" height="1181" loading="lazy" decoding="async" />
+        </picture>
+      </figure>
+      <blockquote class="gm-voice gm-reveal">
+        <span class="gm-head__en">Message</span>
+        <p>日本一安いホームページ制作会社を目指してます。<br>値段以上のホームページお作りします。<br>完成度も負けません。</p>
+        <footer>語縁 代表</footer>
+      </blockquote>
       <dl class="gm-meta gm-reveal">
         <div><dt>屋号</dt><dd>語縁 / GOEN</dd></div>
         <div><dt>事業内容</dt><dd>HP制作・LP制作・MEO対策・公式LINE導線設計・SNS運用設計</dd></div>
+        <div><dt>開業</dt><dd>SNS運用代行 2026年3月 / ホームページ制作 2026年7月</dd></div>
         <div><dt>対象</dt><dd>Web導線を整えたい方</dd></div>
       </dl>
     </div>
@@ -314,7 +367,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="assets/js/goen-line-mobile.js" defer></script>
-<script src="assets/js/goen-enishi-thread-mobile.js?v=20260705-remove-fv-line" defer></script>
+<script src="assets/js/goen-fv-carousel.js?v=20260906-navpaper" defer></script>
+<script src="assets/js/goen-line-mobile.js?v=20260906-navpaper" defer></script>
+<script src="assets/js/goen-enishi-thread-mobile.js?v=20260906-navpaper" defer></script>
 </body>
 </html>

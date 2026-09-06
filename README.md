@@ -15,16 +15,17 @@
 - `index.html`
 - `goen-line.html`
 - `goen-line-mobile.html`
-- `assets/css/goen-line.css`
-- `assets/css/goen-line-mobile.css`
-- `assets/js/goen-line.js`
-- `assets/js/goen-line-mobile.js`
-- `assets/images/goen-logo.png`
-- `assets/images/reference-style/asantech-hero-business-hands.png`
-- `assets/images/case-study/case-lp-hp-design.png`
-- `assets/images/case-study/case-meo-map-search.png`
-- `assets/images/case-study/case-official-line-flow.png`
+- `assets/css/goen-line.css` / `goen-line-mobile.css` / `goen-fv.css` / `goen-hero-kyoto.css`
+- `assets/js/goen-line.js` / `goen-line-mobile.js` / `goen-enishi-thread-mobile.js` / `goen-fv-carousel.js`
+- `assets/images/goen-logo.png`, `line-app-icon.png`, `og.jpg`
+- `assets/images/hero-kyoto.{webp,jpg}` / `hero-kyoto-900.webp` （FV背景の水彩画）
+- `assets/images/photo/` （代表写真）
+- `assets/video/` （FV スマホ縦動画 8 本 + ポスター）
+- `favicon.ico` / `favicon.png` / `apple-touch-icon.png`
 - `vercel.json`
+
+元素材（`動画/*.mov`, `images/*.HEIC`）と作業用フォルダ（`_tools/`, `_shots/`）は Git / Vercel の対象外です。
+設計方針・要件は `docs/requirements-design-quality.md` を参照。
 
 ## Local Preview
 

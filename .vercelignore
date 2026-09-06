@@ -10,3 +10,19 @@ _v-*.png
 _mock.html
 _cap.js
 mockshot*.js
+
+# 元素材（Web用は assets/ 配下の変換済みファイルを使う）
+/動画/
+*.mov
+*.MOV
+/images/
+*.HEIC
+*.heic
+
+# 作業用（スクリーンショット・パッチスクリプト）
+/_tools/
+/_shots/
+
+# ヒーロー装飾の比較プレビュー（採用後に削除）
+/_preview/
+_preview-*.html

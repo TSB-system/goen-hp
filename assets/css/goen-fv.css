@@ -1,0 +1,260 @@
+/* =================================================================
+   語縁 GOEN — FV スマホ縦動画カルーセル（PC / SP 共通）
+   奥行きのあるスマホフレーム群。中央 1 台のみ再生、両脇は静止・減光。
+   トークンは各ページ CSS に依存しないよう fallback 付きで参照する。
+   ================================================================= */
+.fv {
+  --fv-ink: var(--ink, #1a1813);
+  --fv-ivory: var(--ivory, #f4efe4);
+  --fv-gold: var(--gold, #b3935a);
+  --fv-gold-soft: var(--gold-soft, #c9b083);
+  --fv-muted: var(--muted, #6f685b);
+  --fv-en: "Cormorant Garamond", "Shippori Mincho", serif;
+  --fv-num: "Spectral", "Shippori Mincho", serif;
+  --fv-sans: "Jost", "Noto Sans JP", sans-serif;
+  --fv-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --fv-dur: 0.9s;
+  /* 端末サイズ --phone-w と並びの間隔 --fv-gap は親（ステージ）側で定義する。未定義時は fallback */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+.fv:focus-visible { outline: 1px solid var(--fv-gold); outline-offset: 12px; }
+.fv__track {
+  position: absolute;
+  inset: 0;
+  perspective: 1600px;
+  perspective-origin: 50% 45%;
+}
+.fv__item {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: var(--phone-w, 280px);
+  margin: 0;
+  transform-style: preserve-3d;
+  transition:
+    transform var(--fv-dur) var(--fv-ease),
+    opacity var(--fv-dur) var(--fv-ease),
+    filter var(--fv-dur) var(--fv-ease);
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+.fv__item[data-pos="0"] {
+  z-index: 10;
+  cursor: default;
+  transform: translate(-50%, -50%) translateX(0) scale(1) rotateY(0deg);
+  opacity: 1;
+  filter: none;
+}
+.fv__item[data-pos="1"],
+.fv__item[data-pos="-1"] {
+  z-index: 8;
+  opacity: 0.86;
+  filter: saturate(0.35) brightness(0.92);
+}
+.fv__item[data-pos="1"]  { transform: translate(-50%, -50%) translateX(var(--fv-gap, 170px)) scale(0.84) rotateY(-9deg); }
+.fv__item[data-pos="-1"] { transform: translate(-50%, -50%) translateX(calc(var(--fv-gap, 170px) * -1)) scale(0.84) rotateY(9deg); }
+.fv__item[data-pos="2"],
+.fv__item[data-pos="-2"] {
+  z-index: 6;
+  opacity: 0.62;
+  filter: saturate(0.15) brightness(0.88);
+}
+.fv__item[data-pos="2"]  { transform: translate(-50%, -50%) translateX(calc(var(--fv-gap, 170px) * 1.85)) scale(0.7) rotateY(-14deg); }
+.fv__item[data-pos="-2"] { transform: translate(-50%, -50%) translateX(calc(var(--fv-gap, 170px) * -1.85)) scale(0.7) rotateY(14deg); }
+.fv__item[data-pos="hidden"] {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+/* ---- スマホフレーム（CSS 描画） ---- */
+.phone {
+  position: relative;
+  padding: 9px;
+  border-radius: 46px;
+  background: linear-gradient(160deg, #23211c 0%, #0f0e0c 55%, #1c1a16 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.08) inset,
+    0 0 0 1px rgba(0,0,0,0.55),
+    0 30px 60px -30px rgba(26,24,19,0.55),
+    0 12px 24px -18px rgba(26,24,19,0.45);
+}
+.fv__item[data-pos="0"] .phone {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.1) inset,
+    0 0 0 1px rgba(0,0,0,0.6),
+    0 44px 80px -34px rgba(26,24,19,0.62),
+    0 16px 30px -18px rgba(26,24,19,0.5);
+}
+.phone::before {
+  /* サイドボタン */
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 22%;
+  width: 2px;
+  height: 11%;
+  border-radius: 2px;
+  background: #2a2823;
+}
+.phone__screen {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 38px;
+  background: #0b0a09;
+  /* 角の内側に細い縁光 */
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+.phone__island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 3;
+  width: 32%;
+  height: 24px;
+  border-radius: 20px;
+  background: #000;
+  transform: translateX(-50%);
+}
+.phone__screen video,
+.phone__screen img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0b0a09;
+}
+/* 脇の端末：画面に墨の膜 + 英字ラベル */
+.phone__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(26,24,19,0.72) 0%, rgba(26,24,19,0.28) 45%, rgba(26,24,19,0.1) 100%);
+  opacity: 0;
+  transition: opacity var(--fv-dur) var(--fv-ease);
+  pointer-events: none;
+}
+.fv__item:not([data-pos="0"]) .phone__screen::after { opacity: 1; }
+.phone__label {
+  position: absolute;
+  left: 0; right: 0; bottom: 14%;
+  z-index: 4;
+  text-align: center;
+  color: rgba(244,239,228,0.92);
+  font-family: var(--fv-en);
+  font-weight: 500;
+  font-size: clamp(22px, 2vw, 30px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--fv-dur) var(--fv-ease), transform var(--fv-dur) var(--fv-ease);
+  pointer-events: none;
+}
+.phone__label b {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--fv-num);
+  font-weight: 300;
+  font-size: 0.5em;
+  letter-spacing: 0.3em;
+  color: var(--fv-gold-soft);
+}
+.phone__label small {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--fv-sans);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: rgba(244,239,228,0.55);
+}
+.fv__item:not([data-pos="0"]) .phone__label { opacity: 1; transform: none; }
+
+/* ---- 操作 UI ---- */
+.fv__ctrl {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 14px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(26,24,19,0.12);
+  border-radius: 999px;
+  background: rgba(244,239,228,0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.fv__arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fv-ink);
+  font-family: var(--fv-sans);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.4s var(--fv-ease), color 0.4s var(--fv-ease);
+}
+@media (hover: hover) {
+  .fv__arrow:hover { background: rgba(26,24,19,0.06); color: var(--fv-gold); }
+}
+.fv__arrow:focus-visible { outline: 1px solid var(--fv-gold); outline-offset: 2px; }
+.fv__dots { display: inline-flex; align-items: center; gap: 8px; }
+.fv__dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(26,24,19,0.22);
+  cursor: pointer;
+  transition: width 0.5s var(--fv-ease), background 0.5s var(--fv-ease);
+}
+.fv__dots button[aria-current="true"] { width: 22px; background: var(--fv-gold); }
+.fv__dots button:focus-visible { outline: 1px solid var(--fv-gold); outline-offset: 3px; }
+.fv__counter {
+  position: absolute;
+  left: 50%;
+  bottom: -34px;
+  z-index: 12;
+  margin: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--fv-num);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--fv-muted);
+}
+.fv__counter [data-fv-current] { color: var(--fv-gold); font-size: 16px; }
+.fv__counter em {
+  margin-left: 16px;
+  font-family: var(--fv-sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--fv-muted);
+}
+
+/* ---- モーション抑制：動かさず、中央のみ表示 ---- */
+@media (prefers-reduced-motion: reduce) {
+  .fv__item, .phone__screen::after, .phone__label, .fv__dots button { transition: none !important; }
+}

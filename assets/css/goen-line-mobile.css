@@ -133,13 +133,19 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   justify-content: space-between;
   height: calc(72px + env(safe-area-inset-top, 0px));
   padding: env(safe-area-inset-top, 0px) var(--mobile-nav-x) 0;
-  color: #fff;
-  transition: background var(--dur-instant) var(--ease-out), box-shadow var(--dur-instant) var(--ease-out), backdrop-filter var(--dur-instant) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  color: var(--black);
+  /* 和紙色の帯：すりガラス越しに水彩の背景が透ける */
+  background: rgba(247, 244, 237, 0.74);
+  box-shadow: inset 0 -1px 0 rgba(184, 154, 91, 0.26);
+  backdrop-filter: blur(14px) saturate(1.06);
+  -webkit-backdrop-filter: blur(14px) saturate(1.06);
+  transition: background var(--dur-instant) var(--ease-out), color var(--dur-instant) var(--ease-out), box-shadow var(--dur-instant) var(--ease-out), backdrop-filter var(--dur-instant) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
 .gm-nav.is-scrolled {
-  background: rgba(26, 24, 19, 0.85);
-  box-shadow: 0 1px 0 rgba(210, 190, 138, 0.16);
-  backdrop-filter: blur(12px);
+  background: rgba(247, 244, 237, 0.93);
+  box-shadow: inset 0 -1px 0 rgba(184, 154, 91, 0.42), 0 1px 14px rgba(28, 26, 22, 0.05);
+  backdrop-filter: blur(16px) saturate(1.08);
+  -webkit-backdrop-filter: blur(16px) saturate(1.08);
 }
 .gm-nav.is-hidden { transform: translateY(-100%); }
 .gm-brand {
@@ -181,9 +187,9 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   place-items: center;
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(210, 190, 138, 0.18);
+  border: 1px solid rgba(184, 154, 91, 0.42);
   color: currentColor;
-  background: rgba(28, 26, 22, 0.18);
+  background: transparent;
 }
 .gm-menu span {
   grid-area: 1 / 1;
@@ -532,7 +538,7 @@ main { position: relative; }
 }
 .gm-actions { display: grid; gap: 16px; }
 
-/* Hero */
+/* Hero — 明色 × スマホ縦動画カルーセル */
 .gm-hero {
   position: relative;
   min-height: 100vh;
@@ -541,8 +547,11 @@ main { position: relative; }
   display: flex;
   align-items: flex-start;
   overflow: hidden;
-  color: #fff;
-  background: var(--black);
+  color: var(--black);
+  background:
+    radial-gradient(70% 38% at 92% 8%, rgba(15,61,46,0.045), transparent 64%),
+    radial-gradient(48% 34% at 6% 90%, rgba(184,154,91,0.06), transparent 62%),
+    linear-gradient(180deg, #fdfcf9 0%, #faf8f3 46%, #f2f2ec 100%);
 }
 .gm-hero::before {
   content: "";
@@ -552,76 +561,35 @@ main { position: relative; }
   left: var(--mobile-logo-center-x);
   z-index: 1;
   width: 1px;
-  background: rgba(201,176,131,0.2);
+  background: rgba(184,154,91,0.28);
 }
-.gm-hero__image {
+.gm-hero__ring {
   position: absolute;
-  inset: 0;
   z-index: 0;
-  overflow: hidden;
-  background: var(--black);
+  border: 1px solid rgba(28,26,22,0.1);
+  border-radius: 50%;
+  pointer-events: none;
 }
-.gm-hero__image::before {
-  content: "";
-  position: absolute;
-  inset: -28px;
-  z-index: 0;
-  background: url("../images/reference-style/asantech-hero-business-hands.png") 32% center / cover no-repeat;
-  filter: blur(18px) brightness(0.52) contrast(1.08) saturate(0.56) sepia(0.14);
-  transform: scale(1.08);
-  opacity: 0.78;
-}
-.gm-hero__image img {
-  position: absolute;
-  left: 22px;
-  bottom: clamp(78px, 10svh, 110px);
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: left bottom;
-  filter: brightness(0.82) contrast(1.08) saturate(0.68) sepia(0.12);
-  transform: none;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 86%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 86%, transparent 100%);
-}
-.gm-hero__image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(105deg, rgba(20,18,13,0.76) 0%, rgba(20,18,13,0.5) 42%, rgba(20,18,13,0.18) 70%, rgba(20,18,13,0.42) 100%),
-    radial-gradient(120% 80% at 78% 18%, rgba(179,147,90,0.16), transparent 46%),
-    linear-gradient(to bottom, rgba(20,18,13,0.06), rgba(20,18,13,0.76));
-}
-.gm-hero__line {
-  position: absolute;
-  top: -15.5%;
-  width: 1px;
-  height: 132%;
-  background: linear-gradient(to bottom, transparent, rgba(201,176,131,0.48), transparent);
-  transform: rotate(18deg);
-}
-.gm-hero__line--one { left: 59%; opacity: 0.62; }
-.gm-hero__line--two { left: 81%; opacity: 0.23; }
+.gm-hero__ring--a { left: -18vw; top: 9%; width: 46vw; aspect-ratio: 1; }
+.gm-hero__ring--b { right: 6vw; top: 7%; width: 14vw; aspect-ratio: 1; background: rgba(28,26,22,0.03); }
 .gm-hero__body {
   position: relative;
   z-index: 1;
-  padding-top: clamp(150px, 19svh, 162px);
-  padding-bottom: 88px;
+  width: 100%;
+  padding-top: clamp(108px, 14svh, 126px);
+  padding-bottom: 84px;
 }
 .gm-kicker {
   display: flex;
   align-items: flex-start;
   gap: 13px;
-  margin: 0 0 30px;
-  color: #c9b083;
-  font-family: var(--sans);
+  margin: 0 0 22px;
+  color: var(--gold);
+  font-family: var(--latin);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.75;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.3em;
 }
 .gm-kicker::before {
   content: "";
@@ -630,62 +598,64 @@ main { position: relative; }
   width: 22px;
   height: 1px;
   margin-top: 10px;
-  background: #c9b083;
+  background: var(--gold);
 }
 .gm-kicker span { display: block; }
 .gm-hero__subline {
-  margin: 0 0 28px;
-  color: #c9b083;
+  margin: 0 0 16px;
+  color: var(--gray);
   font-family: var(--serif);
-  font-size: clamp(20px, 5.4vw, 22px);
+  font-size: clamp(14px, 3.9vw, 16px);
   font-weight: 500;
   line-height: 1.7;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.16em;
 }
-.gm-hero__subline span {
-  display: block;
-  white-space: nowrap;
-}
+.gm-hero__subline span { display: inline; white-space: nowrap; }
 .gm-hero h1 {
   margin: 0;
+  color: var(--black);
   font-family: var(--serif);
-  font-size: clamp(40px, 10.8vw, 43px);
-  font-weight: 700;
+  font-size: clamp(36px, 10.4vw, 42px);
+  font-weight: 600;
   line-height: 1.28;
-  letter-spacing: 0;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+  letter-spacing: 0.01em;
 }
 .gm-hero h1 br { display: block; }
+.gm-hero h1 .hl { color: var(--green); }
 .gm-hero__copy {
-  margin: 26px 0 0;
-  max-width: 27em;
-  color: rgba(244,239,228,0.82);
-  font-family: var(--serif);
-  font-size: 12px;
-  line-height: 2;
-  letter-spacing: 0.09em;
+  margin: 18px 0 0;
+  max-width: 30em;
+  color: var(--gray);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.95;
+  letter-spacing: 0.05em;
 }
+/* ステージ（左右のガターを食って幅いっぱいに） */
+.gm-hero__stage {
+  position: relative;
+  height: clamp(520px, 66svh, 600px);
+  margin: 26px calc(var(--mobile-nav-x) * -1) 6px;
+  --phone-w: clamp(176px, 48vw, 200px);
+  --fv-gap: clamp(126px, 38vw, 170px);
+}
+.gm-hero__stage .fv__item { top: 43%; }
+.gm-hero__stage .fv__ctrl { bottom: 34px; }
+.gm-hero__stage .fv__counter { bottom: 4px; }
 .gm-assurance {
-  display: grid;
-  gap: 7px;
-  margin: 18px 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 22px 0 0;
   padding: 0;
   list-style: none;
-  color: rgba(255,255,255,0.82);
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
+  color: var(--gray);
+  font-family: var(--latin);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
 }
-.gm-assurance li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.gm-assurance li::before {
-  content: "";
-  width: 14px;
-  height: 1px;
-  background: var(--gold-light);
-}
+.gm-assurance li { display: flex; align-items: center; gap: 8px; }
+.gm-assurance li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
 .gm-scroll {
   position: absolute;
   left: var(--mobile-logo-center-x);
@@ -695,29 +665,32 @@ main { position: relative; }
   align-items: center;
   gap: 14px;
   margin: 0;
-  color: rgba(255,255,255,0.5);
+  color: var(--gray);
   font-family: var(--latin);
   font-size: 10px;
   letter-spacing: 0.34em;
   white-space: nowrap;
 }
-.gm-scroll span { width: 52px; height: 1px; background: rgba(255,255,255,0.45); }
+.gm-scroll span { width: 52px; height: 1px; background: rgba(28,26,22,0.25); }
 .gm-hero .gm-actions {
-  gap: 18px;
+  gap: 16px;
   margin-top: 28px;
 }
 .gm-hero .gm-btn {
   width: min(276px, 100%);
-  border-color: rgba(210, 190, 138, 0.34);
-  background: rgba(17, 72, 50, 0.22);
+  color: #fff;
+  border-color: rgba(184,154,91,0.42);
+  background: linear-gradient(135deg, var(--green-2) 0%, var(--green) 100%);
+  box-shadow: 0 18px 36px -24px rgba(15,61,46,0.8);
 }
 .gm-hero .gm-btn:active {
-  background: rgba(17, 72, 50, 0.42);
-  border-color: rgba(210, 190, 138, 0.68);
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-2) 100%);
+  border-color: rgba(184,154,91,0.7);
 }
 .gm-hero .gm-textlink {
   justify-content: center;
   width: min(276px, 100%);
+  color: var(--black);
   font-size: 11px;
   letter-spacing: 0.1em;
 }
@@ -1366,3 +1339,58 @@ main { position: relative; }
   .gm-nav.is-hidden { transform: none !important; }
   .boundary-line { transform: scaleX(1) !important; }
 }
+
+
+/* ================================================================
+   INSIGHT — 代表の写真・数字・経歴（v1.1 追加）
+   ================================================================ */
+.gm-insight__photo { margin: 0 0 26px; max-width: 300px; }
+.gm-insight__photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(0.68) contrast(1.04) brightness(0.96); }
+.gm-insight__photo figcaption { margin-top: 12px; font-family: var(--serif); font-size: 12.5px; letter-spacing: 0.08em; color: rgba(255,255,255,0.72); }
+.gm-insight__photo figcaption .gm-head__en { display: block; margin: 0 0 4px; color: var(--gold-light); font-size: 10px; }
+.gm-insight__photo figcaption .gm-head__en::after { display: none; }
+.gm-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin: 30px 0 0; padding: 0;
+  border-top: 1px solid rgba(244,239,228,0.14); border-bottom: 1px solid rgba(244,239,228,0.14);
+}
+.gm-stats div { padding: 18px 6px 16px 0; border-right: 1px solid rgba(244,239,228,0.14); }
+.gm-stats div:last-child { border-right: 0; }
+.gm-stats div + div { padding-left: 14px; }
+.gm-stats dt { font-family: var(--latin); font-size: 9.5px; letter-spacing: 0.24em; color: var(--gold-light); }
+.gm-stats dd { margin: 10px 0 0; font-family: var(--num); font-weight: 300; font-size: clamp(26px, 8vw, 34px); line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
+.gm-stats dd small { margin-left: 3px; font-family: var(--serif); font-size: 0.42em; color: rgba(255,255,255,0.82); }
+.gm-note { margin: 12px 0 0; font-size: 11.5px; line-height: 1.8; letter-spacing: 0.03em; color: rgba(255,255,255,0.5); }
+.gm-timeline { position: relative; display: grid; gap: 18px; margin: 34px 0 0; padding: 0; list-style: none; }
+.gm-timeline::before { content: ""; position: absolute; left: 3px; top: 8px; bottom: 8px; width: 1px; background: rgba(244,239,228,0.14); }
+.gm-timeline li { position: relative; padding-left: 22px; }
+.gm-timeline li::before { content: ""; position: absolute; left: 0; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(184,154,91,0.16); }
+.gm-timeline time { display: block; font-family: var(--num); font-size: 13px; letter-spacing: 0.12em; color: var(--gold-light); }
+.gm-timeline p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.85; color: rgba(255,255,255,0.78); }
+.gm-timeline li.is-now time { color: #fff; }
+.gm-timeline li.is-now::before { background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,0.14); }
+
+/* ================================================================
+   ABOUT — 代表の言葉 + 透過写真（v1.1 追加）
+   ================================================================ */
+.gm-about-figure { position: relative; display: flex; justify-content: center; margin: 0 0 26px; padding-bottom: 6px; }
+.gm-about-figure img { width: min(76%, 300px); height: auto; }
+.gm-about-figure::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.gm-voice { margin: 0 0 28px; padding: 22px 0 0; border-top: 1px solid var(--line); }
+.gm-voice .gm-head__en { display: block; margin: 0 0 14px; font-size: 10px; }
+.gm-voice .gm-head__en::after { display: none; }
+.gm-voice p { margin: 0; font-family: var(--serif); font-size: clamp(16px, 4.4vw, 18px); line-height: 2; letter-spacing: 0.02em; color: var(--black); }
+.gm-voice footer { margin-top: 16px; font-family: var(--serif); font-size: 12.5px; letter-spacing: 0.14em; color: var(--gray); }
+.gm-voice footer::before { content: ""; display: inline-block; width: 22px; height: 1px; margin-right: 10px; vertical-align: middle; background: var(--gold); }
+
+/* INSIGHT 見出し：13字の行が折り返さない級数に */
+#insight .gm-head h2 { font-size: clamp(19px, 5.5vw, 22px); letter-spacing: 0.02em; line-height: 1.75; }
+/* ドロワー展開時はナビ（ロゴ・閉じるボタン）を明色に */
+body.is-menu-open .gm-nav {
+  color: #fff;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+body.is-menu-open .gm-menu { border-color: rgba(244, 239, 228, 0.32); }

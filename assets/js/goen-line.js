@@ -183,35 +183,34 @@
     document.querySelectorAll(".step__no, .flow-step__no").forEach(el => el.classList.add("is-lit"));
   }
 
-  /* ---- ヒーロー：画像の静かなズームアウト + キャッチコピーの立ち上がり + 浅いパララックス ---- */
+  /* ---- ヒーロー：ステージ（スマホ群）の静かな浮上 + キャッチコピーの立ち上がり ---- */
   const heroImg = document.querySelector("[data-parallax]");
+  const heroStage = document.querySelector("[data-hero-stage]");
   const heroReveals = [...document.querySelectorAll("[data-hero-reveal]")];
   const heroSection = document.querySelector(".hero");
 
   if (!hasGsap) {
     heroReveals.forEach(el => el.classList.add("is-in"));
-  } else if (heroImg) {
-    gsap.set(heroImg, { opacity: 0, scale: 1.09 });
+  } else {
     const tl = gsap.timeline();
-    tl.to(heroImg, { opacity: 1, scale: 1.05, duration: 1.6, ease: "power2.out" });
+    if (heroImg) {
+      gsap.set(heroImg, { opacity: 0, scale: 1.09 });
+      tl.to(heroImg, { opacity: 1, scale: 1.05, duration: 1.6, ease: "power2.out" }, 0);
+      gsap.to(heroImg, {
+        y: () => heroImg.offsetHeight * 0.05,
+        ease: "none",
+        scrollTrigger: { trigger: heroSection, start: "top top", end: "bottom top", scrub: true }
+      });
+    }
+    if (heroStage) {
+      gsap.set(heroStage, { opacity: 0, y: 36 });
+      tl.to(heroStage, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, 0.25);
+    }
+    const delays = [0, 0.15, 0.30, 0.60];
     heroReveals.forEach(el => {
       const order = parseFloat(el.dataset.heroReveal) || 0;
-      const delays = [0, 0.15, 0.30, 0.60];
-      tl.call(() => el.classList.add("is-in"), null, 0.4 + (delays[order] || order * 0.15));
+      tl.call(() => el.classList.add("is-in"), null, 0.3 + (delays[order] ?? order * 0.15));
     });
-
-    gsap.to(heroImg, {
-      y: () => heroImg.offsetHeight * 0.05,
-      ease: "none",
-      scrollTrigger: {
-        trigger: heroSection,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-  } else {
-    heroReveals.forEach(el => el.classList.add("is-in"));
   }
 
   /* ---- FAQ アコーディオン（ゆっくり上品に）---- */
