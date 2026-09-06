@@ -413,7 +413,6 @@ h1, h2, h3 { font-feature-settings: "palt"; }
   border-radius: 50%;
 }
 .hero__ring--a { left: -4vw; top: 14%; width: clamp(180px, 22vw, 340px); aspect-ratio: 1; }
-.hero__ring--b { right: 6vw; top: 12%; width: clamp(64px, 6vw, 96px); aspect-ratio: 1; background: rgba(26,24,19,0.03); }
 .hero__inner {
   position: relative;
   z-index: 2;

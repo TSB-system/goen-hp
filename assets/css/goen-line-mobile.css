@@ -571,7 +571,6 @@ main { position: relative; }
   pointer-events: none;
 }
 .gm-hero__ring--a { left: -18vw; top: 9%; width: 46vw; aspect-ratio: 1; }
-.gm-hero__ring--b { right: 6vw; top: 7%; width: 14vw; aspect-ratio: 1; background: rgba(28,26,22,0.03); }
 .gm-hero__body {
   position: relative;
   z-index: 1;
