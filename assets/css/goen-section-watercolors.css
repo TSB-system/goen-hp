@@ -3,23 +3,28 @@
 .gm-section:has(> .section-scape) { isolation: isolate; }
 .section-scape {
   position: absolute;
-  inset: auto 0 0;
+  inset: 32px 0 auto auto;
   z-index: 0;
   display: block;
+  width: 44%;
+  height: clamp(240px, 22vw, 360px);
   overflow: hidden;
   pointer-events: none;
   user-select: none;
   mix-blend-mode: multiply;
   opacity: 1;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
-  mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 82%, transparent);
 }
 .section-scape img {
+  position: absolute;
+  bottom: 0;
+  left: var(--scape-left, -30%);
   display: block;
-  width: 100%;
+  width: 160%;
+  max-width: none;
   height: auto;
   aspect-ratio: 2 / 1;
-  max-height: 620px;
   object-fit: cover;
   object-position: center bottom;
   /* Strengthen pale pigment on white while keeping the paper white. */
@@ -27,19 +32,26 @@
 }
 .sec > .section-scape ~ .shell,
 .gm-section > .section-scape ~ .gm-container { position: relative; z-index: 1; }
-/* Insight uses the same watercolor treatment on white as the other sections. */
-.gm-section > .section-scape { opacity: 1; }
-.gm-section > .section-scape img {
-  width: 170%;
-  max-width: none;
-  margin-left: -35%;
-  max-height: 420px;
+/* Bring the motif, rather than its white paper margin, into the entrance view. */
+:is(#quality, #service, #insight, #flow, #faq) { --scape-left: -60%; }
+:is(#problem, #plans, #about) { --scape-left: 0%; }
+#contact { --scape-left: -40%; }
+.sec > .section-scape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,.45) 24%, transparent 55%);
 }
-.gm-section#quality > .section-scape img,
-.gm-section#service > .section-scape img,
-.gm-section#insight > .section-scape img { margin-left: -70%; }
-.gm-section#problem > .section-scape img,
-.gm-section#about > .section-scape img { margin-left: 0; }
+/* On mobile the artwork is an editorial opening, not a background beneath copy. */
+.gm-section:has(> .section-scape) { padding-top: 24px; }
+.gm-section > .section-scape {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: clamp(190px, 54vw, 240px);
+  margin-bottom: 24px;
+}
+.gm-section > .section-scape ~ .gm-container .boundary-line { display: none; }
 
 /* White section surfaces; do not change artwork, buttons, or content panels. */
 main > section { background: #fff !important; }
