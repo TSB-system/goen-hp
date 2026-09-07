@@ -1,4 +1,4 @@
-/* One approved artwork, shared from Quality through Contact. Hero is unchanged. */
+/* Viewport-wide watercolor, selected by section. Hero is unchanged. */
 main > .hero, main > .gm-hero { background: #fff !important; }
 .watercolor-content {
   position: relative;
@@ -16,12 +16,16 @@ main > .hero, main > .gm-hero { background: #fff !important; }
   user-select: none;
 }
 .continuous-scape img {
+  position: absolute;
+  top: 50%;
+  left: 0;
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  aspect-ratio: 1586 / 992;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  transform: translateY(-50%);
+  filter: brightness(.88) contrast(1.316) saturate(1.15);
 }
 .watercolor-content > section {
   position: relative;
@@ -30,14 +34,13 @@ main > .hero, main > .gm-hero { background: #fff !important; }
 }
 .watercolor-content > section > .shell {
   position: relative;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.88) 10%, rgba(255,255,255,.88) 90%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.2) 10%, rgba(255,255,255,.2) 90%, transparent);
 }
 @media (max-width: 768px) {
   .continuous-scape { inset: 72px 0 calc(64px + env(safe-area-inset-bottom, 0px)); }
-  .continuous-scape img { aspect-ratio: 941 / 1672; }
   .watercolor-content > section > .gm-container {
     position: relative;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.85) 8%, rgba(255,255,255,.85) 92%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.12) 8%, rgba(255,255,255,.12) 92%, transparent);
   }
 }
 #insight::before { background: none; }
