@@ -1,0 +1,66 @@
+/* Mobile-only responsive refinement. Never loaded by the desktop pages. */
+body.gm { --mobile-nav-x: clamp(20px, 5.3vw, 32px); background: #fff; }
+body.gm main { width: 100%; max-width: none; margin: 0; box-shadow: none; }
+body.gm .gm-container { width: min(100%, 760px); padding-inline: var(--mobile-nav-x); }
+body.gm .gm-nav { width: 100%; max-width: none; left: 0; transform: none; }
+body.gm .gm-nav.is-hidden { transform: translateY(-110%); }
+body.gm .gm-footer { width: 100%; max-width: none; left: auto; transform: none; }
+.gm-hero { min-height: 0; }
+.gm-hero__body { padding-top: calc(88px + env(safe-area-inset-top, 0px)); padding-bottom: 52px; text-align: center; }
+.gm-hero__stage {
+  --phone-w: clamp(142px, 39vw, 180px);
+  --fv-gap: clamp(108px, 30vw, 148px);
+  height: calc(var(--phone-w) * 2.166667 + 72px);
+  margin: 0 calc(var(--mobile-nav-x) * -1) 20px;
+}
+.gm-hero__stage .fv__item { top: calc(var(--phone-w) * 1.083333 - 2.5px); }
+.gm-hero__stage .fv__ctrl { top: calc(var(--phone-w) * 2.166667); bottom: auto; padding: 0 8px; gap: 8px; background: rgba(255,255,255,.8); box-shadow: none; }
+.gm-hero__stage .fv__counter { top: calc(var(--phone-w) * 2.166667 + 53px); bottom: auto; font-size: 11px; }
+.gm-hero__stage .fv__counter em { margin-left: 8px; font-size: 9px; }
+.gm-hero__stage .fv__arrow { width: 44px; height: 44px; }
+.gm-hero__stage .fv__dots { gap: 0; }
+.gm-hero__stage .fv__dots button { position: relative; width: 18px; height: 44px; border-radius: 0; background: transparent; }
+.gm-hero__stage .fv__dots button::after { content: ""; position: absolute; left: 6px; top: 19px; width: 6px; height: 6px; border-radius: 50%; background: rgba(26,24,19,.3); }
+.gm-hero__stage .fv__dots button[aria-current="true"]::after { background: var(--gold); box-shadow: 0 0 0 2px rgba(179,147,90,.16); }
+.gm-kicker { justify-content: center; align-items: center; margin-bottom: 10px; font-size: 10px; gap: 10px; }
+.gm-kicker::before { margin-top: 0; width: 18px; }
+.gm-kicker::after { content: ''; width: 18px; height: 1px; background: var(--gold); }
+.gm-hero__subline { margin-bottom: 14px; font-size: clamp(12px,3.3vw,15px); letter-spacing: .04em; }
+.gm-hero h1 { font-size: clamp(29px,8.8vw,40px); line-height: 1.4; letter-spacing: .025em; }
+.gm-hero__copy { max-width: 34em; margin: 16px auto 0; font-size: 13px; line-height: 1.85; letter-spacing: .02em; text-align: left; text-wrap: pretty; }
+.gm-hero .gm-actions { margin-top: 20px; gap: 4px; justify-items: center; }
+.gm-hero .gm-btn, .gm-hero .gm-textlink { width: min(100%,320px); }
+.gm-hero .gm-textlink { min-height: 44px; }
+.gm-section { padding-block: clamp(60px, 13vw, 92px); }
+.gm-contact { padding-bottom: calc(92px + env(safe-area-inset-bottom,0px)); }
+.gm-head h2 { font-size: clamp(26px,7.1vw,36px); line-height: 1.65; margin-top: 28px; }
+.gm-head__ghost { font-size: clamp(50px,15vw,100px); }
+.gm-value { grid-template-columns: 32px minmax(0,1fr); gap: 8px 12px; padding: 18px 16px; }
+.gm-value h3,.gm-card h3,.gm-service h3 { font-size: clamp(17px,4.5vw,20px); }
+.gm-value p,.gm-card p,.gm-service p,.gm-note-panel p { font-size: 14px; line-height: 1.9; }
+.gm-section :is(p,h2,h3) { overflow-wrap: break-word; }
+/* Portrait framing: keep each painting's subject visible rather than shrinking
+   a 2:1 landscape into a narrow strip. No changes to desktop artwork. */
+body.gm .continuous-scape { overflow: hidden; }
+body.gm .continuous-scape img {
+  top: 0; height: 100%; width: 100%; aspect-ratio: auto;
+  transform: none; object-fit: cover; object-position: var(--scene-focus, 50%) bottom;
+  filter: brightness(.94) contrast(1.15) saturate(1.18);
+  mask-image: linear-gradient(transparent, #000 5%, #000 96%, transparent);
+}
+body.gm .continuous-scape[data-section="quality"] { --scene-focus: 88%; }
+body.gm .continuous-scape[data-section="problem"] { --scene-focus: 8%; }
+body.gm .continuous-scape[data-section="system"] { --scene-focus: 48%; }
+body.gm .continuous-scape[data-section="service"] { --scene-focus: 80%; }
+body.gm .continuous-scape[data-section="works"] { --scene-focus: 12%; }
+body.gm .continuous-scape[data-section="insight"] { --scene-focus: 94%; }
+body.gm .continuous-scape[data-section="about"] { --scene-focus: 5%; }
+body.gm .continuous-scape[data-section="contact"] { --scene-focus: 68%; }
+body.gm .watercolor-content > section > .gm-container {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.42) 12%, rgba(255,255,255,.42) 88%, transparent);
+}
+@media(min-width:600px) { .gm-service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:360px) {
+  .gm-hero__stage .fv__ctrl { padding-inline: 6px; gap: 4px; }
+  .gm-hero__stage .fv__dots button { width: 17px; }
+}
