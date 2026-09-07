@@ -64,3 +64,32 @@ main > .hero, main > .gm-hero { background: #fff !important; }
   background: #1d4a37;
   box-shadow: 0 0 0 4px rgba(29,74,55,.12);
 }
+
+/* ================================================================
+   INSIGHT の代表写真を水彩の紙面に馴染ませる
+   もとは墨黒背景向けの調整（brightness .96）だったため、
+   明色の紙面では硬い矩形として浮いていた。
+   ================================================================ */
+#insight :is(.insight__photo, .gm-insight__photo) img {
+  /* スタジオの壁を紙の白へ寄せる */
+  filter: saturate(.52) contrast(.95) brightness(1.15);
+  /* 四辺をそれぞれにじませ、紙に染み込ませる（角だけでなく辺も消す） */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 9%, #000 88%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 9%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+/* 縁が溶ける分、説明文が離れて見えないよう詰める */
+#insight :is(.insight__photo, .gm-insight__photo) figcaption { margin-top: 4px; }
+
+/* ABOUT の切り抜き写真：足元を紙に沈ませ、貼り付けた感を消す。
+   法被の青はサイト内で唯一の鮮やかな色なので、彩度は落とさない。 */
+#about :is(.about__figure, .gm-about-figure) img {
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, .55) 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, .55) 92%, transparent 100%);
+}
+#about :is(.about__figure, .gm-about-figure)::after { opacity: .55; }
