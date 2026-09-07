@@ -71,55 +71,139 @@
   transform: translate(-50%, -50%) scale(0.6);
 }
 
-/* ---- スマホフレーム（CSS 描画） ---- */
+/* ---- スマホフレーム（CSS 描画・実機の比率に合わせる） ----
+   枠の太さと角丸は端末幅からの比率で決める。実機は幅に対して
+   枠が約 2.8%、角丸が約 11.8%。固定 px だと縮小時に厚ぼったく見える。 */
 .phone {
+  --frame: calc(var(--phone-w, 280px) * 0.028);
+  --radius: calc(var(--phone-w, 280px) * 0.118);
   position: relative;
-  padding: 9px;
-  border-radius: 46px;
-  background: linear-gradient(160deg, #23211c 0%, #0f0e0c 55%, #1c1a16 100%);
+  padding: var(--frame);
+  border-radius: var(--radius);
+  /* チタンフレーム：側面をぐるりと光が回る */
+  background: linear-gradient(148deg,
+    #8f887c 0%, #3c3830 6%, #201d18 17%, #2c2822 33%,
+    #17150f 51%, #262218 67%, #3b362e 83%, #8a8276 100%);
   box-shadow:
-    0 1px 0 rgba(255,255,255,0.08) inset,
-    0 0 0 1px rgba(0,0,0,0.55),
-    0 30px 60px -30px rgba(26,24,19,0.55),
-    0 12px 24px -18px rgba(26,24,19,0.45);
+    0 0 0 1px rgba(0, 0, 0, .62),
+    0 30px 60px -30px rgba(26, 24, 19, .55),
+    0 12px 24px -18px rgba(26, 24, 19, .45);
+}
+/* 外周 1px の鏡面ハイライト。金属の稜線を作る */
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(148deg,
+    rgba(255, 255, 255, .66), rgba(255, 255, 255, .1) 15%, rgba(255, 255, 255, 0) 36%,
+    rgba(255, 255, 255, .04) 60%, rgba(255, 255, 255, .12) 83%, rgba(255, 255, 255, .6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* フレーム内縁の面取り。ガラスの縁に沿って細い光が走る */
+.phone::after {
+  content: "";
+  position: absolute;
+  inset: var(--frame);
+  z-index: 6;
+  border-radius: calc(var(--radius) - var(--frame));
+  padding: 1px;
+  background: linear-gradient(148deg,
+    rgba(255, 255, 255, .38), rgba(255, 255, 255, .06) 18%, rgba(255, 255, 255, 0) 42%,
+    rgba(255, 255, 255, .03) 64%, rgba(255, 255, 255, .09) 86%, rgba(255, 255, 255, .34));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 .fv__item[data-pos="0"] .phone {
   box-shadow:
-    0 1px 0 rgba(255,255,255,0.1) inset,
-    0 0 0 1px rgba(0,0,0,0.6),
-    0 44px 80px -34px rgba(26,24,19,0.62),
-    0 16px 30px -18px rgba(26,24,19,0.5);
+    0 0 0 1px rgba(0, 0, 0, .66),
+    0 44px 80px -34px rgba(26, 24, 19, .62),
+    0 16px 30px -18px rgba(26, 24, 19, .5);
 }
-.phone::before {
-  /* サイドボタン */
-  content: "";
+/* 側面ボタン：左にアクション・音量上下、右に電源。わずかに外へ出す */
+.phone__keys {
   position: absolute;
-  right: -2px;
-  top: 22%;
-  width: 2px;
-  height: 11%;
-  border-radius: 2px;
-  background: #2a2823;
+  --key-w: calc(var(--frame) * 0.46);
+  inset: 0 calc(var(--frame) * -0.34);
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, #5c564b, #2a2620) left 0 top 20.5% / var(--key-w) 4.4% no-repeat,
+    linear-gradient(180deg, #5c564b, #2a2620) left 0 top 29% / var(--key-w) 7.4% no-repeat,
+    linear-gradient(180deg, #5c564b, #2a2620) left 0 top 39% / var(--key-w) 7.4% no-repeat,
+    linear-gradient(180deg, #5c564b, #2a2620) right 0 top 30.5% / var(--key-w) 11% no-repeat,
+    /* アンテナ線 */
+    linear-gradient(90deg, rgba(255,255,255,.26), rgba(255,255,255,.05)) left 0 top 12.5% / var(--key-w) 1.5px no-repeat,
+    linear-gradient(90deg, rgba(255,255,255,.26), rgba(255,255,255,.05)) left 0 top 87.5% / var(--key-w) 1.5px no-repeat,
+    linear-gradient(270deg, rgba(255,255,255,.26), rgba(255,255,255,.05)) right 0 top 12.5% / var(--key-w) 1.5px no-repeat,
+    linear-gradient(270deg, rgba(255,255,255,.26), rgba(255,255,255,.05)) right 0 top 87.5% / var(--key-w) 1.5px no-repeat;
 }
 .phone__screen {
   position: relative;
   overflow: hidden;
   aspect-ratio: 9 / 19.5;
-  border-radius: 38px;
+  /* 枠と同心円になる内側の角丸 */
+  border-radius: calc(var(--radius) - var(--frame));
   background: #0b0a09;
-  /* 角の内側に細い縁光 */
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset;
+  /* ガラスと枠の間の黒い見切り */
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, .92),
+    0 0 0 1px rgba(255, 255, 255, .05) inset,
+    0 0 14px rgba(0, 0, 0, .3) inset;
 }
+/* Dynamic Island とカメラのレンズ */
 .phone__island {
   position: absolute;
-  top: 11px;
+  top: calc(var(--frame) * 1.2);
   left: 50%;
-  z-index: 3;
-  width: 32%;
-  height: 24px;
-  border-radius: 20px;
-  background: #000;
+  z-index: 5;
+  width: 26%;
+  height: calc(var(--phone-w, 280px) * 0.082);
+  border-radius: 999px;
+  background: #04040a;
+  box-shadow: 0 0 0 .5px rgba(255, 255, 255, .07);
   transform: translateX(-50%);
+}
+.phone__island::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(var(--frame) * -0.78);
+  width: 32%;
+  height: 2px;
+  border-radius: 999px;
+  /* 受話口のスリット。明るい映像の上でも沈んで見えるよう暗色にする */
+  background: rgba(8, 9, 14, .55);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .12);
+  transform: translateX(-50%);
+}
+/* ガラスの映り込み */
+.phone__gloss {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    /* 細い鋭角の映り込み */
+    linear-gradient(118deg,
+      rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, .1) 30%,
+      rgba(255, 255, 255, .02) 34%, rgba(255, 255, 255, 0) 38%),
+    /* 広く回る艶 */
+    linear-gradient(122deg,
+      rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, .05) 13%, rgba(255, 255, 255, 0) 29%,
+      rgba(255, 255, 255, 0) 73%, rgba(255, 255, 255, .05) 89%, rgba(255, 255, 255, .12) 100%);
+  mix-blend-mode: screen;
 }
 .phone__screen video,
 .phone__screen img {
